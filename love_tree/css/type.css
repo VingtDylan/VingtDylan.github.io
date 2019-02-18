@@ -1,0 +1,24 @@
+.line_1{
+    font: 200% monospace;
+    color:#FF66FF;
+    border-right: .08em solid;
+    width: 10ch;
+    word-break:keep-all;
+    white-space:normal;
+    overflow: hidden;
+    animation: typing 5s steps(28, end),
+               blink-caret .5s step-end infinite alternate;
+    /*animation-delay:1s;*/
+}
+
+
+@keyframes typing {
+    from { width: 0}
+}
+@keyframes blink-caret {
+    50% { border-color: #F48FB1; }
+}
+
+
+
+
