@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2Fp%2F3eeb.html</url>
+    <content type="text"><![CDATA[Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server12$ hexo server$ hexo s More info: Server Generate static files12$ hexo generate$ hexo g More info: Generating Deploy to remote sites12$ hexo deploy$ hexo d Another way1$ hexo clean &amp;&amp; hexo g &amp;&amp; hexo d More info: Deployment]]></content>
+      <categories>
+        <category>Hello_World</category>
+      </categories>
+      <tags>
+        <tag>Hello_World</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Calculus-从入门到放弃]]></title>
     <url>%2Fp%2F5ba9.html</url>
     <content type="text"></content>
@@ -47,17 +58,6 @@
         <tag>html5</tag>
         <tag>CSS3</tag>
         <tag>web</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2Fp%2F3eeb.html</url>
-    <content type="text"><![CDATA[Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server12$ hexo server$ hexo s More info: Server Generate static files12$ hexo generate$ hexo g More info: Generating Deploy to remote sites12$ hexo deploy$ hexo d Another way1$ hexo clean &amp;&amp; hexo g &amp;&amp; hexo d More info: Deployment]]></content>
-      <categories>
-        <category>Hello_World</category>
-      </categories>
-      <tags>
-        <tag>Hello_World</tag>
       </tags>
   </entry>
 </search>
