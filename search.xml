@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[Markdown学习2]]></title>
+    <url>%2Fp%2Ffe97.html</url>
+    <content type="text"></content>
+      <categories>
+        <category>Markdown</category>
+      </categories>
+      <tags>
+        <tag>Markdown</tag>
+        <tag>语法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Markdown学习1]]></title>
+    <url>%2Fp%2Fffd7.html</url>
+    <content type="text"><![CDATA[列表在Markdown中只需要在文字的前面加上-即可，如下所示:123- 文本1- 文本2- 文本3 如果希望获得一个有序列表，只需修改为1. 2. 3.即可，如下所示:1231. 文本12. 文本23. 文本3 注:-、1.和文本之间需要保留一个字符的空格。 链接和图片在Markdown中，插入链接不需要其他按钮，只需要使用[显示文本](链接地址)这样即可，例如:[爸爸的博客](https://vingtdylan.github.io/)效果如下:爸爸的博客 类似的，在Markdown中，插入图片不需要其他按钮，只需要使用![](链接地址)这样即可，例如:![](https://vingtdylan.github.io)效果如下: 引用在写作的时候经常需要引用他人的文字，这时候需要添加引用格式，在Markdown中，只需添加一个&gt;即可，例如:&gt;那些年你冒险的梦注:&gt;和文本之间仍需要一个字符的空格效果如下: 那些年你冒险的梦 粗体和斜体Markdown中的粗体和斜体只需要用*或者**将文本包含起来即可，例如:**那些年**你很*冒险的梦*效果如下:那些年你很冒险的梦 代码引用当行使用(`)将语句包起来，如果引用多行语句，则用(```)包含文本即可，例如`hello world`和` ` ``#include&lt;iostream&gt;``using namespace std``int main(){}`` ` `显示效果依次为:hello world123#include&lt;iostream&gt;using namespace std;int main()&#123;&#125; 特别提示，在代码块中打出``` ````需要用4个`` ` ``包含3个`` ` ``.12### 表格 Tables Are Cool col 3 is right-aligned $1600 col 2 is centered $12 zebra stripes are neat $1 1234567891011显示效果为:| Tables | Are | Cool || ------------- |:-------------:| -----:|| col 3 is | right-aligned | $1600 || col 2 is | centered | $12 || zebra stripes | are neat | $1 |注:表格上方必须为一个空行### 显示链接中带括号的图片 ![][1][1]: http://latex.codecogs.com/gif.latex?\prod%20(n_{i})+1`显示效果为:![][1][1]: http://latex.codecogs.com/gif.latex?\prod%20(n_{i})+1Hexo中显示有问题...]]></content>
+      <categories>
+        <category>Markdown</category>
+      </categories>
+      <tags>
+        <tag>Markdown</tag>
+        <tag>语法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[CSS学习-纯CSS实现按钮文字滑动特效]]></title>
+    <url>%2Fp%2F2c4.html</url>
+    <content type="text"><![CDATA[文章来源地址:大佬链接效果链接 代码解读定义DOM，在一个容器定义按钮的文字，每个字母都使用一个span，每个span又有一个data-text属性，具体如下:12345678&lt;div class=&quot;box&quot;&gt; &lt;span data-text=&quot;B&quot;&gt;B&lt;/span&gt; &lt;span data-text=&quot;U&quot;&gt;U&lt;/span&gt; &lt;span data-text=&quot;T&quot;&gt;T&lt;/span&gt; &lt;span data-text=&quot;T&quot;&gt;T&lt;/span&gt; &lt;span data-text=&quot;O&quot;&gt;O&lt;/span&gt; &lt;span data-text=&quot;N&quot;&gt;N&lt;/span&gt;&lt;/div&gt; 按钮居中设置:123456html, body &#123; height: 100%; display: flex; align-items: center; justify-content: center;&#125; 然后设置按钮的尺寸和文字样式:123456789.box &#123; width: 200px; height: 60px; border: 2px solid black; text-align: center; font-size: 30px; line-height: 60px; font-family: sans-serif;&#125; 需要将按钮的每个字母元素都设置为行内块元素，这只是为了方便后面单独处理动态效果:1234.box span &#123; display: inline-block; color: blue;&#125; 将字母交错显示在按钮容器之外,这里可以将第奇数个元素显示在上，第偶数个元素显示在下:1234567.box span:nth-child(odd) &#123; transform: translateY(-100%);&#125;.box span:nth-child(even) &#123; transform: translateY(100%);&#125; 用伪元素给每个字母增加一个副本12345.box span::before &#123; content: attr(data-text); position: absolute; color: red;&#125; 然后让伪元素也交错显示，位置与其原始元素相对:1234567.box span:nth-child(odd)::before &#123; transform: translateY(100%);&#125;.box span:nth-child(even)::before &#123; transform: translateY(-100%);&#125; 为增加鼠标划过样式，设置过渡时间:1234567.box:hover span &#123; transform: translateY(0);&#125;.box span &#123; transition: 0.5s;&#125; 最后一步，隐藏容器外的内容:123.box &#123; overflow: hidden;&#125; 知识点梳理flex布局&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;比较好的一个学习总结:链接跳转处 justify-content属性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用于设置或者检索弹性盒子元素在主轴(横轴)方向上的对齐方式。可以参看菜鸟教程 百分比%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CSS中的百分比计算方法 伪元素(Pseudo-elements)-&gt;before,after&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;W3School上的讲解 translateY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jQery之家的解释 data-*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用于嵌套自定义数据,移步W3School content&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用于插入生成内容,链接跳转 nth-child&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;常见的选择器了，再好好复习一下吧,链接跳转]]></content>
+      <categories>
+        <category>CSS学习</category>
+      </categories>
+      <tags>
+        <tag>html5</tag>
+        <tag>CSS3</tag>
+        <tag>web</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2Fp%2F3eeb.html</url>
+    <content type="text"><![CDATA[Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server12$ hexo server$ hexo s More info: Server Generate static files12$ hexo generate$ hexo g More info: Generating Deploy to remote sites12$ hexo deploy$ hexo d Another way1$ hexo clean &amp;&amp; hexo g &amp;&amp; hexo d More info: Deployment]]></content>
+      <categories>
+        <category>Hello_World</category>
+      </categories>
+      <tags>
+        <tag>Hello_World</tag>
+      </tags>
+  </entry>
+</search>
