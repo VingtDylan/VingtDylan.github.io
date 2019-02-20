@@ -1873,7 +1873,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #cdfff4;
+  background: #f4299c;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2972,8 +2972,7 @@ body {
   -o-background-size: cover;
   -moz-background-size: cover;
   -ms-background-size: cover;
-/*这是设置底部文字, 看个人需要修改*/
-/*#footer > div > div {
-        color:#eee;
-    }*/
+}
+.post-body p {
+  text-indent: 2em;
 }

@@ -94,18 +94,20 @@
 
 
 
-<meta name="description" content="好好学习，好好睡觉...">
+<meta name="description" content="Following the mardkdowntutorial. Markdown is a way to write content for the web. It’s written in what nerds like to call “plaintext”, which is exactly the sort of text you’re used to writing and seein">
 <meta name="keywords" content="Markdown,语法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Markdown学习2">
 <meta property="og:url" content="https://VingtDylan.github.io/p/fe97.html">
 <meta property="og:site_name" content="IT Garden">
-<meta property="og:description" content="好好学习，好好睡觉...">
+<meta property="og:description" content="Following the mardkdowntutorial. Markdown is a way to write content for the web. It’s written in what nerds like to call “plaintext”, which is exactly the sort of text you’re used to writing and seein">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-19T17:50:01.483Z">
+<meta property="og:image" content="https://vingtdylan.github.io/Resources/Headers.jpg">
+<meta property="og:updated_time" content="2019-02-20T11:36:25.319Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Markdown学习2">
-<meta name="twitter:description" content="好好学习，好好睡觉...">
+<meta name="twitter:description" content="Following the mardkdowntutorial. Markdown is a way to write content for the web. It’s written in what nerds like to call “plaintext”, which is exactly the sort of text you’re used to writing and seein">
+<meta name="twitter:image" content="https://vingtdylan.github.io/Resources/Headers.jpg">
 
 
 
@@ -395,7 +397,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-02-20T01:50:01+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-20T19:36:25+08:00">
                 2019-02-20
               </time>
             
@@ -445,7 +447,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0 字
+                  1.4k 字
                 </span>
               
 
@@ -461,7 +463,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  0.5 min
+                  7.5 min
                 </span>
               
             </div>
@@ -482,7 +484,72 @@
       
 
       
-        
+        <h3 id="Italics-and-Bold"><a href="#Italics-and-Bold" class="headerlink" title="Italics and Bold"></a>Italics and Bold</h3><p>To make a phrase italic in Markdown, you can surround words with an underscore <code>(_ )</code>. For example, <code>_this_</code>(<em>this</em> )word would become italic.</p>
+<p>Similarly, to make phrases bold in Markdown, you can surround words with two asterisks <code>( ** )</code>. This will <code>**really**</code>(<strong>really</strong>) get your point across.</p>
+<p>Of course, you can use <code>_both italics and bold_</code> in the same line. You can also span them <code>**across multiple words**</code>.</p>
+<p>Finally,we’re going to make some words <em>bold <strong>and</strong> italic</em>.In general, it doesn’t matter which order you place the asterisks or underscores.</p>
+<h3 id="Headers"><a href="#Headers" class="headerlink" title="Headers"></a>Headers</h3><p>To make headers in Markdown, you preface the phrase with a hash mark <code>(#)</code>. You place the same number of hash marks as the size of the header you want.For example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Header one</span><br><span class="line">## Header two</span><br><span class="line">### Header three</span><br><span class="line">#### Header four</span><br><span class="line">##### Header five</span><br><span class="line">###### Header six</span><br></pre></td></tr></table></figure></p>
+<p>效果为<br><img src="../Resources/Headers.jpg" alt=""></p>
+<p>It’s up to you to decide when it’s appropriate to use which header. In general, headers one and six should be used sparingly.</p>
+<p>You can’t really make a header bold, but you can italicize certain words.<br>(Obviously,<code>(_)</code>is good!)</p>
+<h3 id="Links"><a href="#Links" class="headerlink" title="Links"></a>Links</h3><p>There are two different link types in Markdown, but both of them render the exact same way. The first link style is called an inline link. To create an inline link, you wrap the link text in brackets <code>( [ ] )</code>, and then you wrap the link in parenthesis <code>( ( ) )</code>. For example, to create a hyperlink to <a href="http://www.github.com" target="_blank" rel="noopener">www.github.com</a>, with a link text that says, Visit GitHub!, you’d write this in Markdown: <code>[Visit GitHub!](www.github.com)</code>.</p>
+<p>You can add emphasis to link texts, if you like.</p>
+<p>Although it might make for an awkward experience, you can make links within headings, too.</p>
+<p>That’s all there is to writing inline links.</p>
+<p>The other link type is called a reference link. As the name implies, the link is actually a reference to another place in the document. Here’s an example of what we mean:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Here&apos;s [a link to something else][another place].</span><br><span class="line">Here&apos;s [yet another link][another-link].</span><br><span class="line">And now back to [the first link][another place].</span><br><span class="line"></span><br><span class="line">[another place]: www.github.com</span><br><span class="line">[another-link]: www.google.com</span><br></pre></td></tr></table></figure>
+<p>The “references” above are the second set of brackets: [another place] and [another-link]. At the bottom of a Markdown document, these brackets are defined as proper links to outside websites. An advantage of the reference link style is that multiple links to the same place only need to be updated once. For example, if we decide to make all of the [another place] links go somewhere else, we only have to change the single reference link.</p>
+<p>Reference links don’t appear in the rendered Markdown. You define them by providing the same tag name wrapped in brackets, followed by a colon, followed by the link.</p>
+<h3 id="Images"><a href="#Images" class="headerlink" title="Images"></a>Images</h3><p>If you know how to create links in Markdown, you can create images, too. The syntax is nearly the same.</p>
+<p>Images also have two styles, just like links, and both of them render the exact same way. The difference between links and images is that images are prefaced with an exclamation point <code>( ! )</code>.</p>
+<p>The first image style is called an inline image link. To create an inline image link, enter an exclamation point <code>( ! )</code>, wrap the alt text in brackets <code>( [ ] )</code>, and then wrap the link in parenthesis <code>( ( ) )</code>. (Alt text is a phrase or sentence that describes the image for the visually impaired.)</p>
+<p>For example, to create an inline image link to the link (a bannekat picture from the github). <a href="https://octodex.github.com/images/bannekat.png" target="_blank" rel="noopener">https://octodex.github.com/images/bannekat.png</a>, with an alt text that says, Benjamin Bannekat, you’d write this in Markdown:<br><code>![Benjamin Bannekat](https://octodex.github.com/images/bannekat.png).</code></p>
+<p>Although you don’t need to add alt text, it will make your content accessible to your audience, including people who are visually impaired, use screen readers, or do not have high speed internet connections.</p>
+<p>For a reference image, you’ll follow the same pattern as a reference link. You’ll precede the Markdown with an exclamation point, then provide two brackets for the alt text, and then two more for the image tag. At the bottom of your Markdown page, you’ll define an image for the tag.</p>
+<h3 id="Blockquotes"><a href="#Blockquotes" class="headerlink" title="Blockquotes"></a>Blockquotes</h3><p>If you need to call special attention to a quote from another source, or design a pull quote for a magazine article, then Markdown’s blockquote syntax will be useful. A blockquote is a sentence or paragraph that’s been specially formatted to draw attention to the reader. For example:</p>
+<blockquote>
+<p>“The sin of doing nothing is the deadliest of all the seven sins. It has been said that for evil men to accomplish their purpose it is only necessary that good men should do nothing.”</p>
+</blockquote>
+<p>To create a block quote, all you have to do is preface a line with the “greater than” caret (&gt;). For example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; &quot;In a few moments he was barefoot, his stockings folded in his pockets and</span><br><span class="line">his canvas shoes dangling by their knotted laces over his shoulders and,</span><br><span class="line">picking a pointed salt-eaten stick out of the jetsam among the rocks, he</span><br><span class="line">clambered down the slope of the breakwater.&quot;</span><br></pre></td></tr></table></figure></p>
+<p>You can also place a caret character on each line of the quote. This is particularly useful if your quote spans multiple paragraphs.</p>
+<p>Block quotes can contain other Markdown elements, such as italics, images, or links.</p>
+<h3 id="Lists"><a href="#Lists" class="headerlink" title="Lists"></a>Lists</h3><p>There are two types of lists in the known universe: unordered and ordered. That’s a fancy way of saying that there are lists with bullet points, and lists with numbers.</p>
+<p>To create an unordered list, you’ll want to preface each item in the list with an asterisk ( * ). Each list item also gets its own line. For example, a grocery list in Markdown might look like this:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* Milk</span><br><span class="line">* Eggs</span><br><span class="line">* Salmon</span><br><span class="line">* Butter</span><br></pre></td></tr></table></figure></p>
+<p>All right! That’s how you write an unordered list. Now, let’s talk about ordered ones.</p>
+<p>An ordered list is prefaced with numbers, instead of asterisks. Take a look at this recipe:</p>
+<ol>
+<li>Crack three eggs over a bowl</li>
+<li>Pour a gallon of milk into the bowl</li>
+<li>Rub the salmon vigorously with butter</li>
+<li>Drop the salmon into the egg-milk bowl</li>
+</ol>
+<p>To write that in Markdown, you’d do this:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. Crack three eggs over a bowl</span><br><span class="line">2. Pour a gallon of milk into the bowl</span><br><span class="line">3. Rub the salmon vigorously with butter</span><br><span class="line">4. Drop the salmon into the egg-milk bowl</span><br></pre></td></tr></table></figure></p>
+<p>You can choose to add italics, bold, or links within lists, as you might expect.</p>
+<p>Occasionally, you might find the need to make a list with more depth, or, to nest one list within another. Have no fear, because the Markdown syntax is exactly the same. All you have to do is to remember to indent each asterisk one space more than the preceding item.</p>
+<p>For example, in the following list, we’re going to add some sub-lists to each “main” list item, describing the people in detail:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">* Tintin</span><br><span class="line"> * A reporter</span><br><span class="line"> * Has poofy orange hair</span><br><span class="line"> * Friends with the world&apos;s most awesome dog</span><br><span class="line">* Haddock</span><br><span class="line"> * A sea captain</span><br><span class="line"> * Has a fantastic beard</span><br><span class="line"> * Loves whiskey</span><br><span class="line">   * Possibly also scotch?</span><br></pre></td></tr></table></figure></p>
+<p>When rendered, this list turns into the following grouping:</p>
+<ul>
+<li>Tintin<ul>
+<li>A reporter</li>
+<li>Has poofy orange hair</li>
+<li>Friends with the world’s most awesome dog</li>
+</ul>
+</li>
+<li>Haddock<ul>
+<li>A sea captain</li>
+<li>Has a fantastic beard</li>
+<li>Loves whiskey<ul>
+<li>Possibly also scotch?</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>While you could continue to indent and add sub-lists indefinitely, it’s usually a good idea to stop after three levels; otherwise, your text becomes a mess.</p>
+<p>There’s one more trick to lists and indentation that we’ll explore, and that deals with the case of paragraphs. Suppose you want to create a bullet list that requires some additional context (but not another list).</p>
+<p>To create this sort of text, your paragraph must start on a line all by itself underneath the bullet point, and it must be indented by at least one space.</p>
+<p>Notice that the first two items have a single space. This looks a bit odd, so you might want to indent properly to match the characters up (like items three and four). In these paragraphs, you can include all sorts of other Markdown elements, like blockquotes, or even other lists!</p>
+<h3 id="Paragraphs"><a href="#Paragraphs" class="headerlink" title="Paragraphs"></a>Paragraphs</h3><p>Each dot <code>( · )</code> represents a space on the keyboard.You can accomplish a soft break by inserting two spaces after each new line.</p>
       
     </div>
     
@@ -501,7 +568,7 @@
   <p><span>本文标题:</span><a href="/p/fe97.html">Markdown学习2</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 VingtDylan 的个人博客">VingtDylan</a></p>
   <p><span>发布时间:</span>2019年02月18日 - 19:41</p>
-  <p><span>最后更新:</span>2019年02月20日 - 01:50</p>
+  <p><span>最后更新:</span>2019年02月20日 - 19:36</p>
   <p><span>原始链接:</span><a href="/p/fe97.html" title="Markdown学习2">https://VingtDylan.github.io/p/fe97.html</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://VingtDylan.github.io/p/fe97.html" aria-label="复制成功！"></i></span>
   </p>
@@ -613,8 +680,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -640,7 +716,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -651,7 +727,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -698,6 +774,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Italics-and-Bold"><span class="nav-number">1.</span> <span class="nav-text">Italics and Bold</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Headers"><span class="nav-number">2.</span> <span class="nav-text">Headers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Links"><span class="nav-number">3.</span> <span class="nav-text">Links</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Images"><span class="nav-number">4.</span> <span class="nav-text">Images</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Blockquotes"><span class="nav-number">5.</span> <span class="nav-text">Blockquotes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lists"><span class="nav-number">6.</span> <span class="nav-text">Lists</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Paragraphs"><span class="nav-number">7.</span> <span class="nav-text">Paragraphs</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -748,7 +840,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共1.6k字</span>
+  <span class="post-count">博客全站共3.1k字</span>
 </div>
 
         
