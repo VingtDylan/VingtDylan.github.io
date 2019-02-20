@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Hexo的那些插件]]></title>
+    <url>%2Fp%2Feeb6.html</url>
+    <content type="text"><![CDATA[pdf插件 安装插件 1npm install --save hexo-pdf 可以新增一个页面用来存放pdf 1hexo new page pdf_Library 增添pdf的链接可以在source/pdf_Library中找到index.md文件，编辑该文件: 12341.外部链接&#123; % pdf http://...... % &#125;2.内部(本地)链接&#123; % pdf XXXX/XXX/.../*.pdf % &#125; maths类插件 动画人物插件 …]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo插件</tag>
+        <tag>博客优化</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[CSS学习-纯CSS创作矩形旋转loader特效]]></title>
     <url>%2Fp%2F16be.html</url>
     <content type="text"><![CDATA[文章来源地址:大佬链接效果链接 代码解读定义dom,一个包含3个span的容器:12345&lt;div class=&quot;loader&quot;&gt; &lt;span&gt;&lt;/span&gt; &lt;span&gt;&lt;/span&gt; &lt;span&gt;&lt;/span&gt;&lt;/div&gt; 居中显示:1234567html, body &#123; height: 100%; display: flex; align-items: center; justify-content: center; background-color: black;&#125; 设置容器的尺寸:12345.loader &#123; width: 150px; height: 150px; position: relative;&#125; 设置矩形的边框样式:123456.loader span &#123; position: absolute; box-sizing: border-box; border: 10px solid dimgray; border-radius: 2px;&#125; 设置3个矩形的尺寸:12345678910111213141516.loader span:nth-child(1) &#123; width: 100%; height: 100%;&#125;.loader span:nth-child(2) &#123; width: 70%; height: 70%; margin: 15%;&#125;.loader span:nth-child(3) &#123; width: 40%; height: 40%; margin: 30%;&#125; 用伪元素绘制左上和右下装饰条:123456789101112131415161718.loader span::before,.loader span::after &#123; content: &apos;&apos;; position: absolute; width: 10px; height: 50%; background-color: gold;&#125;.loader span::before &#123; top: -10px; left: -10px;&#125;.loader span::after &#123; bottom: -10px; right: -10px;&#125; 定义动画效果:123456789@keyframes rotating &#123; from &#123; transform: rotateY(0deg); &#125; to &#123; transform: rotateY(360deg); &#125;&#125; 把动画应用到3个矩形上:123456789101112131415.loader span &#123; animation: rotating linear infinite;&#125;.loader span:nth-child(1) &#123; animation-duration: 4s;&#125;.loader span:nth-child(2) &#123; animation-duration: 2s;&#125;.loader span:nth-child(3) &#123; animation-duration: 1s;&#125; 最后设置3个矩形的堆叠顺序:1234567891011.loader span:nth-child(1) &#123; z-index: 3;&#125;.loader span:nth-child(2) &#123; z-index: 2;&#125;.loader span:nth-child(3) &#123; z-index: 1;&#125; 知识点梳理 @keyframes https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes]]></content>
@@ -17,6 +29,14 @@
     <title><![CDATA[Game is not Games]]></title>
     <url>%2Fp%2Ff024.html</url>
     <content type="text"></content>
+      <categories>
+        <category>博弈论</category>
+      </categories>
+      <tags>
+        <tag>Games</tag>
+        <tag>Strategy Games</tag>
+        <tag>Games Strategy</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[Matlab整理]]></title>
