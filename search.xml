@@ -41,7 +41,7 @@
   <entry>
     <title><![CDATA[Matlab整理]]></title>
     <url>%2Fp%2Fb14c.html</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[MATLAB概述说白了，就是因为繁重的计算算不过来，科学研究中也有大量的数学计算，Matlab等无疑让科技人员得到了解脱。(X 发展历史FORTRAN-&gt;C-&gt;…… 主要功能和特点MATLAB是真的强大…(小声比比) 主要功能有: 数值计算 符号计算 数值分析和可视化功能 SIMULINK动态仿真功能… 主要特点: 可扩展性:(M文件) 易学易用性(等于没说) 高效性(FFT那边用起来太爽了吧) MATLAB命令窗口注意一下工作空间，路径，SIMULINK模块库即可 键名 功能 键名 功能 ↑ 前寻式调回已输入过的命令 Home 将光标移到当前行首端 ↓ 前寻式调回已输入过的命令 End 将光标移到当前行末端 ← 在当前行向左移动光标 Del 删除光标右边的字符 → 在当前行向右移动光标 BackSpace 删除光标左边的字符 PgUp 前寻式翻滚一页 ESC 删除当前行全部内容 PgDn 后寻式翻滚一页 MATLAB文件管理当前目录的设置有点坑… MATLAB获取帮助MathWorks help命令大法… MATLAB功能演示 demo命令 Examples and Demos然后去试试吧 MATLAB程序设计MATLAB数值计算MATLAB符号计算MATLAB绘图SIMULINK仿真MATLAB辅助优化设计MATLAB神经网络分析与设计MATLAB程序接口]]></content>
       <categories>
         <category>Matlab</category>
       </categories>
