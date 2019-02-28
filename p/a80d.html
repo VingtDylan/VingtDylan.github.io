@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Python,Regex,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="The article has been encrypted, please enter your password to view.">
+<meta name="keywords" content="Python,Regex">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python and Regex">
+<meta property="og:url" content="https://VingtDylan.github.io/p/a80d.html">
+<meta property="og:site_name" content="IT Garden">
+<meta property="og:description" content="The article has been encrypted, please enter your password to view.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-02-22T10:38:44.114Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python and Regex">
+<meta name="twitter:description" content="The article has been encrypted, please enter your password to view.">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://VingtDylan.github.io/p/a80d.html">
+
+
+
+
+
+  <title>Python and Regex | IT Garden</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">IT Garden</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">爱好游戏的码农</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-love_tree">
+          <a href="/love_tree/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            love_tree
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://VingtDylan.github.io/p/a80d.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="VingtDylan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="IT Garden">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python and Regex</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-22T18:15:46+08:00">
+                2019-02-22
+              </time>
+            
+			
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-22T18:38:44+08:00">
+                2019-02-22
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python核心编程/" itemprop="url" rel="index">
+                    <span itemprop="name">Python核心编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+			
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  653 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3.5 min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<div id="hbe-security">
+  <div class="hbe-input-container">
+  <input type="password" class="hbe-form-control" id="pass" placeholder="Please enter the password to read the blog.">
+    <label for="pass">Please enter the password to read the blog.</label>
+    <div class="bottom-line"></div>
+  </div>
+</div>
+<div id="decryptionError" style="display: none;">Incorrect Password!</div>
+<div id="noContentError" style="display: none;">No content to display!</div>
+<div id="encrypt-blog" style="display:none">
+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
+</div>
+<script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
+      
+    </div>
+    
+    
+    
+	
+	<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/p/a80d.html">Python and Regex</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 VingtDylan 的个人博客">VingtDylan</a></p>
+  <p><span>发布时间:</span>2019年02月22日 - 18:15</p>
+  <p><span>最后更新:</span>2019年02月22日 - 18:38</p>
+  <p><span>原始链接:</span><a href="/p/a80d.html" title="Python and Regex">https://VingtDylan.github.io/p/a80d.html</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://VingtDylan.github.io/p/a80d.html" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+	});
+    });  
+</script>
+
+      
+	</div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/Regex/" rel="tag"># Regex</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/c0eb.html" rel="next" title="Games Creator">
+                <i class="fa fa-chevron-left"></i> Games Creator
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/926f.html" rel="prev" title="计算方法绪论概述">
+                计算方法绪论概述 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">VingtDylan</p>
+              <p class="site-description motion-element" itemprop="description">好好学习，好好睡觉...</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/VingtDylan" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1305373709@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/Vingt_dumont" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+		  
+		  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="110" src="//music.163.com/outchain/player?type=0&id=2676125489&auto=1&height=90"></iframe>
+          
+		  
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">VingtDylan</span>
+
+  
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站总访问量<span id="busuanzi_value_site_uv"></span>次
+</span>
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+-->
+
+
+  <span class="post-meta-divider">|</span>
+
+
+<!--
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+-->
+
+
+
+
+  <script src="https://unpkg.com/mermaid@<%= theme.mermaid.version %>/dist/mermaid.min.js"></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共4.4k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	<script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+	</script>
+  
+
+
+  
+
+  
+
+  
+	<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js" count="250" zindex="-1" opacity="1" color="127,104,183"></script>
+  
+  <script type="text/javascript" src="/js/src/click.js"></script>
+  <script type="text/javascript" src="/js/src/particle.js" count="250" zindex="-1" opacity="1" color="0,104,183"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":75,"height":150},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
