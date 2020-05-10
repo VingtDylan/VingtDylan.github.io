@@ -83,7 +83,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="LeetCode,数学,二分查找,">
 
 
 
@@ -95,13 +95,14 @@
 
 
 <meta name="description" content="50. Pow(x, n)难度: medium 实现 pow(x, n) ，即计算 x 的 n 次幂函数。 示例 1: 12输入: 2.00000, 10输出: 1024.00000">
+<meta name="keywords" content="LeetCode,数学,二分查找">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode 50">
 <meta property="og:url" content="https://VingtDylan.github.io/p/abea.html">
 <meta property="og:site_name" content="IT Garden">
 <meta property="og:description" content="50. Pow(x, n)难度: medium 实现 pow(x, n) ，即计算 x 的 n 次幂函数。 示例 1: 12输入: 2.00000, 10输出: 1024.00000">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-10T16:22:03.558Z">
+<meta property="og:updated_time" content="2020-05-10T16:27:58.432Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode 50">
 <meta name="twitter:description" content="50. Pow(x, n)难度: medium 实现 pow(x, n) ，即计算 x 的 n 次幂函数。 示例 1: 12输入: 2.00000, 10输出: 1024.00000">
@@ -404,12 +405,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-05-11T00:22:03+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-05-11T00:27:58+08:00">
                 2020-05-11
               </time>
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 			
           
@@ -432,7 +455,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  234 字
+                  252 字
                 </span>
               
 
@@ -486,6 +509,7 @@
 <p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/powx-n" target="_blank" rel="noopener">https://leetcode-cn.com/problems/powx-n</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
 <h4 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h4><p>快速幂迭代也不难，懒得写了</p>
 <p>注意INT_MIN这个点就行了，也就是1/pow(x,-n)是要考虑范围的</p>
+<p>顺便，快速幂是二分查找的意思么？感觉牵强</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">myPow</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// x == 0???</span></span><br><span class="line">        <span class="comment">// n = -2147483648</span></span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1.0</span>;</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">1</span>)<span class="keyword">return</span> x;</span><br><span class="line">        <span class="keyword">double</span> half = myPow(x, n / <span class="number">2</span>);</span><br><span class="line">        <span class="keyword">if</span>(n % <span class="number">2</span> == <span class="number">0</span>)<span class="keyword">return</span> half * half;</span><br><span class="line">        <span class="keyword">if</span>(n &gt; <span class="number">0</span>)<span class="keyword">return</span> half * half * x;</span><br><span class="line">        <span class="keyword">return</span> half * half / x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
@@ -506,7 +530,7 @@
   <p><span>本文标题:</span><a href="/p/abea.html">LeetCode 50</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 VingtDylan 的个人博客">VingtDylan</a></p>
   <p><span>发布时间:</span>2020年05月11日 - 00:04</p>
-  <p><span>最后更新:</span>2020年05月11日 - 00:22</p>
+  <p><span>最后更新:</span>2020年05月11日 - 00:27</p>
   <p><span>原始链接:</span><a href="/p/abea.html" title="LeetCode 50">https://VingtDylan.github.io/p/abea.html</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://VingtDylan.github.io/p/abea.html" aria-label="复制成功！"></i></span>
   </p>
@@ -565,6 +589,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          
+            <a href="/tags/数学/" rel="tag"># 数学</a>
+          
+            <a href="/tags/二分查找/" rel="tag"># 二分查找</a>
+          
+        </div>
       
 
       
@@ -684,7 +718,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
