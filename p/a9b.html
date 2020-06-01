@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="IT Garden">
 <meta property="og:description" content="1431. 拥有最多糖果的孩子难度: easy 给你一个数组 candies 和一个整数 extraCandies ，其中 candies[i] 代表第 i 个孩子拥有的糖果数目。 对每一个孩子，检查是否存在一种方案，将额外的 extraCandies 个糖果分配给孩子们之后，此孩子有 最多 的糖果。注意，允许有多个孩子同时拥有 最多 的糖果数目。 示例 1： 12345678输入：candies">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-06-01T09:09:42.586Z">
+<meta property="og:updated_time" content="2020-06-01T09:13:29.612Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode 1431">
 <meta name="twitter:description" content="1431. 拥有最多糖果的孩子难度: easy 给你一个数组 candies 和一个整数 extraCandies ，其中 candies[i] 代表第 i 个孩子拥有的糖果数目。 对每一个孩子，检查是否存在一种方案，将额外的 extraCandies 个糖果分配给孩子们之后，此孩子有 最多 的糖果。注意，允许有多个孩子同时拥有 最多 的糖果数目。 示例 1： 12345678输入：candies">
@@ -405,7 +405,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-06-01T17:09:42+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-06-01T17:13:29+08:00">
                 2020-06-01
               </time>
             
@@ -455,7 +455,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  514 字
+                  516 字
                 </span>
               
 
@@ -509,7 +509,7 @@
 <li><code>1 &lt;= extraCandies &lt;= 50</code></li>
 </ul>
 <p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/kids-with-the-greatest-number-of-candies/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/kids-with-the-greatest-number-of-candies/</a>)<br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; kidsWithCandies(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; candies, <span class="keyword">int</span> extraCandies) &#123;</span><br><span class="line">        <span class="keyword">int</span> maxm = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> candy : candies)&#123;</span><br><span class="line">            maxm = max(candy,maxm);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; res;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> candy : candies)&#123;</span><br><span class="line">            <span class="keyword">if</span>(candy + extraCandies &gt;= maxm)&#123;</span><br><span class="line">                res.push_back(<span class="literal">true</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                res.push_back(<span class="literal">false</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; kidsWithCandies(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; candies, <span class="keyword">int</span> extraCandies) &#123;</span><br><span class="line">        <span class="keyword">int</span> maxm = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> candy : candies)&#123;</span><br><span class="line">            maxm = max(candy,maxm);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; res;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> candy : candies)&#123;</span><br><span class="line">            <span class="keyword">if</span>(candy + extraCandies &gt;= maxm)&#123;</span><br><span class="line">                res.push_back(<span class="literal">true</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                res.push_back(<span class="literal">false</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -529,7 +529,7 @@
   <p><span>本文标题:</span><a href="/p/a9b.html">LeetCode 1431</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 VingtDylan 的个人博客">VingtDylan</a></p>
   <p><span>发布时间:</span>2020年06月01日 - 16:28</p>
-  <p><span>最后更新:</span>2020年06月01日 - 17:09</p>
+  <p><span>最后更新:</span>2020年06月01日 - 17:13</p>
   <p><span>原始链接:</span><a href="/p/a9b.html" title="LeetCode 1431">https://VingtDylan.github.io/p/a9b.html</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://VingtDylan.github.io/p/a9b.html" aria-label="复制成功！"></i></span>
   </p>
@@ -773,7 +773,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1431-拥有最多糖果的孩子"><span class="nav-number">1.</span> <span class="nav-text">1431. 拥有最多糖果的孩子</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1431-拥有最多糖果的孩子"><span class="nav-number">1.</span> <span class="nav-text">1431. 拥有最多糖果的孩子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AC代码"><span class="nav-number">2.</span> <span class="nav-text">AC代码</span></a></li></ol></div>
             
 
           </div>
