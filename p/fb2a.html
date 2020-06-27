@@ -83,7 +83,7 @@
 
 
 
-  <meta name="keywords" content="LeetCode,哈希表,位运算,">
+  <meta name="keywords" content="LeetCode,数组,">
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="136. 只出现一次的数字难度: easy 给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。 说明： 你的算法应该具有线性时间复杂度。 你可以不使用额外空间来实现吗？ 示例 1: 12输入: [2,2,1]输出: 1">
-<meta name="keywords" content="LeetCode,哈希表,位运算">
+<meta name="description" content="41. 缺失的第一个正数难度: hard 给你一个未排序的整数数组，请你找出其中没有出现的最小的正整数。 示例 1: 12输入: [1,2,0]输出: 3">
+<meta name="keywords" content="LeetCode,数组">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode 136">
-<meta property="og:url" content="https://VingtDylan.github.io/p/a8eb.html">
+<meta property="og:title" content="LeetCode 41">
+<meta property="og:url" content="https://VingtDylan.github.io/p/fb2a.html">
 <meta property="og:site_name" content="IT Garden">
-<meta property="og:description" content="136. 只出现一次的数字难度: easy 给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。 说明： 你的算法应该具有线性时间复杂度。 你可以不使用额外空间来实现吗？ 示例 1: 12输入: [2,2,1]输出: 1">
+<meta property="og:description" content="41. 缺失的第一个正数难度: hard 给你一个未排序的整数数组，请你找出其中没有出现的最小的正整数。 示例 1: 12输入: [1,2,0]输出: 3">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-13T16:07:48.927Z">
+<meta property="og:updated_time" content="2020-06-27T06:22:54.363Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode 136">
-<meta name="twitter:description" content="136. 只出现一次的数字难度: easy 给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。 说明： 你的算法应该具有线性时间复杂度。 你可以不使用额外空间来实现吗？ 示例 1: 12输入: [2,2,1]输出: 1">
+<meta name="twitter:title" content="LeetCode 41">
+<meta name="twitter:description" content="41. 缺失的第一个正数难度: hard 给你一个未排序的整数数组，请你找出其中没有出现的最小的正整数。 示例 1: 12输入: [1,2,0]输出: 3">
 
 
 
@@ -135,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="https://VingtDylan.github.io/p/a8eb.html">
+  <link rel="canonical" href="https://VingtDylan.github.io/p/fb2a.html">
 
 
 
 
 
-  <title>LeetCode 136 | IT Garden</title>
+  <title>LeetCode 41 | IT Garden</title>
   
 
 
@@ -360,7 +360,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://VingtDylan.github.io/p/a8eb.html">
+    <link itemprop="mainEntityOfPage" href="https://VingtDylan.github.io/p/fb2a.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="VingtDylan">
@@ -377,7 +377,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LeetCode 136</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode 41</h1>
         
 
         <div class="post-meta">
@@ -389,8 +389,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-14T00:04:35+08:00">
-                2020-05-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-27T14:19:34+08:00">
+                2020-06-27
               </time>
             
 			
@@ -405,8 +405,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-05-14T00:07:48+08:00">
-                2020-05-14
+              <time title="更新于" itemprop="dateModified" datetime="2020-06-27T14:22:54+08:00">
+                2020-06-27
               </time>
             
           </span>
@@ -455,7 +455,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  217 字
+                  262 字
                 </span>
               
 
@@ -492,18 +492,20 @@
       
 
       
-        <h4 id="136-只出现一次的数字"><a href="#136-只出现一次的数字" class="headerlink" title="136. 只出现一次的数字"></a><a href="https://leetcode-cn.com/problems/single-number/" target="_blank" rel="noopener">136. 只出现一次的数字</a></h4><p>难度: easy</p>
-<p>给定一个<strong>非空</strong>整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。</p>
-<p><strong>说明：</strong></p>
-<p>你的算法应该具有线性时间复杂度。 你可以不使用额外空间来实现吗？</p>
+        <h4 id="41-缺失的第一个正数"><a href="#41-缺失的第一个正数" class="headerlink" title="41. 缺失的第一个正数"></a><a href="https://leetcode-cn.com/problems/first-missing-positive/" target="_blank" rel="noopener">41. 缺失的第一个正数</a></h4><p>难度: hard</p>
+<p>给你一个未排序的整数数组，请你找出其中没有出现的最小的正整数。</p>
 <p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [2,2,1]</span><br><span class="line">输出: 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,2,0]</span><br><span class="line">输出: 3</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <p><strong>示例 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [4,1,2,1,2]</span><br><span class="line">输出: 4</span><br></pre></td></tr></table></figure>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/single-number" target="_blank" rel="noopener">https://leetcode-cn.com/problems/single-number</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h4 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h4><p>至于其他思路哈希表啥的都很简单，懒得写了，因为没啥技术含量</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num : nums)</span><br><span class="line">            res ^= num;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [3,4,-1,1]</span><br><span class="line">输出: 2</span><br></pre></td></tr></table></figure>
+<p><strong>示例 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [7,8,9,11,12]</span><br><span class="line">输出: 1</span><br></pre></td></tr></table></figure>
+<p><strong>提示：</strong></p>
+<p>你的算法的时间复杂度应为O(<em>n</em>)，并且只能使用常数级别的额外空间。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/first-missing-positive" target="_blank" rel="noopener">https://leetcode-cn.com/problems/first-missing-positive</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>$Position_i$放元素$i +1$,第一次通过swap换位置，第二次遍历找到缺失值。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">firstMissingPositive</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.size();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">            <span class="keyword">while</span>(nums[i] &gt; <span class="number">0</span> &amp;&amp; nums[i] &lt;= n &amp;&amp; nums[nums[i] - <span class="number">1</span>] != nums[i])&#123;</span><br><span class="line">                swap(nums[nums[i] - <span class="number">1</span>],nums[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] != i + <span class="number">1</span>)</span><br><span class="line">                <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> n + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -520,12 +522,12 @@
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/p/a8eb.html">LeetCode 136</a></p>
+  <p><span>本文标题:</span><a href="/p/fb2a.html">LeetCode 41</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 VingtDylan 的个人博客">VingtDylan</a></p>
-  <p><span>发布时间:</span>2020年05月14日 - 00:04</p>
-  <p><span>最后更新:</span>2020年05月14日 - 00:07</p>
-  <p><span>原始链接:</span><a href="/p/a8eb.html" title="LeetCode 136">https://VingtDylan.github.io/p/a8eb.html</a>
-    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://VingtDylan.github.io/p/a8eb.html" aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2020年06月27日 - 14:19</p>
+  <p><span>最后更新:</span>2020年06月27日 - 14:22</p>
+  <p><span>原始链接:</span><a href="/p/fb2a.html" title="LeetCode 41">https://VingtDylan.github.io/p/fb2a.html</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://VingtDylan.github.io/p/fb2a.html" aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
@@ -587,9 +589,7 @@
           
             <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
           
-            <a href="/tags/哈希表/" rel="tag"># 哈希表</a>
-          
-            <a href="/tags/位运算/" rel="tag"># 位运算</a>
+            <a href="/tags/数组/" rel="tag"># 数组</a>
           
         </div>
       
@@ -602,8 +602,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/p/9bea.html" rel="next" title="LeetCode 102">
-                <i class="fa fa-chevron-left"></i> LeetCode 102
+              <a href="/p/57b8.html" rel="next" title="面试题 02.01">
+                <i class="fa fa-chevron-left"></i> 面试题 02.01
               </a>
             
           </div>
@@ -611,10 +611,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/p/3b29.html" rel="prev" title="LeetCode 560">
-                LeetCode 560 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -773,7 +769,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#136-只出现一次的数字"><span class="nav-number">1.</span> <span class="nav-text">136. 只出现一次的数字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AC代码"><span class="nav-number">2.</span> <span class="nav-text">AC代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#41-缺失的第一个正数"><span class="nav-number">1.</span> <span class="nav-text">41. 缺失的第一个正数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li></ol></div>
             
 
           </div>
