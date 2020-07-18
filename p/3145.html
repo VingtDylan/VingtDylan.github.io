@@ -103,7 +103,7 @@
 <meta property="og:description" content="面试题 16.18. 模式匹配难度: medium 你有两个字符串，即pattern和value。 pattern字符串由字母&amp;quot;a&amp;quot;和&amp;quot;b&amp;quot;组成，用于描述字符串中的模式。例如，字符串&amp;quot;catcatgocatgo&amp;quot;匹配模式&amp;quot;aabab&amp;quot;（其中&amp;quot;cat&amp;quot;是&amp;quot;a&amp;quot;，&amp;quot;go&amp;q">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="f:/MyBlog/VingtDylan/source/_posts/images/16.18.png">
-<meta property="og:updated_time" content="2020-06-22T06:58:22.835Z">
+<meta property="og:updated_time" content="2020-07-18T06:33:39.533Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试题 16.18">
 <meta name="twitter:description" content="面试题 16.18. 模式匹配难度: medium 你有两个字符串，即pattern和value。 pattern字符串由字母&amp;quot;a&amp;quot;和&amp;quot;b&amp;quot;组成，用于描述字符串中的模式。例如，字符串&amp;quot;catcatgocatgo&amp;quot;匹配模式&amp;quot;aabab&amp;quot;（其中&amp;quot;cat&amp;quot;是&amp;quot;a&amp;quot;，&amp;quot;go&amp;q">
@@ -407,8 +407,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-06-22T14:58:22+08:00">
-                2020-06-22
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-18T14:33:39+08:00">
+                2020-07-18
               </time>
             
           </span>
@@ -457,7 +457,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  608 字
+                  605 字
                 </span>
               
 
@@ -511,7 +511,7 @@
 <li><code>0 &lt;= len(value) &lt;= 1000</code></li>
 <li>你可以假设<code>pattern</code>只包含字母<code>&quot;a&quot;</code>和<code>&quot;b&quot;</code>，<code>value</code>仅包含小写字母。</li>
 </ul>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/pattern-matching-lcci" target="_blank" rel="noopener">https://leetcode-cn.com/problems/pattern-matching-lcci</a><br>难度: easy著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/pattern-matching-lcci" target="_blank" rel="noopener">https://leetcode-cn.com/problems/pattern-matching-lcci</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
 <h4 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h4><p>难度一般吧，就是细节好多。。。</p>
 <p><img src="F:\MyBlog\VingtDylan\source\_posts\images\16.18.png" alt=""></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">patternMatching</span><span class="params">(<span class="built_in">string</span> pattern, <span class="built_in">string</span> value)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> vlen = value.size();</span><br><span class="line">        <span class="keyword">int</span> a = <span class="number">0</span>, b = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> p : pattern)&#123;</span><br><span class="line">            <span class="keyword">if</span>(p == <span class="string">'a'</span>)a++;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(p == <span class="string">'b'</span>)b++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!a &amp;&amp; !b)&#123;</span><br><span class="line">            <span class="keyword">if</span>(value != <span class="string">""</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">else</span> </span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(!a || !b)&#123;</span><br><span class="line">            <span class="keyword">if</span>(value == <span class="string">""</span>)<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            a = max(a,b);</span><br><span class="line">            <span class="keyword">return</span> checkAB(value,a);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(value.size() != <span class="number">0</span> &amp;&amp; checkAB(value,a))</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span>(value.size() != <span class="number">0</span> &amp;&amp; checkAB(value,b))</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">int</span> ka = <span class="number">1</span>, kb = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span>(;ka * a &lt; vlen;)&#123;</span><br><span class="line">                <span class="keyword">if</span>((vlen - ka * a) % b)&#123;</span><br><span class="line">                    ka++;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                kb = (vlen - ka * a) / b;</span><br><span class="line">                <span class="keyword">if</span>(check(ka,kb,pattern,value))</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                ka++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">checkAB</span><span class="params">(<span class="built_in">string</span> val, <span class="keyword">int</span> c)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(val.size() % c)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">int</span> k = val.size() / c;</span><br><span class="line">        <span class="built_in">string</span> sub = val.substr(<span class="number">0</span>,k);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = k; i &lt; val.size(); i += k)&#123;</span><br><span class="line">            <span class="keyword">if</span>(val.substr(i,k) != sub)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> ka,<span class="keyword">int</span> kb, <span class="built_in">string</span> pattern, <span class="built_in">string</span> value)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ina = <span class="number">-1</span>, inb = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> idx = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(ina == <span class="number">-1</span> || inb == <span class="number">-1</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(pattern[index] == <span class="string">'a'</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(ina == <span class="number">-1</span>)&#123;</span><br><span class="line">                    ina = idx;</span><br><span class="line">                &#125;</span><br><span class="line">                idx += ka;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(pattern[index] == <span class="string">'b'</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(inb == <span class="number">-1</span>)&#123;</span><br><span class="line">                    inb = idx;</span><br><span class="line">                &#125;</span><br><span class="line">                idx += kb;</span><br><span class="line">            &#125;</span><br><span class="line">            index++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">string</span> sa = value.substr(ina,ka);</span><br><span class="line">        <span class="built_in">string</span> sb = value.substr(inb,kb);</span><br><span class="line">        <span class="built_in">string</span> res = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> p : pattern)&#123;</span><br><span class="line">            <span class="keyword">if</span>(p == <span class="string">'a'</span>)res += sa;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(p == <span class="string">'b'</span>)res += sb;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res == value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -534,7 +534,7 @@
   <p><span>本文标题:</span><a href="/p/3145.html">面试题 16.18</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 VingtDylan 的个人博客">VingtDylan</a></p>
   <p><span>发布时间:</span>2020年06月22日 - 13:47</p>
-  <p><span>最后更新:</span>2020年06月22日 - 14:58</p>
+  <p><span>最后更新:</span>2020年07月18日 - 14:33</p>
   <p><span>原始链接:</span><a href="/p/3145.html" title="面试题 16.18">https://VingtDylan.github.io/p/3145.html</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://VingtDylan.github.io/p/3145.html" aria-label="复制成功！"></i></span>
   </p>
@@ -702,7 +702,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-count">130</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -713,7 +713,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -724,7 +724,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-count">66</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -847,7 +847,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共49.5k字</span>
+  <span class="post-count">博客全站共59.1k字</span>
 </div>
 
         
