@@ -359,7 +359,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://VingtDylan.github.io/p/396a.html">
+    <link itemprop="mainEntityOfPage" href="https://VingtDylan.github.io/p/984c.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="VingtDylan">
@@ -378,7 +378,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/p/396a.html" itemprop="url">LeetCode 922</a></h1>
+                <a class="post-title-link" href="/p/984c.html" itemprop="url">LeetCode 785</a></h1>
         
 
         <div class="post-meta">
@@ -390,7 +390,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-18T14:47:49+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-18T15:14:29+08:00">
                 2020-07-18
               </time>
             
@@ -406,7 +406,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-07-18T15:06:26+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-18T15:30:13+08:00">
                 2020-07-18
               </time>
             
@@ -456,7 +456,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  250 字
+                  373 字
                 </span>
               
 
@@ -494,21 +494,21 @@
 
       
         
-          <h4 id="922-按奇偶排序数组-II"><a href="#922-按奇偶排序数组-II" class="headerlink" title="922. 按奇偶排序数组 II"></a><a href="https://leetcode-cn.com/problems/sort-array-by-parity-ii/" target="_blank" rel="noopener">922. 按奇偶排序数组 II</a></h4><p>难度: easy</p>
-<p>给定一个非负整数数组 <code>A</code>， A 中一半整数是奇数，一半整数是偶数。</p>
-<p>对数组进行排序，以便当 <code>A[i]</code> 为奇数时，<code>i</code> 也是奇数；当 <code>A[i]</code> 为偶数时， <code>i</code> 也是偶数。</p>
-<p>你可以返回任何满足上述条件的数组作为答案。</p>
-<p><strong>示例：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：[4,2,5,7]</span><br><span class="line">输出：[4,5,2,7]</span><br><span class="line">解释：[4,7,2,5]，[2,5,4,7]，[2,7,4,5] 也会被接受。</span><br></pre></td></tr></table></figure>
-<p><strong>提示：</strong></p>
-<ol>
-<li><code>2 &lt;= A.length &lt;= 20000</code></li>
-<li><code>A.length % 2 == 0</code></li>
-<li><code>0 &lt;= A[i] &lt;= 1000</code></li>
-</ol>
+          <h4 id="785-判断二分图"><a href="#785-判断二分图" class="headerlink" title="785. 判断二分图"></a><a href="https://leetcode-cn.com/problems/is-graph-bipartite/" target="_blank" rel="noopener">785. 判断二分图</a></h4><p>难度: medium</p>
+<p>给定一个无向图<code>graph</code>，当这个图为二分图时返回<code>true</code>。</p>
+<p>如果我们能将一个图的节点集合分割成两个独立的子集A和B，并使图中的每一条边的两个节点一个来自A集合，一个来自B集合，我们就将这个图称为二分图。</p>
+<p><code>graph</code>将会以邻接表方式给出，<code>graph[i]</code>表示图中与节点<code>i</code>相连的所有节点。每个节点都是一个在<code>0</code>到<code>graph.length-1</code>之间的整数。这图中没有自环和平行边： <code>graph[i]</code> 中不存在<code>i</code>，并且<code>graph[i]</code>中没有重复的值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">示例 1:</span><br><span class="line">输入: [[1,3], [0,2], [1,3], [0,2]]</span><br><span class="line">输出: true</span><br><span class="line">解释: </span><br><span class="line">无向图如下:</span><br><span class="line">0----1</span><br><span class="line">|    |</span><br><span class="line">|    |</span><br><span class="line">3----2</span><br><span class="line">我们可以将节点分成两组: &#123;0, 2&#125; 和 &#123;1, 3&#125;。</span><br><span class="line">示例 2:</span><br><span class="line">输入: [[1,2,3], [0,2], [0,1,3], [0,2]]</span><br><span class="line">输出: false</span><br><span class="line">解释: </span><br><span class="line">无向图如下:</span><br><span class="line">0----1</span><br><span class="line">| \  |</span><br><span class="line">|  \ |</span><br><span class="line">3----2</span><br><span class="line">我们不能将节点分割成两个独立的子集。</span><br></pre></td></tr></table></figure>
+<p><strong>注意:</strong></p>
+<ul>
+<li><code>graph</code> 的长度范围为 <code>[1, 100]</code>。</li>
+<li><code>graph[i]</code> 中的元素的范围为 <code>[0, graph.length - 1]</code>。</li>
+<li><code>graph[i]</code> 不会包含 <code>i</code> 或者有重复的值。</li>
+<li>图是无向的: 如果<code>j</code> 在 <code>graph[i]</code>里边, 那么 <code>i</code> 也会在 <code>graph[j]</code>里边。</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/396a.html#more" rel="contents">
+            <a class="btn" href="/p/984c.html#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -563,7 +563,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://VingtDylan.github.io/p/aa68.html">
+    <link itemprop="mainEntityOfPage" href="https://VingtDylan.github.io/p/693a.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="VingtDylan">
@@ -582,7 +582,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/p/aa68.html" itemprop="url">LeetCode 976</a></h1>
+                <a class="post-title-link" href="/p/693a.html" itemprop="url">LeetCode 832</a></h1>
         
 
         <div class="post-meta">
@@ -594,7 +594,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-18T14:47:44+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-18T14:48:03+08:00">
                 2020-07-18
               </time>
             
@@ -610,7 +610,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-07-18T15:04:01+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-18T15:30:13+08:00">
                 2020-07-18
               </time>
             
@@ -660,215 +660,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  241 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  0.5 min
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="976-三角形的最大周长"><a href="#976-三角形的最大周长" class="headerlink" title="976. 三角形的最大周长"></a><a href="https://leetcode-cn.com/problems/largest-perimeter-triangle/" target="_blank" rel="noopener">976. 三角形的最大周长</a></h4><p>难度: easy</p>
-<p>给定由一些正数（代表长度）组成的数组 <code>A</code>，返回由其中三个长度组成的、<strong>面积不为零</strong>的三角形的最大周长。</p>
-<p>如果不能形成任何面积不为零的三角形，返回 <code>0</code>。</p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：[2,1,2]</span><br><span class="line">输出：5</span><br></pre></td></tr></table></figure>
-<p><strong>示例 2：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：[1,2,1]</span><br><span class="line">输出：0</span><br></pre></td></tr></table></figure>
-<p><strong>示例 3：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：[3,2,3,4]</span><br><span class="line">输出：10</span><br></pre></td></tr></table></figure>
-<p><strong>示例 4：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：[3,6,2,3]</span><br><span class="line">输出：8</span><br></pre></td></tr></table></figure>
-<p><strong>提示：</strong></p>
-<ol>
-<li><code>3 &lt;= A.length &lt;= 10000</code></li>
-<li><code>1 &lt;= A[i] &lt;= 10^6</code></li>
-</ol>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/aa68.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-	
-	<div>
-      
-	</div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://VingtDylan.github.io/p/90b.html">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="VingtDylan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="IT Garden">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/p/90b.html" itemprop="url">LeetCode 315</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-18T14:47:36+08:00">
-                2020-07-18
-              </time>
-            
-			
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-07-18T15:01:33+08:00">
-                2020-07-18
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-			
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  394 字
+                  418 字
                 </span>
               
 
@@ -906,13 +698,22 @@
 
       
         
-          <h4 id="315-计算右侧小于当前元素的个数"><a href="#315-计算右侧小于当前元素的个数" class="headerlink" title="315. 计算右侧小于当前元素的个数"></a><a href="https://leetcode-cn.com/problems/count-of-smaller-numbers-after-self/" target="_blank" rel="noopener">315. 计算右侧小于当前元素的个数</a></h4><p>难度: hard</p>
-<p>给定一个整数数组 <em>nums</em>，按要求返回一个新数组 <em>counts</em>。数组 <em>counts</em>有该性质： <code>counts[i]</code> 的值是 <code>nums[i]</code> 右侧小于 <code>nums[i]</code> 的元素的数量。</p>
-<p><strong>示例：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入：[5,2,6,1]</span><br><span class="line">输出：[2,1,1,0] </span><br><span class="line">解释：</span><br><span class="line">5 的右侧有 2 个更小的元素 (2 和 1)</span><br><span class="line">2 的右侧仅有 1 个更小的元素 (1)</span><br><span class="line">6 的右侧有 1 个更小的元素 (1)</span><br><span class="line">1 的右侧有 0 个更小的元素</span><br></pre></td></tr></table></figure>
+          <h4 id="832-翻转图像"><a href="#832-翻转图像" class="headerlink" title="832. 翻转图像"></a><a href="https://leetcode-cn.com/problems/flipping-an-image/" target="_blank" rel="noopener">832. 翻转图像</a></h4><p>难度: easy</p>
+<p>给定一个二进制矩阵 <code>A</code>，我们想先水平翻转图像，然后反转图像并返回结果。</p>
+<p>水平翻转图片就是将图片的每一行都进行翻转，即逆序。例如，水平翻转 <code>[1, 1, 0]</code> 的结果是 <code>[0, 1, 1]</code>。</p>
+<p>反转图片的意思是图片中的 <code>0</code> 全部被 <code>1</code> 替换， <code>1</code> 全部被 <code>0</code> 替换。例如，反转 <code>[0, 1, 1]</code> 的结果是 <code>[1, 0, 0]</code>。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入: [[1,1,0],[1,0,1],[0,0,0]]</span><br><span class="line">输出: [[1,0,0],[0,1,0],[1,1,1]]</span><br><span class="line">解释: 首先翻转每一行: [[0,1,1],[1,0,1],[0,0,0]]；</span><br><span class="line">     然后反转图片: [[1,0,0],[0,1,0],[1,1,1]]</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入: [[1,1,0,0],[1,0,0,1],[0,1,1,1],[1,0,1,0]]</span><br><span class="line">输出: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]</span><br><span class="line">解释: 首先翻转每一行: [[0,0,1,1],[1,0,0,1],[1,1,1,0],[0,1,0,1]]；</span><br><span class="line">     然后反转图片: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]</span><br></pre></td></tr></table></figure>
+<p><strong>说明:</strong></p>
+<ul>
+<li><code>1 &lt;= A.length = A[0].length &lt;= 20</code></li>
+<li><code>0 &lt;= A[i][j] &lt;= 1</code></li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/90b.html#more" rel="contents">
+            <a class="btn" href="/p/693a.html#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1014,7 +815,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-07-18T14:57:19+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-18T15:30:13+08:00">
                 2020-07-18
               </time>
             
@@ -1177,7 +978,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://VingtDylan.github.io/p/59c8.html">
+    <link itemprop="mainEntityOfPage" href="https://VingtDylan.github.io/p/588d.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="VingtDylan">
@@ -1196,7 +997,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/p/59c8.html" itemprop="url">LeetCode 747</a></h1>
+                <a class="post-title-link" href="/p/588d.html" itemprop="url">LeetCode 784</a></h1>
         
 
         <div class="post-meta">
@@ -1208,7 +1009,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-18T14:47:21+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-18T14:41:21+08:00">
                 2020-07-18
               </time>
             
@@ -1224,7 +1025,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-07-18T14:55:51+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-18T15:30:13+08:00">
                 2020-07-18
               </time>
             
@@ -1274,7 +1075,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  322 字
+                  241 字
                 </span>
               
 
@@ -1312,22 +1113,17 @@
 
       
         
-          <h4 id="747-至少是其他数字两倍的最大数"><a href="#747-至少是其他数字两倍的最大数" class="headerlink" title="747. 至少是其他数字两倍的最大数"></a><a href="https://leetcode-cn.com/problems/largest-number-at-least-twice-of-others/" target="_blank" rel="noopener">747. 至少是其他数字两倍的最大数</a></h4><p>难度: easy</p>
-<p>在一个给定的数组<code>nums</code>中，总是存在一个最大元素 。</p>
-<p>查找数组中的最大元素是否至少是数组中每个其他数字的两倍。</p>
-<p>如果是，则返回最大元素的索引，否则返回-1。</p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入: nums = [3, 6, 1, 0]</span><br><span class="line">输出: 1</span><br><span class="line">解释: 6是最大的整数, 对于数组中的其他整数,</span><br><span class="line">6大于数组中其他元素的两倍。6的索引是1, 所以我们返回1.</span><br></pre></td></tr></table></figure>
-<p><strong>示例 2</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: nums = [1, 2, 3, 4]</span><br><span class="line">输出: -1</span><br><span class="line">解释: 4没有超过3的两倍大, 所以我们返回 -1.</span><br></pre></td></tr></table></figure>
-<p><strong>提示:</strong></p>
-<ol>
-<li><code>nums</code> 的长度范围在<code>[1, 50]</code>.</li>
-<li>每个 <code>nums[i]</code> 的整数范围在 <code>[0, 100]</code>.</li>
-</ol>
+          <h4 id="784-字母大小写全排列"><a href="#784-字母大小写全排列" class="headerlink" title="784. 字母大小写全排列"></a><a href="https://leetcode-cn.com/problems/letter-case-permutation/" target="_blank" rel="noopener">784. 字母大小写全排列</a></h4><p>难度: easy</p>
+<p>给定一个字符串<code>S</code>，通过将字符串<code>S</code>中的每个字母转变大小写，我们可以获得一个新的字符串。返回所有可能得到的字符串集合。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">示例:</span><br><span class="line">输入: S = &quot;a1b2&quot;</span><br><span class="line">输出: [&quot;a1b2&quot;, &quot;a1B2&quot;, &quot;A1b2&quot;, &quot;A1B2&quot;]</span><br><span class="line"></span><br><span class="line">输入: S = &quot;3z4&quot;</span><br><span class="line">输出: [&quot;3z4&quot;, &quot;3Z4&quot;]</span><br><span class="line"></span><br><span class="line">输入: S = &quot;12345&quot;</span><br><span class="line">输出: [&quot;12345&quot;]</span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong></p>
+<ul>
+<li><code>S</code> 的长度不超过<code>12</code>。</li>
+<li><code>S</code> 仅由数字和字母组成。</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/59c8.html#more" rel="contents">
+            <a class="btn" href="/p/588d.html#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1429,7 +1225,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-07-18T14:53:26+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-18T15:30:13+08:00">
                 2020-07-18
               </time>
             
@@ -1588,7 +1384,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://VingtDylan.github.io/p/9c0a.html">
+    <link itemprop="mainEntityOfPage" href="https://VingtDylan.github.io/p/59c8.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="VingtDylan">
@@ -1607,7 +1403,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/p/9c0a.html" itemprop="url">LeetCode 309</a></h1>
+                <a class="post-title-link" href="/p/59c8.html" itemprop="url">LeetCode 747</a></h1>
         
 
         <div class="post-meta">
@@ -1619,7 +1415,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-18T14:47:08+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-18T14:47:21+08:00">
                 2020-07-18
               </time>
             
@@ -1635,7 +1431,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-07-18T14:50:28+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-18T15:30:13+08:00">
                 2020-07-18
               </time>
             
@@ -1685,7 +1481,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  349 字
+                  322 字
                 </span>
               
 
@@ -1723,18 +1519,22 @@
 
       
         
-          <h4 id="309-最佳买卖股票时机含冷冻期"><a href="#309-最佳买卖股票时机含冷冻期" class="headerlink" title="309. 最佳买卖股票时机含冷冻期"></a><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/" target="_blank" rel="noopener">309. 最佳买卖股票时机含冷冻期</a></h4><p>难度: medium</p>
-<p>给定一个整数数组，其中第 <em>i</em> 个元素代表了第 <em>i</em> 天的股票价格 。</p>
-<p>设计一个算法计算出最大利润。在满足以下约束条件下，你可以尽可能地完成更多的交易（多次买卖一支股票）:</p>
-<ul>
-<li>你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</li>
-<li>卖出股票后，你无法在第二天买入股票 (即冷冻期为 1 天)。</li>
-</ul>
-<p><strong>示例:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,2,3,0,2]</span><br><span class="line">输出: 3 </span><br><span class="line">解释: 对应的交易状态为: [买入, 卖出, 冷冻期, 买入, 卖出]</span><br></pre></td></tr></table></figure>
+          <h4 id="747-至少是其他数字两倍的最大数"><a href="#747-至少是其他数字两倍的最大数" class="headerlink" title="747. 至少是其他数字两倍的最大数"></a><a href="https://leetcode-cn.com/problems/largest-number-at-least-twice-of-others/" target="_blank" rel="noopener">747. 至少是其他数字两倍的最大数</a></h4><p>难度: easy</p>
+<p>在一个给定的数组<code>nums</code>中，总是存在一个最大元素 。</p>
+<p>查找数组中的最大元素是否至少是数组中每个其他数字的两倍。</p>
+<p>如果是，则返回最大元素的索引，否则返回-1。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入: nums = [3, 6, 1, 0]</span><br><span class="line">输出: 1</span><br><span class="line">解释: 6是最大的整数, 对于数组中的其他整数,</span><br><span class="line">6大于数组中其他元素的两倍。6的索引是1, 所以我们返回1.</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: nums = [1, 2, 3, 4]</span><br><span class="line">输出: -1</span><br><span class="line">解释: 4没有超过3的两倍大, 所以我们返回 -1.</span><br></pre></td></tr></table></figure>
+<p><strong>提示:</strong></p>
+<ol>
+<li><code>nums</code> 的长度范围在<code>[1, 50]</code>.</li>
+<li>每个 <code>nums[i]</code> 的整数范围在 <code>[0, 100]</code>.</li>
+</ol>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/9c0a.html#more" rel="contents">
+            <a class="btn" href="/p/59c8.html#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1836,7 +1636,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-07-18T14:46:27+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-18T15:30:13+08:00">
                 2020-07-18
               </time>
             
@@ -1991,7 +1791,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://VingtDylan.github.io/p/588d.html">
+    <link itemprop="mainEntityOfPage" href="https://VingtDylan.github.io/p/829.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="VingtDylan">
@@ -2010,7 +1810,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/p/588d.html" itemprop="url">LeetCode 784</a></h1>
+                <a class="post-title-link" href="/p/829.html" itemprop="url">LeetCode 35</a></h1>
         
 
         <div class="post-meta">
@@ -2022,7 +1822,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-18T14:41:21+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-18T15:14:36+08:00">
                 2020-07-18
               </time>
             
@@ -2038,7 +1838,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-07-18T14:43:09+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-18T15:30:13+08:00">
                 2020-07-18
               </time>
             
@@ -2088,7 +1888,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  241 字
+                  252 字
                 </span>
               
 
@@ -2126,17 +1926,20 @@
 
       
         
-          <h4 id="784-字母大小写全排列"><a href="#784-字母大小写全排列" class="headerlink" title="784. 字母大小写全排列"></a><a href="https://leetcode-cn.com/problems/letter-case-permutation/" target="_blank" rel="noopener">784. 字母大小写全排列</a></h4><p>难度: easy</p>
-<p>给定一个字符串<code>S</code>，通过将字符串<code>S</code>中的每个字母转变大小写，我们可以获得一个新的字符串。返回所有可能得到的字符串集合。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">示例:</span><br><span class="line">输入: S = &quot;a1b2&quot;</span><br><span class="line">输出: [&quot;a1b2&quot;, &quot;a1B2&quot;, &quot;A1b2&quot;, &quot;A1B2&quot;]</span><br><span class="line"></span><br><span class="line">输入: S = &quot;3z4&quot;</span><br><span class="line">输出: [&quot;3z4&quot;, &quot;3Z4&quot;]</span><br><span class="line"></span><br><span class="line">输入: S = &quot;12345&quot;</span><br><span class="line">输出: [&quot;12345&quot;]</span><br></pre></td></tr></table></figure>
-<p><strong>注意：</strong></p>
-<ul>
-<li><code>S</code> 的长度不超过<code>12</code>。</li>
-<li><code>S</code> 仅由数字和字母组成。</li>
-</ul>
+          <h4 id="35-搜索插入位置"><a href="#35-搜索插入位置" class="headerlink" title="35. 搜索插入位置"></a><a href="https://leetcode-cn.com/problems/search-insert-position/" target="_blank" rel="noopener">35. 搜索插入位置</a></h4><p>难度: easy</p>
+<p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p>
+<p>你可以假设数组中无重复元素。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,3,5,6], 5</span><br><span class="line">输出: 2</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,3,5,6], 2</span><br><span class="line">输出: 1</span><br></pre></td></tr></table></figure>
+<p><strong>示例 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,3,5,6], 7</span><br><span class="line">输出: 4</span><br></pre></td></tr></table></figure>
+<p><strong>示例 4:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,3,5,6], 0</span><br><span class="line">输出: 0</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/588d.html#more" rel="contents">
+            <a class="btn" href="/p/829.html#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2191,7 +1994,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://VingtDylan.github.io/p/a05.html">
+    <link itemprop="mainEntityOfPage" href="https://VingtDylan.github.io/p/9c0a.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="VingtDylan">
@@ -2210,7 +2013,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/p/a05.html" itemprop="url">面试题 17.13</a></h1>
+                <a class="post-title-link" href="/p/9c0a.html" itemprop="url">LeetCode 309</a></h1>
         
 
         <div class="post-meta">
@@ -2222,7 +2025,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-18T14:38:39+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-18T14:47:08+08:00">
                 2020-07-18
               </time>
             
@@ -2238,7 +2041,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-07-18T14:41:41+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-18T15:30:13+08:00">
                 2020-07-18
               </time>
             
@@ -2288,7 +2091,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  306 字
+                  349 字
                 </span>
               
 
@@ -2326,20 +2129,214 @@
 
       
         
-          <h4 id="面试题-17-13-恢复空格"><a href="#面试题-17-13-恢复空格" class="headerlink" title="面试题 17.13. 恢复空格"></a><a href="https://leetcode-cn.com/problems/re-space-lcci/" target="_blank" rel="noopener">面试题 17.13. 恢复空格</a></h4><p>难度: medium</p>
-<p>哦，不！你不小心把一个长篇文章中的空格、标点都删掉了，并且大写也弄成了小写。像句子<code>&quot;I reset the computer. It still didn’t boot!&quot;</code>已经变成了<code>&quot;iresetthecomputeritstilldidntboot&quot;</code>。在处理标点符号和大小写之前，你得先把它断成词语。当然了，你有一本厚厚的词典<code>dictionary</code>，不过，有些词没在词典里。假设文章用<code>sentence</code>表示，设计一个算法，把文章断开，要求未识别的字符最少，返回未识别的字符数。</p>
-<p><strong>注意：</strong>本题相对原题稍作改动，只需返回未识别的字符数</p>
-<p><strong>示例：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">dictionary = [&quot;looked&quot;,&quot;just&quot;,&quot;like&quot;,&quot;her&quot;,&quot;brother&quot;]</span><br><span class="line">sentence = &quot;jesslookedjustliketimherbrother&quot;</span><br><span class="line">输出： 7</span><br><span class="line">解释： 断句后为&quot;jess looked just like tim her brother&quot;，共7个未识别字符。</span><br></pre></td></tr></table></figure>
-<p><strong>提示：</strong></p>
+          <h4 id="309-最佳买卖股票时机含冷冻期"><a href="#309-最佳买卖股票时机含冷冻期" class="headerlink" title="309. 最佳买卖股票时机含冷冻期"></a><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/" target="_blank" rel="noopener">309. 最佳买卖股票时机含冷冻期</a></h4><p>难度: medium</p>
+<p>给定一个整数数组，其中第 <em>i</em> 个元素代表了第 <em>i</em> 天的股票价格 。</p>
+<p>设计一个算法计算出最大利润。在满足以下约束条件下，你可以尽可能地完成更多的交易（多次买卖一支股票）:</p>
 <ul>
-<li><code>0 &lt;= len(sentence) &lt;= 1000</code></li>
-<li><code>dictionary</code>中总字符数不超过 150000。</li>
-<li>你可以认为<code>dictionary</code>和<code>sentence</code>中只包含小写字母。</li>
+<li>你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</li>
+<li>卖出股票后，你无法在第二天买入股票 (即冷冻期为 1 天)。</li>
 </ul>
+<p><strong>示例:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,2,3,0,2]</span><br><span class="line">输出: 3 </span><br><span class="line">解释: 对应的交易状态为: [买入, 卖出, 冷冻期, 买入, 卖出]</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/a05.html#more" rel="contents">
+            <a class="btn" href="/p/9c0a.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+	
+	<div>
+      
+	</div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://VingtDylan.github.io/p/90b.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="VingtDylan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="IT Garden">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/p/90b.html" itemprop="url">LeetCode 315</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-18T14:47:36+08:00">
+                2020-07-18
+              </time>
+            
+			
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-18T15:30:13+08:00">
+                2020-07-18
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+			
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  394 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1.5 min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="315-计算右侧小于当前元素的个数"><a href="#315-计算右侧小于当前元素的个数" class="headerlink" title="315. 计算右侧小于当前元素的个数"></a><a href="https://leetcode-cn.com/problems/count-of-smaller-numbers-after-self/" target="_blank" rel="noopener">315. 计算右侧小于当前元素的个数</a></h4><p>难度: hard</p>
+<p>给定一个整数数组 <em>nums</em>，按要求返回一个新数组 <em>counts</em>。数组 <em>counts</em>有该性质： <code>counts[i]</code> 的值是 <code>nums[i]</code> 右侧小于 <code>nums[i]</code> 的元素的数量。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入：[5,2,6,1]</span><br><span class="line">输出：[2,1,1,0] </span><br><span class="line">解释：</span><br><span class="line">5 的右侧有 2 个更小的元素 (2 和 1)</span><br><span class="line">2 的右侧仅有 1 个更小的元素 (1)</span><br><span class="line">6 的右侧有 1 个更小的元素 (1)</span><br><span class="line">1 的右侧有 0 个更小的元素</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/90b.html#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2385,7 +2382,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2433,7 +2430,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">130</span>
+                  <span class="site-state-item-count">131</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2562,7 +2559,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共59.1k字</span>
+  <span class="post-count">博客全站共59.4k字</span>
 </div>
 
         

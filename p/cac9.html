@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="IT Garden">
 <meta property="og:description" content="350. 两个数组的交集 II难度: easy 给定两个数组，编写一个函数来计算它们的交集。 示例 1： 12输入：nums1 = [1,2,2,1], nums2 = [2,2]输出：[2,2] 示例 2: 12输入：nums1 = [4,9,5], nums2 = [9,4,9,8,4]输出：[4,9] 说明：  输出结果中每个元素出现的次数，应与元素在两个数组中出现次数的最小值一致。 我们可">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-07-18T07:16:54.748Z">
+<meta property="og:updated_time" content="2020-11-16T07:58:45.081Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode 350">
 <meta name="twitter:description" content="350. 两个数组的交集 II难度: easy 给定两个数组，编写一个函数来计算它们的交集。 示例 1： 12输入：nums1 = [1,2,2,1], nums2 = [2,2]输出：[2,2] 示例 2: 12输入：nums1 = [4,9,5], nums2 = [9,4,9,8,4]输出：[4,9] 说明：  输出结果中每个元素出现的次数，应与元素在两个数组中出现次数的最小值一致。 我们可">
@@ -405,8 +405,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-07-18T15:16:54+08:00">
-                2020-07-18
+              <time title="更新于" itemprop="dateModified" datetime="2020-11-16T15:58:45+08:00">
+                2020-11-16
               </time>
             
           </span>
@@ -455,7 +455,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  346 字
+                  321 字
                 </span>
               
 
@@ -509,9 +509,6 @@
 <li>如果 <em>nums1</em> 的大小比 <em>nums2</em> 小很多，哪种方法更优？</li>
 <li>如果 <em>nums2</em> 的元素存储在磁盘上，磁盘内存是有限的，并且你不能一次加载所有的元素到内存中，你该怎么办？</li>
 </ul>
-<p>通过次数124,586</p>
-<p>提交次数239,761</p>
-<p>在真实的面试中遇到过这道题？</p>
 <a id="more"></a>
 <p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/intersection-of-two-arrays-ii/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/intersection-of-two-arrays-ii/</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
 <h4 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; intersect(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2) &#123;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; mp;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num : nums1)mp[num]++;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num : nums2)&#123;</span><br><span class="line">            <span class="keyword">if</span>(mp.count(num) &amp;&amp; mp[num] &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                res.push_back(num);</span><br><span class="line">                mp[num]--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -534,7 +531,7 @@
   <p><span>本文标题:</span><a href="/p/cac9.html">LeetCode 350</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 VingtDylan 的个人博客">VingtDylan</a></p>
   <p><span>发布时间:</span>2020年07月18日 - 15:13</p>
-  <p><span>最后更新:</span>2020年07月18日 - 15:16</p>
+  <p><span>最后更新:</span>2020年11月16日 - 15:58</p>
   <p><span>原始链接:</span><a href="/p/cac9.html" title="LeetCode 350">https://VingtDylan.github.io/p/cac9.html</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://VingtDylan.github.io/p/cac9.html" aria-label="复制成功！"></i></span>
   </p>
@@ -708,7 +705,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">130</span>
+                  <span class="site-state-item-count">131</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -853,7 +850,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共59.1k字</span>
+  <span class="post-count">博客全站共59.4k字</span>
 </div>
 
         
