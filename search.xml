@@ -1,9 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>C++ &amp; STL</title>
+    <url>/p/d937.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="C-amp-STL-等相关整理"><a href="#C-amp-STL-等相关整理" class="headerlink" title="C++ &amp; STL 等相关整理"></a>C++ &amp; STL 等相关整理</h1><h2 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h2><h3 id="using"><a href="#using" class="headerlink" title="using"></a>using</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> ... = ...;</span><br><span class="line"><span class="comment">// example</span></span><br><span class="line"><span class="keyword">using</span> ll = <span class="keyword">long</span> <span class="keyword">long</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br></pre></td></tr></table></figure>
+<p>在语法的别名声明，using的使用类似于typedef，但用法更为精妙。</p>
+<h3 id="string"><a href="#string" class="headerlink" title="string"></a>string</h3><h4 id="stoi"><a href="#stoi" class="headerlink" title="stoi"></a>stoi</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">stoi</span> <span class="params">(<span class="keyword">const</span> string&amp;  str, <span class="keyword">size_t</span>* idx = <span class="number">0</span>, <span class="keyword">int</span> base = <span class="number">10</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">stoi</span> <span class="params">(<span class="keyword">const</span> wstring&amp; str, <span class="keyword">size_t</span>* idx = <span class="number">0</span>, <span class="keyword">int</span> base = <span class="number">10</span>)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>stoi()的输入要不为空，否则可以使用atoi(().c.str())</p>
+<h4 id="sstream"><a href="#sstream" class="headerlink" title="sstream"></a><a href="https://www.cplusplus.com/reference/sstream/">sstream</a></h4><p>istringstream类用于执行C++风格的字符串流的输入操作，支持&gt;&gt;;</p>
+<p>ostringstream类用于执行C++风格的字符串流的输出操作，支持&lt;&lt;；</p>
+<p>stringstream类同时可以支持C++风格的串流的输入输出操作，同时支持&gt;&gt;和&lt;&lt;；</p>
+<p>即 stringstream = istringstream + ostringstream。</p>
+<h2 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h2><p><a href="https://www.cnblogs.com/biyeymyhjob/archive/2012/07/22/2603525.html">不错的博客链接</a></p>
+]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>syntax</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LeetCode 240</title>
     <url>/p/9a99.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><span id="more"></span>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="LeetCode-240-搜索二维矩阵II"><a href="#LeetCode-240-搜索二维矩阵II" class="headerlink" title="LeetCode 240 搜索二维矩阵II"></a><a href="https://leetcode-cn.com/problems/search-a-2d-matrix-ii/">LeetCode 240 搜索二维矩阵II</a></h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><strong>编写一个高效的算法来搜索 m x n 矩阵 matrix 中的一个目标值 target 。该矩阵具有以下特性：</strong></p>
+<blockquote>
+<p>每行的元素从左到右升序排列。<br>每列的元素从上到下升序排列。</p>
+</blockquote>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p><strong>示例 1：</strong></p>
+<blockquote>
+<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/11/25/searchgrid2.jpg" alt></p>
+<p>输入：matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], target = 5<br>输出：true</p>
+</blockquote>
+<p><strong>示例 2：</strong></p>
+<blockquote>
+<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/11/25/searchgrid.jpg" alt></p>
+<p>输入：matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], target = 20<br>输出：false</p>
+</blockquote>
+<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p><strong>提示：</strong></p>
+<blockquote>
+<ul>
+<li>m == matrix.length</li>
+<li>n == matrix[i].length</li>
+<li>1 &lt;= n, m &lt;= 300</li>
+<li>$-10^9 \leq$ matrix[i][j] $\leq 10^9$</li>
+<li>每行的所有元素从左到右升序排列</li>
+<li>每列的所有元素从上到下升序排列</li>
+<li>$-10^9 \leq$ target $\leq 10^9$</li>
+</ul>
+</blockquote>
+<span id="more"></span>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><p>从右上角建根，可以看成抽象的二叉树。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">searchMatrix</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = matrix.<span class="built_in">size</span>(), n = matrix[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>, r = n - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(l &lt; m &amp;&amp; r &gt;= <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(matrix[l][r] == target) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span>(matrix[l][r] &gt; target) r--;</span><br><span class="line">            <span class="keyword">else</span> l++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>二分</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Typora+Gitee 图床</title>
+    <url>/p/377e.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://segmentfault.com/a/1190000040168321">前辈的推文</a>即可</p>
+<h2 id="Typora安装"><a href="#Typora安装" class="headerlink" title="Typora安装"></a>Typora安装</h2><h2 id="Gitee"><a href="#Gitee" class="headerlink" title="Gitee"></a>Gitee</h2><h3 id="获取Token"><a href="#获取Token" class="headerlink" title="获取Token"></a>获取Token</h3><h3 id="提交Token"><a href="#提交Token" class="headerlink" title="提交Token"></a>提交Token</h3><h3 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h3><h2 id="下载安装PicGo"><a href="#下载安装PicGo" class="headerlink" title="下载安装PicGo"></a>下载安装PicGo</h2><p><a href="https://hub.fastgit.org/Molunerfinn/PicGo/releases">fastgit镜像</a>是个不错的选择</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br><span class="line">npm config get registry</span><br><span class="line"><span class="comment"># return https://registry.npm.taobao.org</span></span><br><span class="line">npm install picgo-plugin-gitee-uploader</span><br><span class="line">填写配置</span><br></pre></td></tr></table></figure>
+<h2 id="Typora验证功能"><a href="#Typora验证功能" class="headerlink" title="Typora验证功能"></a>Typora验证功能</h2>]]></content>
+      <categories>
+        <category>配置</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
+      </tags>
   </entry>
 </search>
