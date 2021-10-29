@@ -1,0 +1,284 @@
+<!DOCTYPE html><html lang="zh-Hans" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SCV | QaQ</title><meta name="keywords" content="双帧光流"><meta name="author" content="VingtDylan"><meta name="copyright" content="VingtDylan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Learning Optical Flow from a Few Matches">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SCV">
+<meta property="og:url" content="https://vingtdylan.github.io/p/1f41.html">
+<meta property="og:site_name" content="QaQ">
+<meta property="og:description" content="Learning Optical Flow from a Few Matches">
+<meta property="og:locale">
+<meta property="og:image" content="https://gitee.com/breey/blog-img/raw/master/img/SCV-cover.jpg">
+<meta property="article:published_time" content="2021-10-29T08:19:25.000Z">
+<meta property="article:modified_time" content="2021-10-29T14:51:10.480Z">
+<meta property="article:author" content="VingtDylan">
+<meta property="article:tag" content="双帧光流">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/breey/blog-img/raw/master/img/SCV-cover.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://vingtdylan.github.io/p/1f41"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'SCV',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-10-29 22:51:10'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/index_img.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">11</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">12</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">6</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://gitee.com/breey/blog-img/raw/master/img/SCV-cover.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">QaQ</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">SCV</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-10-29T08:19:25.000Z" title="Created 2021-10-29 16:19:25">2021-10-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-10-29T14:51:10.480Z" title="Updated 2021-10-29 22:51:10">2021-10-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%85%89%E6%B5%81/">光流</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">2.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>8min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="SCV"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><a href="https: //github.com/zacjiang/scv">代码已开源</a></p>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>SOTA的光流估计网络需要高分辨率下的稠密的Correlation Volume来衡量逐像素的位移，虽然稠密的Correlation Volume有助于准确的光流估计，但是繁重的计算和内存使用也不利于模型的训练和部署。这篇论文说明了稠密的Correlation Volume表示是冗余的，只需要其中的一小部分元素就可以实现精确的光流估计。在此基础上，论文提出了一个可以替代的位移表示方法—Sparse Correlation Volume，通过直接计算fmap1在fmap2上最接近的k个匹配来构建，并存储在一个稀疏的数据结构中。实验说明了该方法可以显著降低计算成本和内存占用，并且依然保持较高的精度。</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>基于直觉：img1的某一个特征向量只会与img2的某一部分特征向量高度相关，因此在稠密的Correlation Volume表示中，会有大量的冗余，对于相关度较小的特征并不会优化预测结果。如下图所示。</p>
+<p><img src="/p/1f41/SCV1.png" style="zoom:60%;"></p>
+<p>论文提出了Sparse Correlation Volume 表示，只有每个像素的top-k的相关值会被存储在稀疏数据结构中，就是个键值对—（{value, coordinates}）。</p>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><p>记 $I_1, I_2: \mathbb{Z}^2 \rightarrow \mathbb{R}^3$ 为两张RGB图像，待解决的问题就是估计稠密的流场 $f:\mathbb{Z}^2\rightarrow\mathbb{R}^2$，映射每个像素x到其位移向量$f(x)$。</p>
+<p>现在的深度学习光流估计方法，首先会对图像对进行特征提取得到图像的feature map $F_1,F_2:\mathbb{Z}^2\rightarrow\mathbb{R}^c$，这里的 $c$ 为通道数，Correlation Volume $C : \mathbb{Z}^4 \rightarrow R$ 由特征向量直接的点积得到。</p>
+<script type="math/tex; mode=display">
+C(x,d)=F_1(x)\cdot F_2(x + d).</script><p>输出为一个四维的张量，可以表示为集合:</p>
+<script type="math/tex; mode=display">
+\mathcal{C}=\{C(x,d)|x\in \mathcal{X}, d \in \mathcal{D}\}.</script><p>这里， $\mathcal{X} = [0, h<br>) \times[0, w) \cap \mathbb{Z}^2$ 为 feature map $F_1$ 的域， $|\mathcal{X}| = hw$ ，其中的 $h$, $w$ 分别为 $F_1$的 $height$ 和 $width$。$d$ 为 $x$ 方向或者 $y$  方向上的最大位移量，并且有 $|\mathcal{D}| = (2d+1)^2$，因此，Correlation Volume $\mathcal{C}$ 中含有 $hw(2d+1)^2$的元素。</p>
+<p>为了降低Correlation Volume的尺寸，以前的方法使用了由粗到细的策略，然后对有限的d进行warping操作，为了精确处理大位移的问题，RAFT构建了全局的Correlation Volume，当然，位移的范围d受到feature map的大小限制。RAFT的Correlation Volume包含了 $N^2$ 的元素，这里的 $N = hw$。论文中将空间复杂度从 $O(N^2)$  降低到了 $O(Nk)$，具体 如下图所示。</p>
+<p><img src="/p/1f41/SCV2.png" style="zoom:60%;"></p>
+<h3 id="Sparse-Correlation-Volume"><a href="#Sparse-Correlation-Volume" class="headerlink" title="Sparse Correlation Volume"></a>Sparse Correlation Volume</h3><p>对于 $x\in \mathcal{X}$, 定义集合 $S_x^{(k)}$包含 $k$个产生最大相关值的位移:</p>
+<script type="math/tex; mode=display">
+S_x^{(k)} = {\arg \max}_{S \subset \mathcal{D},|S|=k}\sum_{d\in S}C(x,d)</script><p>则Correlation Volume可以表示为一个四维的稀疏张量:</p>
+<script type="math/tex; mode=display">
+\tilde{\mathcal{C}}=\{C(x,d)|d \in S_x^{(k)},x \in \symcal{X}\}.</script><p>这样的稀疏Correlation Volume则只包含 $hwk$ 个元素，而原来的则包含 $h^2w^2$ 个元素， 常数 $k$ 通常为一个比较小的数，例如8。网络结构如下所示。</p>
+<p><img src="/p/1f41/SCV3.png" style="zoom:60%;"></p>
+<h3 id="k-Nearest-Neighbours"><a href="#k-Nearest-Neighbours" class="headerlink" title="k-Nearest Neighbours"></a>k-Nearest Neighbours</h3><p>使用了两个共享权重的提取网络从输入的图像中获取 1/4 分辨率的特征图。特征提取网络包含了 6 个 residual blocks，特征通道数为 256。为了构建稀疏Correlation Volume，使用了一个 KNN 模块(论文中有参考文献)去计算对于 $F_1$的每个特征向量的最大的 $k$ 个相关得分的索引集合。稀疏Correlation Volume通过 $F_1$ 的每个特征向量与 $F_2$ 由索引得到的前 $k$ 个特征向量的点积。在back-propagation阶段，梯度也仅会传到由 KNN 模块选择到的 k 个特征向量。</p>
+<h3 id="Displacements-Updates"><a href="#Displacements-Updates" class="headerlink" title="Displacements Updates"></a>Displacements Updates</h3><p>采用了全局的迭代精化方法，估计残差流可以有效的减少搜索空间并且可以比直接回归预测到更好的结果。与直接预测光流场 $f$ 不同，残差流 $\Delta f_{i+ 1}$ 是每一步预测并且用来更新当前的光流估计结果 $f_{i + 1} = f_i + \Delta f_{i + 1}$。</p>
+<p>在每一步，对于 $F_1$ 的一个像素 $x$，将会根据当前的光流预计结果映射到 $F_2$ 中的 $x_i = x + f_i$。稀疏Correlation Volume可以看成初始光流$f_0 = 0(i = 0)$。当坐标$x_i$更新到$x_{i+1}=x_i+\Delta f_i$， $\tilde{\mathcal{C}}$中对应的位移也会同样更新。可以通过在每一步中从 $d_i$ 中减去 k 最近的 $\Delta f_i$ 来shift稀疏Correlation Volume张量的坐标，$C_i(x,d_i)=C_{i+1}(x,d_i - \Delta f_i)$。  如下图所示。并且设定为$d_i-\Delta f_i$为浮点值。需要注意的是，内积只会在最开始的时候计算一次，因为在每一步中，只有相关坐标发生变化，相关值不会发生变化。</p>
+<p><img src="/p/1f41/SCV4.png" style="zoom:60%;"></p>
+<h3 id="Multi-scale-Displacement-Encoder"><a href="#Multi-scale-Displacement-Encoder" class="headerlink" title="Multi-scale Displacement Encoder"></a>Multi-scale Displacement Encoder</h3><p>在多个分辨率下以固定的半径创建多尺度的稀疏张量和采样位移，粗糙的分辨率将会提供更大的文本背景，而精细的分辨率则可以提供更精确的位移。然后将每一个 level 的稀疏张量转换为稠密张量并 concatenate 形成一个 2D 张量.如下图所示。</p>
+<p><img src="/p/1f41/SCV5.png" style="zoom:60%;"></p>
+<p>在每一次迭代时，对于每个像素 $x$，从 $top-k$ 个相关位置$S_x^{(k)}$ 开始 ，因此集合 $\{(d,C(<br>x,d)|d\in S_x^{(k)}\}$ 记录了对于 $X$的 $top - k$ 个相关值及其位置，这通过 $kNN$ 算法得到。</p>
+<p>构建了一个5层的稀疏Correlation Volume金字塔通过以（1，2，4，8，16）除坐标(意思就多分辨率的图像？)，并且表示在level l 的 比例化位移，通过当前的流 $\Delta f_i$ 更新的结果为 $d^l=(d_i-\Delta f_i)/2^{l-1}$。</p>
+<p>此外，在level l的相关值表示为 $C^{l}(x,d^l)=C(x,d)$ 对于 $d\in S_x^{(k)}$。在每一个level，通过常数半径 $r$ 限制了位移范围，并且定义level l的窗口相关值集合为:</p>
+<script type="math/tex; mode=display">
+\{(d^l,C^l(x,d^l)) \mid ||d^l||_{\infty} \leq r, d\in S_x^{(k)}\}.</script><p>因为坐标 $d^l$ 不一定是整数，所以需要重采样到整数坐标以稠密化 correlations的稀疏张量。文中提出了一种叫做”bilinear splatting“的方法，相关值将会被 bilinear splat到四个最近的整数网格中。例如， 在位置 $d^l$ 的相关值 $C^l(x,d^l)$将会被传递到四个邻近整数点的每一个，用 $[d^l]=(d_x,d_y)$ 表示，根据下式:</p>
+<script type="math/tex; mode=display">
+C^l(x,[d^l])=(1-|d_x^l-d_x|)(1-|d_y^l-d_y|)C^l(x,d^l)</script><p>这些值将会累加对于(5)中的集合，每一个 level 的稀疏张量也会传换成稠密张量，reshaped 并 concatenate 成一个 2D 稠密张量维度为 $5(2r + 1)^2$，这里 5 为金字塔的层数。 </p>
+<p>这个方法不含可学习参数，仅仅是稠密到稀疏张量的转换，并且比稀疏卷积容易。</p>
+<h3 id="GRU-Update-Block"><a href="#GRU-Update-Block" class="headerlink" title="GRU Update Block"></a>GRU Update Block</h3><p>concatenate 2D 运动张量，上下文特征和当前的光流估计结果，并将结果传到GRU单元中，GRU单元将会不断更新估计残差流 $\Delta f_{i+1}$，这个将会在下一步中用来 shift Correlation Volume的坐标。</p>
+<h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><h3 id="Implementation-details"><a href="#Implementation-details" class="headerlink" title="Implementation details"></a>Implementation details</h3><h4 id="Network-details"><a href="#Network-details" class="headerlink" title="Network details"></a>Network details</h4><p>首先提取 1/4 分辨率的256通道的特征图，特征提取网络包含了 6 个residual blocks。当特征图传动 $kNN$ 时，设定了 $k = 8$。也就是说，对于每个特征向量，将会返回可以得到最大内积的 $top-8$ 个特征向量的坐标。GRU 单元将当前的光流估计和上下文特性图作为输入，上下文特征图由128通道的独立网络获取。GRU 单元将会更新128维度的隐藏层特征向量。在训练阶段，GRU 将会迭代8次（RAFT 迭代12次）。</p>
+<h4 id="Training-schedule"><a href="#Training-schedule" class="headerlink" title="Training schedule"></a>Training schedule</h4><p>(1, 2) pre-train</p>
+<p>(3, 4, 5) fine-tune</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">次序</th>
+<th style="text-align:center">数据集</th>
+<th style="text-align:center">batch-size</th>
+<th style="text-align:center">迭代次数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">FlyingChairs</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">120k</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">FlyingThings</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">120k</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">Sintel</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">120k</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">KITTI</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">50k</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">HD1K</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">50k</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Training: 2 $\times$ 2080Ti GPU</p>
+<p>Ablation experiment: 1 $\times$ Tesla P100 GPU</p>
+<h4 id="Loss-function"><a href="#Loss-function" class="headerlink" title="Loss function"></a>Loss function</h4><p>与 RAFT 一样，使用了循环网络结构预测一系列的残差流 $\Delta f_i$, 每一个阶段的光流预测结果可以表示为 $f_{i+1}=f_i+\Delta f_{i+ 1}$，初始值 $f_0 = 0, \Delta f_0 = 0$。</p>
+<p>损失函数针对于光流预测的序列结果，对于给定的真值光流 $f_{gt}$，对于每一阶段的预测结果 $f_i$,损失函数定义为:</p>
+<script type="math/tex; mode=display">
+L = \sum_{i = 1}^N\gamma^{N - i}||f_i-f_{gt}||_1</script><p>权重因子: $\gamma = 0.8$（pre-train on Flyingchairs + FlyingThings), $\gamma = 0.85$ (fine-tune on Sintel and KITTI)</p>
+<p>总阶段数: $N = 8$</p>
+<p>以下几个内容暂时不做赘述。</p>
+<h3 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h3><h3 id="Ablation"><a href="#Ablation" class="headerlink" title="Ablation"></a>Ablation</h3><h3 id="Memory-Consumption"><a href="#Memory-Consumption" class="headerlink" title="Memory Consumption"></a>Memory Consumption</h3><h3 id="Limitations"><a href="#Limitations" class="headerlink" title="Limitations"></a>Limitations</h3><h2 id="Related-Work-amp-amp-Conclusion"><a href="#Related-Work-amp-amp-Conclusion" class="headerlink" title="Related Work &amp;&amp; Conclusion"></a>Related Work &amp;&amp; Conclusion</h2></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">VingtDylan</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://vingtdylan.github.io/p/1f41.html">https://vingtdylan.github.io/p/1f41.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%8F%8C%E5%B8%A7%E5%85%89%E6%B5%81/">双帧光流</a></div><div class="post_share"><div class="social-share" data-image="https://gitee.com/breey/blog-img/raw/master/img/SCV-cover.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/p/9c7.html"><img class="next-cover" src="https://gitee.com/breey/blog-img/raw/master/img/LeetCode-1334-1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">LeetCode-1334</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/index_img.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">VingtDylan</div><div class="author-info__description">好好学习，好好睡觉...</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">11</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">12</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">6</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/VingtDylan"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/VingtDylan" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:yhchen@mail.sim.ac.cn" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">alias cd  = 'rm - rf'</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Abstract"><span class="toc-number">1.</span> <span class="toc-text">Abstract</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">2.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Method"><span class="toc-number">3.</span> <span class="toc-text">Method</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Sparse-Correlation-Volume"><span class="toc-number">3.1.</span> <span class="toc-text">Sparse Correlation Volume</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#k-Nearest-Neighbours"><span class="toc-number">3.2.</span> <span class="toc-text">k-Nearest Neighbours</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Displacements-Updates"><span class="toc-number">3.3.</span> <span class="toc-text">Displacements Updates</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Multi-scale-Displacement-Encoder"><span class="toc-number">3.4.</span> <span class="toc-text">Multi-scale Displacement Encoder</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GRU-Update-Block"><span class="toc-number">3.5.</span> <span class="toc-text">GRU Update Block</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Experiments"><span class="toc-number">4.</span> <span class="toc-text">Experiments</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Implementation-details"><span class="toc-number">4.1.</span> <span class="toc-text">Implementation details</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Network-details"><span class="toc-number">4.1.1.</span> <span class="toc-text">Network details</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Training-schedule"><span class="toc-number">4.1.2.</span> <span class="toc-text">Training schedule</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Loss-function"><span class="toc-number">4.1.3.</span> <span class="toc-text">Loss function</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Results"><span class="toc-number">4.2.</span> <span class="toc-text">Results</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ablation"><span class="toc-number">4.3.</span> <span class="toc-text">Ablation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Memory-Consumption"><span class="toc-number">4.4.</span> <span class="toc-text">Memory Consumption</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Limitations"><span class="toc-number">4.5.</span> <span class="toc-text">Limitations</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Related-Work-amp-amp-Conclusion"><span class="toc-number">5.</span> <span class="toc-text">Related Work &amp;&amp; Conclusion</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/p/1f41.html" title="SCV"><img src="https://gitee.com/breey/blog-img/raw/master/img/SCV-cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SCV"/></a><div class="content"><a class="title" href="/p/1f41.html" title="SCV">SCV</a><time datetime="2021-10-29T08:19:25.000Z" title="Created 2021-10-29 16:19:25">2021-10-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/p/9c7.html" title="LeetCode-1334"><img src="https://gitee.com/breey/blog-img/raw/master/img/LeetCode-1334-1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LeetCode-1334"/></a><div class="content"><a class="title" href="/p/9c7.html" title="LeetCode-1334">LeetCode-1334</a><time datetime="2021-10-28T05:58:20.000Z" title="Created 2021-10-28 13:58:20">2021-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/p/f53f.html" title="LeetCode-882"><img src="https://gitee.com/breey/blog-img/raw/master/img/LeetCode-882-1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LeetCode-882"/></a><div class="content"><a class="title" href="/p/f53f.html" title="LeetCode-882">LeetCode-882</a><time datetime="2021-10-27T15:08:25.000Z" title="Created 2021-10-27 23:08:25">2021-10-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/p/f5cf.html" title="LeetCode-787"><img src="https://gitee.com/breey/blog-img/raw/master/img/LeetCode-787-1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LeetCode-787"/></a><div class="content"><a class="title" href="/p/f5cf.html" title="LeetCode-787">LeetCode-787</a><time datetime="2021-10-27T15:01:27.000Z" title="Created 2021-10-27 23:01:27">2021-10-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/p/36cb.html" title="LeetCode-743"><img src="https://gitee.com/breey/blog-img/raw/master/img/LeetCode-743-1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LeetCode-743"/></a><div class="content"><a class="title" href="/p/36cb.html" title="LeetCode-743">LeetCode-743</a><time datetime="2021-10-27T14:54:15.000Z" title="Created 2021-10-27 22:54:15">2021-10-27</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021  <i id="heartbeat" class="fa fas fa-heartbeat"></i> VingtDylan</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":75,"height":150},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
