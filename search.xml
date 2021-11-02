@@ -40,22 +40,6 @@
       </tags>
   </entry>
   <entry>
-    <title>AcWing345-牛站</title>
-    <url>/p/ccd6.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="345-牛站"><a href="#345-牛站" class="headerlink" title="345.牛站"></a><a href="https://www.acwing.com/problem/content/347/">345.牛站</a></h2><p><img src="/p/ccd6/AcWing-345-2.png" alt></p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>变种Flyod+快速幂思想（倍增），还需要提前做离散化。</p>
-<h2 id="AC-code"><a href="#AC-code" class="headerlink" title="AC code"></a>AC code</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">210</span>;</span><br><span class="line"><span class="keyword">int</span> g[N][N];</span><br><span class="line"><span class="keyword">int</span> res[N][N];</span><br><span class="line"><span class="keyword">int</span> k, n, m, s, e;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mul</span><span class="params">(<span class="keyword">int</span> c[][N], <span class="keyword">int</span> a[][N], <span class="keyword">int</span> b[][N])</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> temp[N][N];</span><br><span class="line">    <span class="built_in">memset</span>(temp, <span class="number">0x3f</span>, <span class="built_in"><span class="keyword">sizeof</span></span>(temp));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= n; k++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)&#123;</span><br><span class="line">                temp[i][j] = <span class="built_in">min</span>(temp[i][j], a[i][k] + b[k][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">memcpy</span>(c, temp, <span class="built_in"><span class="keyword">sizeof</span></span>(temp));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">qmi</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(res, <span class="number">0x3f</span>, <span class="built_in"><span class="keyword">sizeof</span></span>(res));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) res[i][i] = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(k)&#123;</span><br><span class="line">        <span class="keyword">if</span>(k &amp; <span class="number">1</span>) <span class="built_in">mul</span>(res, res, g);</span><br><span class="line">        <span class="built_in">mul</span>(g, g, g);</span><br><span class="line">        k &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin &gt;&gt; k &gt;&gt; m &gt;&gt; s &gt;&gt; e;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">memset</span>(g, <span class="number">0x3f</span>, <span class="built_in"><span class="keyword">sizeof</span></span>(g));</span><br><span class="line">    map&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; mp;</span><br><span class="line">    <span class="keyword">if</span>(!mp.<span class="built_in">count</span>(s)) mp[s] = ++n;</span><br><span class="line">    <span class="keyword">if</span>(!mp.<span class="built_in">count</span>(e)) mp[e] = ++n;</span><br><span class="line">    s = mp[s], e = mp[e];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (m -- )&#123;</span><br><span class="line">        <span class="keyword">int</span> a, b, c;</span><br><span class="line">        cin &gt;&gt; c &gt;&gt; a &gt;&gt; b;</span><br><span class="line">        <span class="keyword">if</span>(!mp.<span class="built_in">count</span>(a)) mp[a] = ++n;</span><br><span class="line">        <span class="keyword">if</span>(!mp.<span class="built_in">count</span>(b)) mp[b] = ++n;</span><br><span class="line">        a = mp[a], b = mp[b];</span><br><span class="line">        g[a][b] = g[b][a] = <span class="built_in">min</span>(g[a][b], c);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">qmi</span>();</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; res[s][e] &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>AcWing</category>
-      </categories>
-      <tags>
-        <tag>最短路</tag>
-        <tag>快速幂</tag>
-        <tag>离散化</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>AcWing342-道路与航线</title>
     <url>/p/7e5e.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="342-道路与航线"><a href="#342-道路与航线" class="headerlink" title="342. 道路与航线"></a><a href="https://www.acwing.com/problem/content/344/">342. 道路与航线</a></h2><p><img src="/p/7e5e/Acwing342-2.png" alt></p>
@@ -74,6 +58,22 @@
         <tag>图论</tag>
         <tag>拓扑排序</tag>
         <tag>DFS/BFS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>AcWing345-牛站</title>
+    <url>/p/ccd6.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="345-牛站"><a href="#345-牛站" class="headerlink" title="345.牛站"></a><a href="https://www.acwing.com/problem/content/347/">345.牛站</a></h2><p><img src="/p/ccd6/AcWing-345-2.png" alt></p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>变种Flyod+快速幂思想（倍增），还需要提前做离散化。</p>
+<h2 id="AC-code"><a href="#AC-code" class="headerlink" title="AC code"></a>AC code</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">210</span>;</span><br><span class="line"><span class="keyword">int</span> g[N][N];</span><br><span class="line"><span class="keyword">int</span> res[N][N];</span><br><span class="line"><span class="keyword">int</span> k, n, m, s, e;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mul</span><span class="params">(<span class="keyword">int</span> c[][N], <span class="keyword">int</span> a[][N], <span class="keyword">int</span> b[][N])</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> temp[N][N];</span><br><span class="line">    <span class="built_in">memset</span>(temp, <span class="number">0x3f</span>, <span class="built_in"><span class="keyword">sizeof</span></span>(temp));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= n; k++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)&#123;</span><br><span class="line">                temp[i][j] = <span class="built_in">min</span>(temp[i][j], a[i][k] + b[k][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">memcpy</span>(c, temp, <span class="built_in"><span class="keyword">sizeof</span></span>(temp));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">qmi</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(res, <span class="number">0x3f</span>, <span class="built_in"><span class="keyword">sizeof</span></span>(res));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) res[i][i] = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(k)&#123;</span><br><span class="line">        <span class="keyword">if</span>(k &amp; <span class="number">1</span>) <span class="built_in">mul</span>(res, res, g);</span><br><span class="line">        <span class="built_in">mul</span>(g, g, g);</span><br><span class="line">        k &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin &gt;&gt; k &gt;&gt; m &gt;&gt; s &gt;&gt; e;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">memset</span>(g, <span class="number">0x3f</span>, <span class="built_in"><span class="keyword">sizeof</span></span>(g));</span><br><span class="line">    map&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; mp;</span><br><span class="line">    <span class="keyword">if</span>(!mp.<span class="built_in">count</span>(s)) mp[s] = ++n;</span><br><span class="line">    <span class="keyword">if</span>(!mp.<span class="built_in">count</span>(e)) mp[e] = ++n;</span><br><span class="line">    s = mp[s], e = mp[e];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (m -- )&#123;</span><br><span class="line">        <span class="keyword">int</span> a, b, c;</span><br><span class="line">        cin &gt;&gt; c &gt;&gt; a &gt;&gt; b;</span><br><span class="line">        <span class="keyword">if</span>(!mp.<span class="built_in">count</span>(a)) mp[a] = ++n;</span><br><span class="line">        <span class="keyword">if</span>(!mp.<span class="built_in">count</span>(b)) mp[b] = ++n;</span><br><span class="line">        a = mp[a], b = mp[b];</span><br><span class="line">        g[a][b] = g[b][a] = <span class="built_in">min</span>(g[a][b], c);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">qmi</span>();</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; res[s][e] &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>AcWing</category>
+      </categories>
+      <tags>
+        <tag>最短路</tag>
+        <tag>快速幂</tag>
+        <tag>离散化</tag>
       </tags>
   </entry>
   <entry>
@@ -110,6 +110,61 @@
       <tags>
         <tag>C++</tag>
         <tag>syntax</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>FastFlowNet</title>
+    <url>/p/a2c4.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>代码开源了个寂寞，不过无所谓，只是看看他做了什么而已。<a href="https://github.com/ltkong218/FastFlowNet">官方链接</a></p>
+<p>非常 amazing 的地方在于 FastFlowNet 只包含 1.37M 的参数，并且 fps 很不错。</p>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>FastFlowNet 仍然使用了广泛应用的 coarse-to-fine 策略，此外还有以下几个创新点。</p>
+<ul>
+<li><p>使用了一个 head enhanced pooling pyramid (HEPP) 特征提取器，在减少参数的同时增强了高分辨率的金字塔特征。</p>
+</li>
+<li><p>引入了一个 center dense dilated correlation (CDDC)层 用于构建紧凑的代价体，并且可以保持较大的搜索半径下减少计算量。</p>
+</li>
+<li><p>在每个金字塔层中植入了一个有效的 shuffle block decoder (SBD) 用于加速光流估计，不过边缘精度有所下降。但是相比同样精度的网络，只需要 $1/10$ 的计算量。</p>
+</li>
+</ul>
+<p>FastFlowNet 只含有1.37M 个参数，对于一个分辨率为 $1024\times436$ 的Sintel图片，在单个 GTX 1080Ti 下可以做到 90 FPS，嵌入JetSon TX2 GPU 可以做到 5.7 FPS。</p>
+<h2 id="INTRODUCTION-amp-amp-RELATED-WORK"><a href="#INTRODUCTION-amp-amp-RELATED-WORK" class="headerlink" title="INTRODUCTION&amp;&amp; RELATED WORK"></a>INTRODUCTION&amp;&amp; RELATED WORK</h2><p>这部分说的很牛逼，后面写论文可以参考。</p>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><h3 id="OverView-of-the-Approach"><a href="#OverView-of-the-Approach" class="headerlink" title="OverView of the Approach"></a>OverView of the Approach</h3><p><img src="/p/a2c4/FastFlowNet1.png" style="zoom:80%;"></p>
+<p>给定两个时间域相邻的输入图片$I_1,I_2 \in \mathbb{R}^{H \times W \times 3}$, 提出的 FastFlowNet 模型将会利用由粗到细的残差结构来逐渐估计精化后的光流 $F^{l} \in \mathbb{R}^{H^l \times W^l \times 2}, l = 6,5,\cdots,2.$ 但是通过修改去减少参数和计算代价来加速推理。为此，首先替换了 PWC-Net 网络中的对偶卷积特征金字塔为 头增强的池化金字塔 (head enhanced pooling pyramid) 来增强高精度分辨率的金字塔特征和减少模型的尺寸。在此基础上，提出了一种新得中心密集扩张相关层(center dense dilated correlation layer)，在保证大的搜索半径得前提下，构造紧凑得代价体。最后，在每个金字塔层使用新的shuffle 块译码器 (shuffle block decoders) 来回归计算光流。模型的结构细节如下所示。</p>
+<p><img src="/p/a2c4/FastFlowNet2.png" style="zoom:60%;"></p>
+<p>Pool: average pooling</p>
+<p>Fconv5_2, Fconv5_3, Fconv5_4: convolutions with group = 3</p>
+<p>Shuffle: channel shuffle operation</p>
+<p>除了 upconv6 和 fconv5_7 的卷积层都后接 LeakyRELU 激活函数</p>
+<h3 id="Head-Enhanced-Pooling-Pyramid"><a href="#Head-Enhanced-Pooling-Pyramid" class="headerlink" title="Head Enhanced Pooling Pyramid"></a>Head Enhanced Pooling Pyramid</h3><p>传统的方法在光流估计上应用图像金字塔来加速优化和处理大尺度位移。SpyNet 转换这种经典的范式并首次引进了基于图像金字塔的池化用于加深模型。因为原始图像对光影变换时敏感的，因此固定的池化金字塔对噪声，例如阴影和反射等是不足的。PWC-Net， LiteFlowNet,使用可学习的特征金字塔替代图像金字塔，带来了很大的改进。具体地说，在减少空间尺寸的同时逐步扩张特征通道数来提取鲁棒的匹配特征。</p>
+<p>低分辨率下的较大的通道数会导致大量的参数，对于由粗到细的方案来说可能是冗余的，因为低层的金字塔特征可能只会对估计粗糙的流域有用。因此，模型结合了高层的特征金字塔结构和低层的池化金字塔兼顾两个优势。另一方面，高分辨率下的金字塔特征在PWC-Net中相比较浅，因为每个金字塔层只包含两个卷积核大小为 $3 \times 3$ 的卷积层，因此其感受野较小。因此模型花费了一点额外代价在高层添加了一个额外的卷积层来增强金字塔特征。通过平衡不同尺度下的计算，文章提出了HEPP，和 FlowNetC, PWC-Net 和 LiteFlowNet 一样， HEPP会生成 6个金字塔层从 $1/2$ 分辨率(第一层) 到 $1/64$ 分辨率(第六层)，缩放因子为 2。</p>
+<h3 id="Center-Dense-Dilated-Correlation"><a href="#Center-Dense-Dilated-Correlation" class="headerlink" title="Center Dense Dilated Correlation"></a>Center Dense Dilated Correlation</h3><p>现代的光流估计架构中的一个重要的步骤就是通过基于卷积层的内积来计算特征一致性。对于金字塔 $l$ 层的两个特征 $f^l_1, f^l_2$ ，类似很多由粗到细的残差方法，首先使用了基于 warping 的双线性插值，根据 $2\times$前面的流场的上采样的结果 $up_2(F^{l+1})$ 对第二个特征 $f^l_2$ 进行 warp。warp 的目标特征 $f_{warp}^l$ 可以极大的减少由于大尺度运动带来的位移，这将有益于减少搜索区域和简化任务为估计相对较小的残差流。最近的工作 PWC-Net，LiteFlowNet 通过在局部方形区域内相关源特征和对应的warped后的目标特征构建代价体，可公式化为：</p>
+<script type="math/tex; mode=display">
+c^l(x,d)=f^l_1(x)\cdot f_{warp}^l(x+d)/N, d\in [-r, r] \times[-r, r]</script><p>$x, d$ 代表空间和偏移坐标，$N$ 为输入特征的长度，$r$ 为搜索半径，$\cdot$ 代表点积。</p>
+<p>已有的工作PWC-Net等已经表明，在构建代价体时增加搜索半径可以在训练和测试中降低 EPE 误差，尤其对于大位移的情况。但是代价体的特征通道时搜索半径的平方级，后续的解码器网络的计算复杂度将会变成四次方。</p>
+<p><img src="/p/a2c4/FastFlowNet3.png" style="zoom:60%;"></p>
+<p>如图 $a$，很多的光流网络设置 $r = 4$，庞大的计算量阻碍了低功耗应用的发展。一种简单的方法就是减小半径  $r$。例如设置 $r = 3$， 如图 $b$。从而使代价体特征从 81 减少到 49. 但是这种办法的代价是牺牲了感知范围和精度。</p>
+<p>受到 DeepLabv3 的 atrous spatial pyramid pooling(ASPP) 的启发，提出了CDDC层在大运动区域内下采样网格点时，在中心周围密集搜索格点，如图 $c$ 所示。</p>
+<p>与 ASPP 使用并行 atrous 卷积来获取多尺度上下文信息不同，提出的 CDDC 旨在减少构建大半径代价体时的计算量。在 FastFlowNet 中，会输出 53 个特征通道，与传统的 $r=3$ 设置类似。动机在于残差流会更关注小运动。实验证明 CDDC 方法比传统的压缩方法更优。</p>
+<h3 id="Shuffle-Block-Decoder"><a href="#Shuffle-Block-Decoder" class="headerlink" title="Shuffle Block Decoder"></a>Shuffle Block Decoder</h3><p>在构建代价体后，由粗到细的模型通常会将上下文特征，代价体量和上采样的前一个光流结果 concatenate起来，作为后面解码器的输入。在每一个金字塔层，解码器会占用整个网络的大部分参数和计算量。因此，更好的速度和精度的权衡时至关重要的。</p>
+<p>PWC-Net表明，稠密连接的流解码器在对 FlyingThing3D 数据集进行微调后，可以提高解码器的精度，但代价是增加了模型大小和计算量。LiteFlowNet 使用了顺序连接的流估计器，并且显示出了更好的性能。为了达到两种方案的权衡，FDFlowNet使用了部分全连接结构。这些方法都不能在嵌入式系统中进行实时的推理。</p>
+<p>由于 CDDC 构建的紧致代价体，可以直接将解码器网络的最大通道数从 128 减少到 96个。为了进一步减少计算量和模型的大小，将中间的三个96通道的卷积转换为组卷积，然后进行通道 shuffle 操作，称之为 Shuffle Block。与ShuffleNet 作为骨干网络不同的是，shuffle 译码器用于光流的回归。</p>
+<p>每个解码器网络包含了三个 $group = 3$ 的 shuffle 块，这有效的减少了计算量，但是精度略有下降。</p>
+<h3 id="Loss-Function"><a href="#Loss-Function" class="headerlink" title="Loss Function"></a>Loss Function</h3><p>由于 FastFlowNet 采用了 和 FlowNet 和 PWC-Net 相同的金字塔结构，因此采用了同样的多尺度 $L2$ 损失函数用于训练。</p>
+<script type="math/tex; mode=display">
+L_{epe}=\sum_{l = 2}^6\alpha_l\sum|F^l(x)-F^l_{gt}(x)|_2</script><p>这里 $|\cdot|_2$ 计算预测光流和真实光流之间的 $L2$ 范数。</p>
+<p>在有真实场景结构的数据集上进行微调时，例如 KITTI 数据集，使用了如下的鲁棒损失函数:</p>
+<script type="math/tex; mode=display">
+L_{robust}=\sum_{l=2}^6\alpha_l\sum(|F^l(x)-F^l_{gt}(x)|+\epsilon)^q</script><p>这里的 $|\cdot|$ 表示 $L1$ 范数，$\epsilon = 0.01$ 表示一个很小的常数，$q \lt 1$ 使的对大的异常值更加鲁棒。为了与以前的方法(FlowNet, SPyNet, PWC-Net, LiteFlowNet)公平对比，将公式(2)(3)中的权重设置为$\alpha_6=0.32,\alpha_5=0.08,\alpha_4=0.02,\alpha_3=0.01,\alpha_2=0.005$.</p>
+<h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><h3 id="Implements-Details"><a href="#Implements-Details" class="headerlink" title="Implements Details"></a>Implements Details</h3><p>为了将 FastFlowNet与其他网络进行对比，遵循了 FlowNet2 中提出的两阶段训练策略。真实的光流值除以20，并且下采样作为不同层的监督信号。由于最终的预测的分辨率为 $1/4$ ,因此使用了双线性插值来获得全分辨率的光流。在训练和调试阶段，使用了和 FlowNet 同样的数据增强方式，包括镜像翻转，平移，旋转，缩放，挤压和颜色抖动。实验在PyTorch环境下实现，并且在装有 4 张 Nvidia GTX 1080 Ti GPU卡的机器上进行。为了比较不同的光流模型在移动设备上的性能，进一步在嵌入式的Jetson TX2 GPU上测试了推理时间。</p>
+<p>首先在 FlyingChairs 数据集上训练，使用 $S_{short}$ 学习计划。初始学习率为 $1e^{-4}$，并在30w, 40w, 50w次迭代的时候衰减一半。在数据增强阶段随机裁剪出 $320 \times 448$ 的 patch，并采用 $batch-size = 8$ 。模型在 FlyingThings3D 数据集上进行微调，并采用 $S_{fine}$ 学习计划。学习率初始化为 $1e^{-5}$, 并且在 20w, 30w, 40w迭代的时候衰减一半。随机切割尺寸为 $384 \times 768$，并且 $batch-size = 4$。 使用 $Adam$ 优化器和多尺度的 $L2$ 损失函数。在 Sintel 和 KIITI 的训练集结果如下所示。</p>
+<p><img src="/p/a2c4/FastFlowNet4.png" style="zoom:60%;"></p>
+<h3 id="Ablation-study"><a href="#Ablation-study" class="headerlink" title="Ablation study"></a>Ablation study</h3><p>暂时略，需要时再补充</p>
+<h3 id="MPI-Sintel"><a href="#MPI-Sintel" class="headerlink" title="MPI Sintel"></a>MPI Sintel</h3>]]></content>
+      <categories>
+        <category>光流</category>
+      </categories>
+      <tags>
+        <tag>双帧光流</tag>
       </tags>
   </entry>
   <entry>
@@ -239,6 +294,20 @@
       </tags>
   </entry>
   <entry>
+    <title>LeetCode-787</title>
+    <url>/p/f5cf.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="743-网络延迟时间"><a href="#743-网络延迟时间" class="headerlink" title="743. 网络延迟时间"></a><a href="https://leetcode-cn.com/problems/network-delay-time/">743. 网络延迟时间</a></h2><p><img src="/p/f5cf/LeetCode-787-2.png" alt></p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>等价于长度最大为 $k + 1$ 的最短路，<strong>bellman-ford</strong>很明显。</p>
+<h2 id="AC-code"><a href="#AC-code" class="headerlink" title="AC code"></a>AC code</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; dist, backup;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findCheapestPrice</span><span class="params">(<span class="keyword">int</span> n, vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; flights, <span class="keyword">int</span> src, <span class="keyword">int</span> dst, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        dist.<span class="built_in">resize</span>(n, inf);</span><br><span class="line">        dist[src] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k + <span class="number">1</span>; i++)&#123;</span><br><span class="line">            backup = dist;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">auto</span> edge : flights)&#123;</span><br><span class="line">                <span class="keyword">int</span> a = edge[<span class="number">0</span>], b = edge[<span class="number">1</span>], c = edge[<span class="number">2</span>];</span><br><span class="line">                dist[b] = <span class="built_in">min</span>(dist[b], backup[a] + c);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dist[dst] == inf ? - <span class="number">1</span>: dist[dst];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>最短路</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LeetCode-882</title>
     <url>/p/f53f.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="882-细分图中的可到达结点"><a href="#882-细分图中的可到达结点" class="headerlink" title="882. 细分图中的可到达结点"></a><a href="https://leetcode-cn.com/problems/reachable-nodes-in-subdivided-graph/">882. 细分图中的可到达结点</a></h2><p><img src="/p/f53f/LeetCode-882-2.png" alt></p>
@@ -257,6 +326,7 @@
     <title>SCV</title>
     <url>/p/1f41.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https: //github.com/zacjiang/scv">代码已开源</a></p>
+<p>RAFT outperforms other approaches by first calculating all-pairs similarity and then performing iterations at a high resolution.The price is that it inurs significantly larger computation burden.(FastFlowNet)</p>
 <h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>SOTA的光流估计网络需要高分辨率下的稠密的Correlation Volume来衡量逐像素的位移，虽然稠密的Correlation Volume有助于准确的光流估计，但是繁重的计算和内存使用也不利于模型的训练和部署。这篇论文说明了稠密的Correlation Volume表示是冗余的，只需要其中的一小部分元素就可以实现精确的光流估计。在此基础上，论文提出了一个可以替代的位移表示方法—Sparse Correlation Volume，通过直接计算fmap1在fmap2上最接近的k个匹配来构建，并存储在一个稀疏的数据结构中。实验说明了该方法可以显著降低计算成本和内存占用，并且依然保持较高的精度。</p>
 <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>基于直觉：img1的某一个特征向量只会与img2的某一部分特征向量高度相关，因此在稠密的Correlation Volume表示中，会有大量的冗余，对于相关度较小的特征并不会优化预测结果。如下图所示。</p>
 <p><img src="/p/1f41/SCV1.png" style="zoom:60%;"></p>
@@ -391,20 +461,6 @@ L = \sum_{i = 1}^N\gamma^{N - i}||f_i-f_{gt}||_1</script><p>权重因子: $\gamm
       </categories>
       <tags>
         <tag>工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LeetCode-787</title>
-    <url>/p/f5cf.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="743-网络延迟时间"><a href="#743-网络延迟时间" class="headerlink" title="743. 网络延迟时间"></a><a href="https://leetcode-cn.com/problems/network-delay-time/">743. 网络延迟时间</a></h2><p><img src="/p/f5cf/LeetCode-787-2.png" alt></p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>等价于长度最大为 $k + 1$ 的最短路，<strong>bellman-ford</strong>很明显。</p>
-<h2 id="AC-code"><a href="#AC-code" class="headerlink" title="AC code"></a>AC code</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; dist, backup;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findCheapestPrice</span><span class="params">(<span class="keyword">int</span> n, vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; flights, <span class="keyword">int</span> src, <span class="keyword">int</span> dst, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        dist.<span class="built_in">resize</span>(n, inf);</span><br><span class="line">        dist[src] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k + <span class="number">1</span>; i++)&#123;</span><br><span class="line">            backup = dist;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">auto</span> edge : flights)&#123;</span><br><span class="line">                <span class="keyword">int</span> a = edge[<span class="number">0</span>], b = edge[<span class="number">1</span>], c = edge[<span class="number">2</span>];</span><br><span class="line">                dist[b] = <span class="built_in">min</span>(dist[b], backup[a] + c);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dist[dst] == inf ? - <span class="number">1</span>: dist[dst];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>最短路</tag>
       </tags>
   </entry>
 </search>
