@@ -92,137 +92,41 @@
       </tags>
   </entry>
   <entry>
-    <title>C++ &amp; STL</title>
-    <url>/p/d937.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="C-amp-STL-等相关整理"><a href="#C-amp-STL-等相关整理" class="headerlink" title="C++ &amp; STL 等相关整理"></a>C++ &amp; STL 等相关整理</h1><h2 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h2><h3 id="using"><a href="#using" class="headerlink" title="using"></a>using</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> ... = ...;</span><br><span class="line"><span class="comment">// example</span></span><br><span class="line"><span class="keyword">using</span> ll = <span class="keyword">long</span> <span class="keyword">long</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br></pre></td></tr></table></figure>
-<p>在语法的别名声明，using的使用类似于typedef，但用法更为精妙。</p>
-<h3 id="string"><a href="#string" class="headerlink" title="string"></a>string</h3><h4 id="stoi"><a href="#stoi" class="headerlink" title="stoi"></a>stoi</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">stoi</span> <span class="params">(<span class="keyword">const</span> string&amp;  str, <span class="keyword">size_t</span>* idx = <span class="number">0</span>, <span class="keyword">int</span> base = <span class="number">10</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">stoi</span> <span class="params">(<span class="keyword">const</span> wstring&amp; str, <span class="keyword">size_t</span>* idx = <span class="number">0</span>, <span class="keyword">int</span> base = <span class="number">10</span>)</span></span>;</span><br></pre></td></tr></table></figure>
-<p>stoi()的输入要不为空，否则可以使用atoi(().c.str())</p>
-<h4 id="sstream"><a href="#sstream" class="headerlink" title="sstream"></a><a href="https://www.cplusplus.com/reference/sstream/">sstream</a></h4><p>istringstream类用于执行C++风格的字符串流的输入操作，支持&gt;&gt;;</p>
-<p>ostringstream类用于执行C++风格的字符串流的输出操作，支持&lt;&lt;；</p>
-<p>stringstream类同时可以支持C++风格的串流的输入输出操作，同时支持&gt;&gt;和&lt;&lt;；</p>
-<p>即 stringstream = istringstream + ostringstream。</p>
-<h2 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h2><p><a href="https://www.cnblogs.com/biyeymyhjob/archive/2012/07/22/2603525.html">不错的博客链接</a></p>
-]]></content>
+    <title>MobileNets</title>
+    <url>/p/9d20.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>用于移动视觉应用的高效卷积网络</p>
+<h2 id><a href="#" class="headerlink" title=" "></a> </h2>]]></content>
       <categories>
-        <category>C++</category>
+        <category>轻量化模型</category>
       </categories>
       <tags>
-        <tag>C++</tag>
-        <tag>syntax</tag>
+        <tag>MobileNets</tag>
       </tags>
   </entry>
   <entry>
-    <title>FastFlowNet</title>
-    <url>/p/a2c4.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>代码开源了个寂寞，不过无所谓，只是看看他做了什么而已。<a href="https://github.com/ltkong218/FastFlowNet">官方链接</a></p>
-<p>非常 amazing 的地方在于 FastFlowNet 只包含 1.37M 的参数，并且 fps 很不错。</p>
-<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>FastFlowNet 仍然使用了广泛应用的 coarse-to-fine 策略，此外还有以下几个创新点。</p>
+    <title>SqueezeNet</title>
+    <url>/p/92ec.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>个人觉得没啥卵用。。。</p>
+<h2 id="。。。"><a href="#。。。" class="headerlink" title="。。。"></a>。。。</h2><h2 id="SqueezeNet-Preserving-accuracy-with-few-parameters"><a href="#SqueezeNet-Preserving-accuracy-with-few-parameters" class="headerlink" title="SqueezeNet: Preserving accuracy with few parameters"></a>SqueezeNet: Preserving accuracy with few parameters</h2><h3 id="Architectural-Design-Strategies"><a href="#Architectural-Design-Strategies" class="headerlink" title="Architectural Design Strategies"></a>Architectural Design Strategies</h3><p>主要目标是构建参数较少的 CNN 模型架构，但是仍保持不错的精度。为此，使用了三个主要策略。</p>
 <ul>
-<li><p>使用了一个 head enhanced pooling pyramid (HEPP) 特征提取器，在减少参数的同时增强了高分辨率的金字塔特征。</p>
+<li><p>策略 $1$ : 使用 $1 \times 1$ 过滤器替换 $3 \times 3$ 过滤器。给定一定数量的卷积滤波器预算，这大部分的滤波器将使用 $1\times 1$ 大小，因为 $1\times 1$ 滤波器将比 $3 \times 3$ 滤波器减少了九倍的参数。</p>
 </li>
-<li><p>引入了一个 center dense dilated correlation (CDDC)层 用于构建紧凑的代价体，并且可以保持较大的搜索半径下减少计算量。</p>
+<li><p>策略 $2$ : 减少输入到 $3 \times 3$ 滤波器的输入通道数。对于一个只包含 $3\times 3$ 滤波器的卷积层，这一层的参数总数等于</p>
+<p>(number of channels)  <em> (number of filters) </em> (3 * 3)。因此，为了保持 CNN 中较少的参数总数，不仅要减少$3\times 3$滤波器的个数，还需要减少输入的通道数。后面使用 squeeze layers 来减少输入到滤波器的输入通道数。</p>
 </li>
-<li><p>在每个金字塔层中植入了一个有效的 shuffle block decoder (SBD) 用于加速光流估计，不过边缘精度有所下降。但是相比同样精度的网络，只需要 $1/10$ 的计算量。</p>
+<li><p>策略 $3$ : 在网络的后期进行下采样，使卷积层有较大的激活图。在卷积网络中，每个卷积层产生一个输出激活映射，其空间分辨率至少为 $1\times 1$，并且通常大于 $1 \times 1$。这些激活映射图的宽和高由 (1) 输入数据的大小，(2) 在CNN中选择用哪些层来做下采样。常见的是，通过在 CNN 结构的一些卷积层或者池化层设置步长 (stride &gt; 1)。如果网络前面的层有较大的步长，那么大部分的激活层就会很小。相反地，如果网络中大部分的层的步长为 $1$, 并且步长大于 $1$ 的层都集中在网络末端，那么网络中的大部分层就会有大的激活图。在其他条件不变得情况下，直觉上看，大的激活图将会导致更高的分类精度。</p>
 </li>
 </ul>
-<p>FastFlowNet 只含有1.37M 个参数，对于一个分辨率为 $1024\times436$ 的Sintel图片，在单个 GTX 1080Ti 下可以做到 90 FPS，嵌入JetSon TX2 GPU 可以做到 5.7 FPS。</p>
-<h2 id="INTRODUCTION-amp-amp-RELATED-WORK"><a href="#INTRODUCTION-amp-amp-RELATED-WORK" class="headerlink" title="INTRODUCTION&amp;&amp; RELATED WORK"></a>INTRODUCTION&amp;&amp; RELATED WORK</h2><p>这部分说的很牛逼，后面写论文可以参考。</p>
-<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><h3 id="OverView-of-the-Approach"><a href="#OverView-of-the-Approach" class="headerlink" title="OverView of the Approach"></a>OverView of the Approach</h3><p><img src="/p/a2c4/FastFlowNet1.png" style="zoom:80%;"></p>
-<p>给定两个时间域相邻的输入图片$I_1,I_2 \in \mathbb{R}^{H \times W \times 3}$, 提出的 FastFlowNet 模型将会利用由粗到细的残差结构来逐渐估计精化后的光流 $F^{l} \in \mathbb{R}^{H^l \times W^l \times 2}, l = 6,5,\cdots,2.$ 但是通过修改去减少参数和计算代价来加速推理。为此，首先替换了 PWC-Net 网络中的对偶卷积特征金字塔为 头增强的池化金字塔 (head enhanced pooling pyramid) 来增强高精度分辨率的金字塔特征和减少模型的尺寸。在此基础上，提出了一种新得中心密集扩张相关层(center dense dilated correlation layer)，在保证大的搜索半径得前提下，构造紧凑得代价体。最后，在每个金字塔层使用新的shuffle 块译码器 (shuffle block decoders) 来回归计算光流。模型的结构细节如下所示。</p>
-<p><img src="/p/a2c4/FastFlowNet2.png" style="zoom:60%;"></p>
-<p>Pool: average pooling</p>
-<p>Fconv5_2, Fconv5_3, Fconv5_4: convolutions with group = 3</p>
-<p>Shuffle: channel shuffle operation</p>
-<p>除了 upconv6 和 fconv5_7 的卷积层都后接 LeakyRELU 激活函数</p>
-<h3 id="Head-Enhanced-Pooling-Pyramid"><a href="#Head-Enhanced-Pooling-Pyramid" class="headerlink" title="Head Enhanced Pooling Pyramid"></a>Head Enhanced Pooling Pyramid</h3><p>传统的方法在光流估计上应用图像金字塔来加速优化和处理大尺度位移。SpyNet 转换这种经典的范式并首次引进了基于图像金字塔的池化用于加深模型。因为原始图像对光影变换时敏感的，因此固定的池化金字塔对噪声，例如阴影和反射等是不足的。PWC-Net， LiteFlowNet,使用可学习的特征金字塔替代图像金字塔，带来了很大的改进。具体地说，在减少空间尺寸的同时逐步扩张特征通道数来提取鲁棒的匹配特征。</p>
-<p>低分辨率下的较大的通道数会导致大量的参数，对于由粗到细的方案来说可能是冗余的，因为低层的金字塔特征可能只会对估计粗糙的流域有用。因此，模型结合了高层的特征金字塔结构和低层的池化金字塔兼顾两个优势。另一方面，高分辨率下的金字塔特征在PWC-Net中相比较浅，因为每个金字塔层只包含两个卷积核大小为 $3 \times 3$ 的卷积层，因此其感受野较小。因此模型花费了一点额外代价在高层添加了一个额外的卷积层来增强金字塔特征。通过平衡不同尺度下的计算，文章提出了HEPP，和 FlowNetC, PWC-Net 和 LiteFlowNet 一样， HEPP会生成 6个金字塔层从 $1/2$ 分辨率(第一层) 到 $1/64$ 分辨率(第六层)，缩放因子为 2。</p>
-<h3 id="Center-Dense-Dilated-Correlation"><a href="#Center-Dense-Dilated-Correlation" class="headerlink" title="Center Dense Dilated Correlation"></a>Center Dense Dilated Correlation</h3><p>现代的光流估计架构中的一个重要的步骤就是通过基于卷积层的内积来计算特征一致性。对于金字塔 $l$ 层的两个特征 $f^l_1, f^l_2$ ，类似很多由粗到细的残差方法，首先使用了基于 warping 的双线性插值，根据 $2\times$前面的流场的上采样的结果 $up_2(F^{l+1})$ 对第二个特征 $f^l_2$ 进行 warp。warp 的目标特征 $f_{warp}^l$ 可以极大的减少由于大尺度运动带来的位移，这将有益于减少搜索区域和简化任务为估计相对较小的残差流。最近的工作 PWC-Net，LiteFlowNet 通过在局部方形区域内相关源特征和对应的warped后的目标特征构建代价体，可公式化为：</p>
-<script type="math/tex; mode=display">
-c^l(x,d)=f^l_1(x)\cdot f_{warp}^l(x+d)/N, d\in [-r, r] \times[-r, r]</script><p>$x, d$ 代表空间和偏移坐标，$N$ 为输入特征的长度，$r$ 为搜索半径，$\cdot$ 代表点积。</p>
-<p>已有的工作PWC-Net等已经表明，在构建代价体时增加搜索半径可以在训练和测试中降低 EPE 误差，尤其对于大位移的情况。但是代价体的特征通道时搜索半径的平方级，后续的解码器网络的计算复杂度将会变成四次方。</p>
-<p><img src="/p/a2c4/FastFlowNet3.png" style="zoom:60%;"></p>
-<p>如图 $a$，很多的光流网络设置 $r = 4$，庞大的计算量阻碍了低功耗应用的发展。一种简单的方法就是减小半径  $r$。例如设置 $r = 3$， 如图 $b$。从而使代价体特征从 81 减少到 49. 但是这种办法的代价是牺牲了感知范围和精度。</p>
-<p>受到 DeepLabv3 的 atrous spatial pyramid pooling(ASPP) 的启发，提出了CDDC层在大运动区域内下采样网格点时，在中心周围密集搜索格点，如图 $c$ 所示。</p>
-<p>与 ASPP 使用并行 atrous 卷积来获取多尺度上下文信息不同，提出的 CDDC 旨在减少构建大半径代价体时的计算量。在 FastFlowNet 中，会输出 53 个特征通道，与传统的 $r=3$ 设置类似。动机在于残差流会更关注小运动。实验证明 CDDC 方法比传统的压缩方法更优。</p>
-<h3 id="Shuffle-Block-Decoder"><a href="#Shuffle-Block-Decoder" class="headerlink" title="Shuffle Block Decoder"></a>Shuffle Block Decoder</h3><p>在构建代价体后，由粗到细的模型通常会将上下文特征，代价体量和上采样的前一个光流结果 concatenate起来，作为后面解码器的输入。在每一个金字塔层，解码器会占用整个网络的大部分参数和计算量。因此，更好的速度和精度的权衡时至关重要的。</p>
-<p>PWC-Net表明，稠密连接的流解码器在对 FlyingThing3D 数据集进行微调后，可以提高解码器的精度，但代价是增加了模型大小和计算量。LiteFlowNet 使用了顺序连接的流估计器，并且显示出了更好的性能。为了达到两种方案的权衡，FDFlowNet使用了部分全连接结构。这些方法都不能在嵌入式系统中进行实时的推理。</p>
-<p>由于 CDDC 构建的紧致代价体，可以直接将解码器网络的最大通道数从 128 减少到 96个。为了进一步减少计算量和模型的大小，将中间的三个96通道的卷积转换为组卷积，然后进行通道 shuffle 操作，称之为 Shuffle Block。与ShuffleNet 作为骨干网络不同的是，shuffle 译码器用于光流的回归。</p>
-<p>每个解码器网络包含了三个 $group = 3$ 的 shuffle 块，这有效的减少了计算量，但是精度略有下降。</p>
-<h3 id="Loss-Function"><a href="#Loss-Function" class="headerlink" title="Loss Function"></a>Loss Function</h3><p>由于 FastFlowNet 采用了 和 FlowNet 和 PWC-Net 相同的金字塔结构，因此采用了同样的多尺度 $L2$ 损失函数用于训练。</p>
-<script type="math/tex; mode=display">
-L_{epe}=\sum_{l = 2}^6\alpha_l\sum|F^l(x)-F^l_{gt}(x)|_2</script><p>这里 $|\cdot|_2$ 计算预测光流和真实光流之间的 $L2$ 范数。</p>
-<p>在有真实场景结构的数据集上进行微调时，例如 KITTI 数据集，使用了如下的鲁棒损失函数:</p>
-<script type="math/tex; mode=display">
-L_{robust}=\sum_{l=2}^6\alpha_l\sum(|F^l(x)-F^l_{gt}(x)|+\epsilon)^q</script><p>这里的 $|\cdot|$ 表示 $L1$ 范数，$\epsilon = 0.01$ 表示一个很小的常数，$q \lt 1$ 使的对大的异常值更加鲁棒。为了与以前的方法(FlowNet, SPyNet, PWC-Net, LiteFlowNet)公平对比，将公式(2)(3)中的权重设置为$\alpha_6=0.32,\alpha_5=0.08,\alpha_4=0.02,\alpha_3=0.01,\alpha_2=0.005$.</p>
-<h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><h3 id="Implements-Details"><a href="#Implements-Details" class="headerlink" title="Implements Details"></a>Implements Details</h3><p>为了将 FastFlowNet与其他网络进行对比，遵循了 FlowNet2 中提出的两阶段训练策略。真实的光流值除以20，并且下采样作为不同层的监督信号。由于最终的预测的分辨率为 $1/4$ ,因此使用了双线性插值来获得全分辨率的光流。在训练和调试阶段，使用了和 FlowNet 同样的数据增强方式，包括镜像翻转，平移，旋转，缩放，挤压和颜色抖动。实验在PyTorch环境下实现，并且在装有 4 张 Nvidia GTX 1080 Ti GPU卡的机器上进行。为了比较不同的光流模型在移动设备上的性能，进一步在嵌入式的Jetson TX2 GPU上测试了推理时间。</p>
-<p>首先在 FlyingChairs 数据集上训练，使用 $S_{short}$ 学习计划。初始学习率为 $1e^{-4}$，并在30w, 40w, 50w次迭代的时候衰减一半。在数据增强阶段随机裁剪出 $320 \times 448$ 的 patch，并采用 $batch-size = 8$ 。模型在 FlyingThings3D 数据集上进行微调，并采用 $S_{fine}$ 学习计划。学习率初始化为 $1e^{-5}$, 并且在 20w, 30w, 40w迭代的时候衰减一半。随机切割尺寸为 $384 \times 768$，并且 $batch-size = 4$。 使用 $Adam$ 优化器和多尺度的 $L2$ 损失函数。在 Sintel 和 KIITI 的训练集结果如下所示。</p>
-<p><img src="/p/a2c4/FastFlowNet4.png" style="zoom:60%;"></p>
-<h3 id="Ablation-study"><a href="#Ablation-study" class="headerlink" title="Ablation study"></a>Ablation study</h3><p>暂时略，需要时再补充</p>
-<h3 id="MPI-Sintel"><a href="#MPI-Sintel" class="headerlink" title="MPI Sintel"></a>MPI Sintel</h3>]]></content>
+<p>策略$1,2$ 是明智得减少 CNN 中得参数数量，并试图保持准确率。策略 3 是在有限的参数预算下最大化准确性。</p>
+<h3 id="The-Fire-Module"><a href="#The-Fire-Module" class="headerlink" title="The Fire Module"></a>The Fire Module</h3><p>定义 Fire 模块。一个 Fire 模块包含一个 squeeze convolution layer，然后被送到一个 expand layer, 或者扩展层包含了 $1\times1$ 和 $3\times 3$ 两种卷积核。如下图所示。</p>
+<p><img src="/p/92ec/SqueezeNet2.png" style="zoom:50%;"></p>
+<p>在 Fire 模块中提供了三个可调的维度(超参数)： $s_{1x1},e_{1x1},e_{3x3}$。 $s_{1x1}$是 squeeze layer中的 $1\times1$ 滤波器个数，$e_{1x1}$ 是 expand 层中的 $1\times1$ 滤波器个数，$e_{3x3}$ 是 expand 层中的 $3\times3$ 滤波器个数。在使用 Fire 模块时，设定了 $s_{1x1} \lt (e_{1x1},e_{3x3})$， 因此 squeeze layer 将有助于减少输入到 $3\times 3$ 的输入通道数。</p>
+<h3 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h3>]]></content>
       <categories>
-        <category>光流</category>
+        <category>轻量化模型</category>
       </categories>
       <tags>
-        <tag>双帧光流</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Internal Covariate Shift &amp; Normalization</title>
-    <url>/p/6d2e.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://zhuanlan.zhihu.com/p/33173246">参考链接1</a></p>
-<p><a href="https://blog.csdn.net/sinat_33741547/article/details/87158830">参考链接2</a></p>
-<h2 id="Interal-Covariate-Shift"><a href="#Interal-Covariate-Shift" class="headerlink" title="Interal Covariate Shift"></a>Interal Covariate Shift</h2><blockquote>
-<p>The term <strong>interal covariate shift</strong> comes from the paper <a href="https://arxiv.org/abs/1502.03167">Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift</a>.</p>
-<p>The authors’ precise definition is:</p>
-<blockquote>
-<p>We define Internal Covariate Shift as the change in the distribution of network activations due to the change in network parameters during training.</p>
-</blockquote>
-<p>In neural networks, the output of the first layer feeds into the second layer, the output of the second layer feeds into the third, and so on. When the parameters of a layer change, so does the distribution of inputs to subsequent layers.</p>
-<p>These shifts in input distributions can be problematic for neural networks, especially deep neural networks that could have a large number of layers.</p>
-<p><a href="https://machinelearning.wtf/terms/batch-normalization/">Batch normalization</a> is a method intended to mitigate internal covariate shift for neural networks</p>
-</blockquote>
-<p>简单的说，Interal Covariate Shift(后面简称ICS)是在网络训练过程中，由于前面层中的网络参数不断更新而导致的网络输入的分布不均匀的现象。网络层的序列化意味着后续网络的输入为前面网络的输入，而由于网络参数的更新，对于原始相同的输入，其经过每一层后的输出都会变化。</p>
-<p>机器学习的一个重要假设就是数据的<strong>独立同分布(Independent and identically distributed，后面简称为iid)</strong>，<del>虽然这并不可能</del>。即使做不到idd，实际上很多机器学习的算法，例如<strong>逻辑回归</strong>，<strong>神经网络</strong>以然可以在非iid的数据上训练得到不错的数据，但很明显，iid可以简化模型训练，加快训练和提升预测能力。对这个概念的理解可以参考统计机器学习中的<strong>Covariate Shift</strong>，从概率的角度上就是，条件概率相同，但边缘概率不同，<del>甚至更难理解了。</del>再赘述一句理解的话，网络加深，网络参数不断更新，经过多次线性或者非线性变化，对于其中的某一层(不要抬杠的选第一层)，它得到的输入都不一样的，即便在第一层输入相同的数据，但是最终的分类标签却还是一致的，那么这些数据就不再是iid了。</p>
-<p>这会导致一些问题：</p>
-<ul>
-<li>前面的网络需要不断的适应新的输入数据，降低学习率</li>
-<li>后面的网络的输入的变化可能导致前面的网络陷入饱和区，训练过早停止</li>
-<li>既然每层的更新是会直接或间接影响到其他层的，那么每一层的学习策略就不能那么“随意”，应该非常的”谨慎“，实际上，这种”谨慎“也不是那么可控的。</li>
-</ul>
-<h2 id="Whitening"><a href="#Whitening" class="headerlink" title="Whitening"></a>Whitening</h2><p>为了得到iid的数据，因此在数据送入模型之前，会经过数据预处理阶段，因此白化的目的就在于得到iid的数据。</p>
-<ul>
-<li>去除特征之间的相关性—&gt; 独立；</li>
-<li>使得所有特征具有相同的均值和方差 —&gt; 同分布</li>
-</ul>
-<p>PCA就是一种典型的方法。<a href="http://ufldl.stanford.edu/tutorial/unsupervised/PCAWhitening/">PCA Whitening</a></p>
-<h2 id="Normalization"><a href="#Normalization" class="headerlink" title="Normalization"></a>Normalization</h2><p>但是，白化的计算成本太高，于是有了normalization方法，可以简化计算过程，又可以使数据尽可能保留原始的数据表达能力。normalization这种方式，实际上并不是直接去解决ICS问题，更多的是面向梯度消失等问题，去加速网络收敛的。而且，均值方差相等与同分布不是一个概念。</p>
-<h3 id="Normalization-Framework"><a href="#Normalization-Framework" class="headerlink" title="Normalization Framework"></a>Normalization Framework</h3><script type="math/tex; mode=display">
-\hat{x} = f(g*\frac{x-\mu}{\sigma} + b) \notag</script><p>通常的变换框架如上所示，实际上就是做了个shift和缩放转换到(0,1)正态分布，随后再进行reshift和rescale，最终转换成了 ($b$, $g^2$) 的分布。这里的reshift和rescale参数是可以学习的，而不是固定的(0,1)，很显然，因为输入范围本身就不可能确定为(0,1)，可学习的re参数也更符合底层的学习能力。</p>
-<p>与白化相比，实际差距还是很大的。</p>
-<h3 id="Batch-Normalization"><a href="#Batch-Normalization" class="headerlink" title="Batch Normalization"></a>Batch Normalization</h3><p><img src="https://pic1.zhimg.com/80/v2-13bb64b6122e98421ea3528539c1bffc_720w.jpg" alt></p>
-<p>其规范化针对单个神经元进行，利用网络训练时一个 mini-batch 的数据来计算该神经元 <img src="https://www.zhihu.com/equation?tex=x_i" alt="[公式]"> 的均值和方差,因而称为 Batch Normalization。</p>
-<p><img src="/p/6d2e/ICSN1.png" style="zoom:50%;"></p>
-<p>BN 可以看做一种纵向的规范化。由于 BN 是针对单个维度定义的，因此标准公式中的计算均为 element-wise 的。</p>
-<p>BN 独立地规范化每一个输入维度 <img src="https://www.zhihu.com/equation?tex=x_i" alt="[公式]"> ，但规范化的参数是一个 mini-batch 的一阶统计量和二阶统计量。这就要求 每一个 mini-batch 的统计量是整体统计量的近似估计，或者说每一个 mini-batch 彼此之间，以及和整体数据，都应该是近似同分布的。分布差距较小的 mini-batch 可以看做是为规范化操作和模型训练引入了噪声，可以增加模型的鲁棒性；但如果每个 mini-batch的原始分布差别很大，那么不同 mini-batch 的数据将会进行不一样的数据变换，这就增加了模型训练的难度。</p>
-<p>因此，BN 比较适用的场景是：每个 mini-batch 比较大，数据分布比较接近。在进行训练之前，要做好充分的 shuffle. 否则效果会差很多。</p>
-<p>另外，由于 BN 需要在运行过程中统计每个 mini-batch 的一阶统计量和二阶统计量，因此不适用于动态的网络结构 和 RNN 网络。</p>
-<h3 id="Layer-Normalization"><a href="#Layer-Normalization" class="headerlink" title="Layer Normalization"></a>Layer Normalization</h3><p><img src="https://pic1.zhimg.com/80/v2-2f1ad5749e4432d11e777cf24b655da8_720w.jpg" alt></p>
-<p>LN 针对单个训练样本进行，不依赖于其他数据，因此可以避免 BN 中受 mini-batch 数据分布影响的问题，可以用于小mini-batch场景、动态网络场景和 RNN，特别是自然语言处理领域。此外，LN 不需要保存 mini-batch 的均值和方差，节省了额外的存储空间。</p>
-<p>但是，BN 的转换是针对单个神经元可训练的——不同神经元的输入经过再平移和再缩放后分布在不同的区间，而 LN 对于一整层的神经元训练得到同一个转换——所有的输入都在同一个区间范围内。如果不同输入特征不属于相似的类别（比如颜色和大小），那么 LN 的处理可能会降低模型的表达能力。</p>
-<h3 id="Instance-Normalization"><a href="#Instance-Normalization" class="headerlink" title="Instance Normalization"></a>Instance Normalization</h3><p><img src="/p/6d2e/ICSN2.png" style="zoom:50%;"></p>
-<p>IN适用于生成模型中，比如图片风格迁移。因为图片生成的结果主要依赖于某个图像实例，更适合对单个像素有更高要求的场景。</p>
-<h3 id="Group-Normalization"><a href="#Group-Normalization" class="headerlink" title="Group Normalization"></a>Group Normalization</h3><p><img src="/p/6d2e/ICSN3.png" style="zoom:50%;"></p>
-<p>Kaiming He的论文中以图片的形式说明了四个的区别，Group介于IN和LN之间。</p>
-<p>WN和CN跳过。</p>
-<p>Normalizaiton的有效性可以参考文前的参考链接。</p>
-]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
-      <tags>
-        <tag>机器学习</tag>
-        <tag>Normalization</tag>
+        <tag>SqueezeNet</tag>
       </tags>
   </entry>
   <entry>
@@ -323,9 +227,177 @@ L_{robust}=\sum_{l=2}^6\alpha_l\sum(|F^l(x)-F^l_{gt}(x)|+\epsilon)^q</script><p>
       </tags>
   </entry>
   <entry>
+    <title>C++ &amp; STL</title>
+    <url>/p/d937.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="C-amp-STL-等相关整理"><a href="#C-amp-STL-等相关整理" class="headerlink" title="C++ &amp; STL 等相关整理"></a>C++ &amp; STL 等相关整理</h1><h2 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h2><h3 id="using"><a href="#using" class="headerlink" title="using"></a>using</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> ... = ...;</span><br><span class="line"><span class="comment">// example</span></span><br><span class="line"><span class="keyword">using</span> ll = <span class="keyword">long</span> <span class="keyword">long</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br></pre></td></tr></table></figure>
+<p>在语法的别名声明，using的使用类似于typedef，但用法更为精妙。</p>
+<h3 id="string"><a href="#string" class="headerlink" title="string"></a>string</h3><h4 id="stoi"><a href="#stoi" class="headerlink" title="stoi"></a>stoi</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">stoi</span> <span class="params">(<span class="keyword">const</span> string&amp;  str, <span class="keyword">size_t</span>* idx = <span class="number">0</span>, <span class="keyword">int</span> base = <span class="number">10</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">stoi</span> <span class="params">(<span class="keyword">const</span> wstring&amp; str, <span class="keyword">size_t</span>* idx = <span class="number">0</span>, <span class="keyword">int</span> base = <span class="number">10</span>)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>stoi()的输入要不为空，否则可以使用atoi(().c.str())</p>
+<h4 id="sstream"><a href="#sstream" class="headerlink" title="sstream"></a><a href="https://www.cplusplus.com/reference/sstream/">sstream</a></h4><p>istringstream类用于执行C++风格的字符串流的输入操作，支持&gt;&gt;;</p>
+<p>ostringstream类用于执行C++风格的字符串流的输出操作，支持&lt;&lt;；</p>
+<p>stringstream类同时可以支持C++风格的串流的输入输出操作，同时支持&gt;&gt;和&lt;&lt;；</p>
+<p>即 stringstream = istringstream + ostringstream。</p>
+<h2 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h2><p><a href="https://www.cnblogs.com/biyeymyhjob/archive/2012/07/22/2603525.html">不错的博客链接</a></p>
+]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>syntax</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Internal Covariate Shift &amp; Normalization</title>
+    <url>/p/6d2e.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://zhuanlan.zhihu.com/p/33173246">参考链接1</a></p>
+<p><a href="https://blog.csdn.net/sinat_33741547/article/details/87158830">参考链接2</a></p>
+<h2 id="Interal-Covariate-Shift"><a href="#Interal-Covariate-Shift" class="headerlink" title="Interal Covariate Shift"></a>Interal Covariate Shift</h2><blockquote>
+<p>The term <strong>interal covariate shift</strong> comes from the paper <a href="https://arxiv.org/abs/1502.03167">Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift</a>.</p>
+<p>The authors’ precise definition is:</p>
+<blockquote>
+<p>We define Internal Covariate Shift as the change in the distribution of network activations due to the change in network parameters during training.</p>
+</blockquote>
+<p>In neural networks, the output of the first layer feeds into the second layer, the output of the second layer feeds into the third, and so on. When the parameters of a layer change, so does the distribution of inputs to subsequent layers.</p>
+<p>These shifts in input distributions can be problematic for neural networks, especially deep neural networks that could have a large number of layers.</p>
+<p><a href="https://machinelearning.wtf/terms/batch-normalization/">Batch normalization</a> is a method intended to mitigate internal covariate shift for neural networks</p>
+</blockquote>
+<p>简单的说，Interal Covariate Shift(后面简称ICS)是在网络训练过程中，由于前面层中的网络参数不断更新而导致的网络输入的分布不均匀的现象。网络层的序列化意味着后续网络的输入为前面网络的输入，而由于网络参数的更新，对于原始相同的输入，其经过每一层后的输出都会变化。</p>
+<p>机器学习的一个重要假设就是数据的<strong>独立同分布(Independent and identically distributed，后面简称为iid)</strong>，<del>虽然这并不可能</del>。即使做不到idd，实际上很多机器学习的算法，例如<strong>逻辑回归</strong>，<strong>神经网络</strong>以然可以在非iid的数据上训练得到不错的数据，但很明显，iid可以简化模型训练，加快训练和提升预测能力。对这个概念的理解可以参考统计机器学习中的<strong>Covariate Shift</strong>，从概率的角度上就是，条件概率相同，但边缘概率不同，<del>甚至更难理解了。</del>再赘述一句理解的话，网络加深，网络参数不断更新，经过多次线性或者非线性变化，对于其中的某一层(不要抬杠的选第一层)，它得到的输入都不一样的，即便在第一层输入相同的数据，但是最终的分类标签却还是一致的，那么这些数据就不再是iid了。</p>
+<p>这会导致一些问题：</p>
+<ul>
+<li>前面的网络需要不断的适应新的输入数据，降低学习率</li>
+<li>后面的网络的输入的变化可能导致前面的网络陷入饱和区，训练过早停止</li>
+<li>既然每层的更新是会直接或间接影响到其他层的，那么每一层的学习策略就不能那么“随意”，应该非常的”谨慎“，实际上，这种”谨慎“也不是那么可控的。</li>
+</ul>
+<h2 id="Whitening"><a href="#Whitening" class="headerlink" title="Whitening"></a>Whitening</h2><p>为了得到iid的数据，因此在数据送入模型之前，会经过数据预处理阶段，因此白化的目的就在于得到iid的数据。</p>
+<ul>
+<li>去除特征之间的相关性—&gt; 独立；</li>
+<li>使得所有特征具有相同的均值和方差 —&gt; 同分布</li>
+</ul>
+<p>PCA就是一种典型的方法。<a href="http://ufldl.stanford.edu/tutorial/unsupervised/PCAWhitening/">PCA Whitening</a></p>
+<h2 id="Normalization"><a href="#Normalization" class="headerlink" title="Normalization"></a>Normalization</h2><p>但是，白化的计算成本太高，于是有了normalization方法，可以简化计算过程，又可以使数据尽可能保留原始的数据表达能力。normalization这种方式，实际上并不是直接去解决ICS问题，更多的是面向梯度消失等问题，去加速网络收敛的。而且，均值方差相等与同分布不是一个概念。</p>
+<h3 id="Normalization-Framework"><a href="#Normalization-Framework" class="headerlink" title="Normalization Framework"></a>Normalization Framework</h3><script type="math/tex; mode=display">
+\hat{x} = f(g*\frac{x-\mu}{\sigma} + b) \notag</script><p>通常的变换框架如上所示，实际上就是做了个shift和缩放转换到(0,1)正态分布，随后再进行reshift和rescale，最终转换成了 ($b$, $g^2$) 的分布。这里的reshift和rescale参数是可以学习的，而不是固定的(0,1)，很显然，因为输入范围本身就不可能确定为(0,1)，可学习的re参数也更符合底层的学习能力。</p>
+<p>与白化相比，实际差距还是很大的。</p>
+<h3 id="Batch-Normalization"><a href="#Batch-Normalization" class="headerlink" title="Batch Normalization"></a>Batch Normalization</h3><p><img src="https://pic1.zhimg.com/80/v2-13bb64b6122e98421ea3528539c1bffc_720w.jpg" alt></p>
+<p>其规范化针对单个神经元进行，利用网络训练时一个 mini-batch 的数据来计算该神经元 <img src="https://www.zhihu.com/equation?tex=x_i" alt="[公式]"> 的均值和方差,因而称为 Batch Normalization。</p>
+<p><img src="/p/6d2e/ICSN1.png" style="zoom:50%;"></p>
+<p>BN 可以看做一种纵向的规范化。由于 BN 是针对单个维度定义的，因此标准公式中的计算均为 element-wise 的。</p>
+<p>BN 独立地规范化每一个输入维度 <img src="https://www.zhihu.com/equation?tex=x_i" alt="[公式]"> ，但规范化的参数是一个 mini-batch 的一阶统计量和二阶统计量。这就要求 每一个 mini-batch 的统计量是整体统计量的近似估计，或者说每一个 mini-batch 彼此之间，以及和整体数据，都应该是近似同分布的。分布差距较小的 mini-batch 可以看做是为规范化操作和模型训练引入了噪声，可以增加模型的鲁棒性；但如果每个 mini-batch的原始分布差别很大，那么不同 mini-batch 的数据将会进行不一样的数据变换，这就增加了模型训练的难度。</p>
+<p>因此，BN 比较适用的场景是：每个 mini-batch 比较大，数据分布比较接近。在进行训练之前，要做好充分的 shuffle. 否则效果会差很多。</p>
+<p>另外，由于 BN 需要在运行过程中统计每个 mini-batch 的一阶统计量和二阶统计量，因此不适用于动态的网络结构 和 RNN 网络。</p>
+<h3 id="Layer-Normalization"><a href="#Layer-Normalization" class="headerlink" title="Layer Normalization"></a>Layer Normalization</h3><p><img src="https://pic1.zhimg.com/80/v2-2f1ad5749e4432d11e777cf24b655da8_720w.jpg" alt></p>
+<p>LN 针对单个训练样本进行，不依赖于其他数据，因此可以避免 BN 中受 mini-batch 数据分布影响的问题，可以用于小mini-batch场景、动态网络场景和 RNN，特别是自然语言处理领域。此外，LN 不需要保存 mini-batch 的均值和方差，节省了额外的存储空间。</p>
+<p>但是，BN 的转换是针对单个神经元可训练的——不同神经元的输入经过再平移和再缩放后分布在不同的区间，而 LN 对于一整层的神经元训练得到同一个转换——所有的输入都在同一个区间范围内。如果不同输入特征不属于相似的类别（比如颜色和大小），那么 LN 的处理可能会降低模型的表达能力。</p>
+<h3 id="Instance-Normalization"><a href="#Instance-Normalization" class="headerlink" title="Instance Normalization"></a>Instance Normalization</h3><p><img src="/p/6d2e/ICSN2.png" style="zoom:50%;"></p>
+<p>IN适用于生成模型中，比如图片风格迁移。因为图片生成的结果主要依赖于某个图像实例，更适合对单个像素有更高要求的场景。</p>
+<h3 id="Group-Normalization"><a href="#Group-Normalization" class="headerlink" title="Group Normalization"></a>Group Normalization</h3><p><img src="/p/6d2e/ICSN3.png" style="zoom:50%;"></p>
+<p>Kaiming He的论文中以图片的形式说明了四个的区别，Group介于IN和LN之间。</p>
+<p>WN和CN跳过。</p>
+<p>Normalizaiton的有效性可以参考文前的参考链接。</p>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>Normalization</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Typora+Gitee 图床</title>
+    <url>/p/377e.html</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="c2f6eb897c6897d6f5a2777268a36b524acb76fb396ee010884624c2f72b57cf">6313153f3df6eb6824c31dfc042073d9ccfefb92f71156eeed8cf0d6e89f9af1cd917535561d8f7748a723ec5e29befbd4bd7c9480eb6ba12c94adfe891e68aa2376551a2485a887db394b3da1830e8ca8bca6ee66097e06472db890ea93692948fad949a522269b58509224655e29d8c3fd5e5ef12dffc08e694dcacaeb304bbfdc9a3f2d300af5e4c2d73670a83f2eb307d462f4941db179b3dd8dfdff505f4f9d01f855be7e4d3df50ed64a3d579245c2cfae34d3468458fb55b29180c5e1ba43ae523b8d5ddfec1c34f226a4eb60c3764edd53b6709484fedcc923468f2eada4bf783f87289abf833b2ddb558ca5ae584df78052f9b4d1b41492b99a9d7e9b90ebe2b1613bff16c3d6b9bc2167cea0890b1375b4d2ae3070a54a60cd9c17ca98bcbf10416090e789a9384fde250d125dcf89146c61db5834ae6302880b2d5a0c90bb3c58d3833dac246e4f983274db975a398c350d869b4d33173261ad3138e7b0ac7c190e25e139f7f3b108b1a3db0f5d3495d5a53e616c3f168e3ca87fc5ae2443bd22cacaa8760cbe878f8a0a80304d87e800c9e75a41cdd5eb423eee9787cb3dce3ccc99675fc897d40a658c8f29d29121da1b157b2df098f58bdc94e9f8c74e7537cf77e8539bb7d4451105d245dd3fe5113f638cfcfc1abdbe477c86a5ebc51beb76c6d8e72839a19d9783532201a439d5214d414484f973a816e58988467fff68714db982f967457377be0d444d6a0de22e7cfa55be62ca4ee3dc5e6edc75b8cc84217a28e49d209e27343a39e76cb8ac360f0c285cdb096a5514fe4e18a3c79423a1515cf7e6bb1c9d66971a7a2a94fbe6e9d5e477147ea7c958c1d9e3ea403c95f35a868765fce7495b506ff269e1dc79f23e8637024572d7cb5aac36aeb792d92064c97e8e87793dfb65662410442cf6cbf231c3a697ab923a8da8124c80e21488f417db05008e3316f01cccfec1404f0d5176ded4d8db0af79f0b0547e2421ddf3b0e61b22795d8d33919c08807f90534a9746df32aa06c640a0a25852ba5e78d0a07540c04aa4d2ddf486a5076a93feb58029c22a8f7d52fc6eb54973f7879b848d03db98374f01fbbe55416ecf5b58dcc6d0e296a09acdc7e2beb0bc48114fb69577e6fb1269b5e2b5e43bbc17ec43b3b59dc6107cc3982a6450685be9bf7060f822fefa0fffa6977ca32cc032cc710fe5142fb840854e356082090d9e6b588eb7f4b510400ae17e59a34cce3ee2e3c6511f9f0cfca7b093ddbbdbe1ad9df861b7935537f2a19663e8f029c37e8dc6df06ce1f569bf3a27ebbe44b1b9545dce92bacdfe7c31b53af23ad119260ed0584b944f42aa32f54559495c9051274001dcb59debbfdd63f4b44f95ff2e6cd72117eb31cd3d57c2e6ee3c0581986013f61a660543f70f6f045e42446ef8a28a8f9ee960e36ee227a5fa15675808b78d5a04777a2677e68b7698d965cde6c2ef70d0a69e7fe99b00d0ab8cc1c6309555b8eea7970dea27d46ed4bb40163eec232ec63e1bb33ace76416de008df4f7758549d9a3983a31f9adc3c4484b26e368e536ed4f78c812f871c8fbb6f04d6676e885e916f55d4ef0ed04440fb3adb75d1bea7ac39c34740f7dd8820f20fa8d3ca8ce5ab13988d747e6ac4e72963e9cbba0aa9bd25d5c466b6dbb5b2476536e9984b9e13113a3842c23e57f75faf645722783140e16253f98a9e23875c0d5d59f33a3af3d5b664bbee23740e6c6b2cdc8a8be015b674146ae82582e25b539f1857bf52374b84e4c98f5caa99c3096090859848fb58d30a5290f1f5b21b268e8c0ba9cdcbff14d5f9b4d3d6e198e72776ecb6bdcc47b6126a5f4a878fad11c0699811d9bdda501d428ef4130ea46c034f22299f68b8388cc62a0fab58f726e2ff8052abd7976701043f56e258675036ae13663c88ad2caaece150b83e86c1b69b326179726c85532ba215925afb6fab972e3e9486cb52929dbfe2da9706373a7ba81164785872fd0ff847d5ba956a37db82585993d08c227ef1cfdc720cae86932714926d9a687db8ced69ff23edfa6382d8f698b0e258871cc63d1982af48bd8a85b5cdd9fd74d1ed9557390051dd4e5e87ada1f7a6fb13998461f81ce9dadeab6b9345adc6f0ce6022c2009e97fdd892832e3397c6b0e2351533a938554f91800f38533d8b3ff409a6adc540eec14755e713cb99a93ad7af2308b381a56d129c8d7686aef93d39dd9e2e546ecbbea1dc1769deb3720f1a2fe2da03bc08ac0ae545cb2799ab0a7ca73bc9cfed7e5fdbfe77180d868a79c09e58f6c2ad86c3dba4b6fbe5490f6048fc4861880b24df28d9908ac1c1a74de6cf85313cf3383f824b4f70224b05e4301984e2dadfa775d35ba5b73ec318c164aaaeb98049f1670c47f4e838d22848483da9ba5cc6353b794172f86cff91b085282be1787945294ec2439349ef891af93ae1d96bcc644c86b4e994192e38322936d36c7159cd85d7a4b167429f6e0186fd9ef3a3415ff1b2d60c88ced0398d320a102958b8668f25ade756992fdb7dc4457b9d121611280e5ad858253f9c837a0feb2594fe4e0f45dc004f465ff70aa987d6b</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>配置</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Devon</title>
+    <url>/p/5a3.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>用于学习光流的可形变体网络</p>
+<h2 id><a href="#" class="headerlink" title=" "></a> </h2>]]></content>
+      <categories>
+        <category>光流</category>
+      </categories>
+      <tags>
+        <tag>双帧光流</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>FastFlowNet</title>
+    <url>/p/a2c4.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>代码开源了个寂寞，不过无所谓，只是看看他做了什么而已。<a href="https://github.com/ltkong218/FastFlowNet">官方链接</a></p>
+<p>非常 amazing 的地方在于 FastFlowNet 只包含 1.37M 的参数，并且 fps 很不错。</p>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>FastFlowNet 仍然使用了广泛应用的 coarse-to-fine 策略，此外还有以下几个创新点。</p>
+<ul>
+<li><p>使用了一个 head enhanced pooling pyramid (HEPP) 特征提取器，在减少参数的同时增强了高分辨率的金字塔特征。</p>
+</li>
+<li><p>引入了一个 center dense dilated correlation (CDDC)层 用于构建紧凑的代价体，并且可以保持较大的搜索半径下减少计算量。</p>
+</li>
+<li><p>在每个金字塔层中植入了一个有效的 shuffle block decoder (SBD) 用于加速光流估计，不过边缘精度有所下降。但是相比同样精度的网络，只需要 $1/10$ 的计算量。</p>
+</li>
+</ul>
+<p>FastFlowNet 只含有1.37M 个参数，对于一个分辨率为 $1024\times436$ 的Sintel图片，在单个 GTX 1080Ti 下可以做到 90 FPS，嵌入JetSon TX2 GPU 可以做到 5.7 FPS。</p>
+<h2 id="INTRODUCTION-amp-amp-RELATED-WORK"><a href="#INTRODUCTION-amp-amp-RELATED-WORK" class="headerlink" title="INTRODUCTION&amp;&amp; RELATED WORK"></a>INTRODUCTION&amp;&amp; RELATED WORK</h2><p>这部分说的很牛逼，后面写论文可以参考。</p>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><h3 id="OverView-of-the-Approach"><a href="#OverView-of-the-Approach" class="headerlink" title="OverView of the Approach"></a>OverView of the Approach</h3><p><img src="/p/a2c4/FastFlowNet1.png" style="zoom:80%;"></p>
+<p>给定两个时间域相邻的输入图片$I_1,I_2 \in \mathbb{R}^{H \times W \times 3}$, 提出的 FastFlowNet 模型将会利用由粗到细的残差结构来逐渐估计精化后的光流 $F^{l} \in \mathbb{R}^{H^l \times W^l \times 2}, l = 6,5,\cdots,2.$ 但是通过修改去减少参数和计算代价来加速推理。为此，首先替换了 PWC-Net 网络中的对偶卷积特征金字塔为 头增强的池化金字塔 (head enhanced pooling pyramid) 来增强高精度分辨率的金字塔特征和减少模型的尺寸。在此基础上，提出了一种新得中心密集扩张相关层(center dense dilated correlation layer)，在保证大的搜索半径得前提下，构造紧凑得代价体。最后，在每个金字塔层使用新的shuffle 块译码器 (shuffle block decoders) 来回归计算光流。模型的结构细节如下所示。</p>
+<p><img src="/p/a2c4/FastFlowNet2.png" style="zoom:60%;"></p>
+<p>Pool: average pooling</p>
+<p>Fconv5_2, Fconv5_3, Fconv5_4: convolutions with group = 3</p>
+<p>Shuffle: channel shuffle operation</p>
+<p>除了 upconv6 和 fconv5_7 的卷积层都后接 LeakyRELU 激活函数</p>
+<h3 id="Head-Enhanced-Pooling-Pyramid"><a href="#Head-Enhanced-Pooling-Pyramid" class="headerlink" title="Head Enhanced Pooling Pyramid"></a>Head Enhanced Pooling Pyramid</h3><p>传统的方法在光流估计上应用图像金字塔来加速优化和处理大尺度位移。SpyNet 转换这种经典的范式并首次引进了基于图像金字塔的池化用于加深模型。因为原始图像对光影变换时敏感的，因此固定的池化金字塔对噪声，例如阴影和反射等是不足的。PWC-Net， LiteFlowNet,使用可学习的特征金字塔替代图像金字塔，带来了很大的改进。具体地说，在减少空间尺寸的同时逐步扩张特征通道数来提取鲁棒的匹配特征。</p>
+<p>低分辨率下的较大的通道数会导致大量的参数，对于由粗到细的方案来说可能是冗余的，因为低层的金字塔特征可能只会对估计粗糙的流域有用。因此，模型结合了高层的特征金字塔结构和低层的池化金字塔兼顾两个优势。另一方面，高分辨率下的金字塔特征在PWC-Net中相比较浅，因为每个金字塔层只包含两个卷积核大小为 $3 \times 3$ 的卷积层，因此其感受野较小。因此模型花费了一点额外代价在高层添加了一个额外的卷积层来增强金字塔特征。通过平衡不同尺度下的计算，文章提出了HEPP，和 FlowNetC, PWC-Net 和 LiteFlowNet 一样， HEPP会生成 6个金字塔层从 $1/2$ 分辨率(第一层) 到 $1/64$ 分辨率(第六层)，缩放因子为 2。</p>
+<h3 id="Center-Dense-Dilated-Correlation"><a href="#Center-Dense-Dilated-Correlation" class="headerlink" title="Center Dense Dilated Correlation"></a>Center Dense Dilated Correlation</h3><p>现代的光流估计架构中的一个重要的步骤就是通过基于卷积层的内积来计算特征一致性。对于金字塔 $l$ 层的两个特征 $f^l_1, f^l_2$ ，类似很多由粗到细的残差方法，首先使用了基于 warping 的双线性插值，根据 $2\times$前面的流场的上采样的结果 $up_2(F^{l+1})$ 对第二个特征 $f^l_2$ 进行 warp。warp 的目标特征 $f_{warp}^l$ 可以极大的减少由于大尺度运动带来的位移，这将有益于减少搜索区域和简化任务为估计相对较小的残差流。最近的工作 PWC-Net，LiteFlowNet 通过在局部方形区域内相关源特征和对应的warped后的目标特征构建代价体，可公式化为：</p>
+<script type="math/tex; mode=display">
+c^l(x,d)=f^l_1(x)\cdot f_{warp}^l(x+d)/N, d\in [-r, r] \times[-r, r]</script><p>$x, d$ 代表空间和偏移坐标，$N$ 为输入特征的长度，$r$ 为搜索半径，$\cdot$ 代表点积。</p>
+<p>已有的工作PWC-Net等已经表明，在构建代价体时增加搜索半径可以在训练和测试中降低 EPE 误差，尤其对于大位移的情况。但是代价体的特征通道时搜索半径的平方级，后续的解码器网络的计算复杂度将会变成四次方。</p>
+<p><img src="/p/a2c4/FastFlowNet3.png" style="zoom:60%;"></p>
+<p>如图 $a$，很多的光流网络设置 $r = 4$，庞大的计算量阻碍了低功耗应用的发展。一种简单的方法就是减小半径  $r$。例如设置 $r = 3$， 如图 $b$。从而使代价体特征从 81 减少到 49. 但是这种办法的代价是牺牲了感知范围和精度。</p>
+<p>受到 DeepLabv3 的 atrous spatial pyramid pooling(ASPP) 的启发，提出了CDDC层在大运动区域内下采样网格点时，在中心周围密集搜索格点，如图 $c$ 所示。</p>
+<p>与 ASPP 使用并行 atrous 卷积来获取多尺度上下文信息不同，提出的 CDDC 旨在减少构建大半径代价体时的计算量。在 FastFlowNet 中，会输出 53 个特征通道，与传统的 $r=3$ 设置类似。动机在于残差流会更关注小运动。实验证明 CDDC 方法比传统的压缩方法更优。</p>
+<h3 id="Shuffle-Block-Decoder"><a href="#Shuffle-Block-Decoder" class="headerlink" title="Shuffle Block Decoder"></a>Shuffle Block Decoder</h3><p>在构建代价体后，由粗到细的模型通常会将上下文特征，代价体量和上采样的前一个光流结果 concatenate起来，作为后面解码器的输入。在每一个金字塔层，解码器会占用整个网络的大部分参数和计算量。因此，更好的速度和精度的权衡时至关重要的。</p>
+<p>PWC-Net表明，稠密连接的流解码器在对 FlyingThing3D 数据集进行微调后，可以提高解码器的精度，但代价是增加了模型大小和计算量。LiteFlowNet 使用了顺序连接的流估计器，并且显示出了更好的性能。为了达到两种方案的权衡，FDFlowNet使用了部分全连接结构。这些方法都不能在嵌入式系统中进行实时的推理。</p>
+<p>由于 CDDC 构建的紧致代价体，可以直接将解码器网络的最大通道数从 128 减少到 96个。为了进一步减少计算量和模型的大小，将中间的三个96通道的卷积转换为组卷积，然后进行通道 shuffle 操作，称之为 Shuffle Block。与ShuffleNet 作为骨干网络不同的是，shuffle 译码器用于光流的回归。</p>
+<p>每个解码器网络包含了三个 $group = 3$ 的 shuffle 块，这有效的减少了计算量，但是精度略有下降。</p>
+<h3 id="Loss-Function"><a href="#Loss-Function" class="headerlink" title="Loss Function"></a>Loss Function</h3><p>由于 FastFlowNet 采用了 和 FlowNet 和 PWC-Net 相同的金字塔结构，因此采用了同样的多尺度 $L2$ 损失函数用于训练。</p>
+<script type="math/tex; mode=display">
+L_{epe}=\sum_{l = 2}^6\alpha_l\sum|F^l(x)-F^l_{gt}(x)|_2</script><p>这里 $|\cdot|_2$ 计算预测光流和真实光流之间的 $L2$ 范数。</p>
+<p>在有真实场景结构的数据集上进行微调时，例如 KITTI 数据集，使用了如下的鲁棒损失函数:</p>
+<script type="math/tex; mode=display">
+L_{robust}=\sum_{l=2}^6\alpha_l\sum(|F^l(x)-F^l_{gt}(x)|+\epsilon)^q</script><p>这里的 $|\cdot|$ 表示 $L1$ 范数，$\epsilon = 0.01$ 表示一个很小的常数，$q \lt 1$ 使的对大的异常值更加鲁棒。为了与以前的方法(FlowNet, SPyNet, PWC-Net, LiteFlowNet)公平对比，将公式(2)(3)中的权重设置为$\alpha_6=0.32,\alpha_5=0.08,\alpha_4=0.02,\alpha_3=0.01,\alpha_2=0.005$.</p>
+<h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><h3 id="Implements-Details"><a href="#Implements-Details" class="headerlink" title="Implements Details"></a>Implements Details</h3><p>为了将 FastFlowNet与其他网络进行对比，遵循了 FlowNet2 中提出的两阶段训练策略。真实的光流值除以20，并且下采样作为不同层的监督信号。由于最终的预测的分辨率为 $1/4$ ,因此使用了双线性插值来获得全分辨率的光流。在训练和调试阶段，使用了和 FlowNet 同样的数据增强方式，包括镜像翻转，平移，旋转，缩放，挤压和颜色抖动。实验在PyTorch环境下实现，并且在装有 4 张 Nvidia GTX 1080 Ti GPU卡的机器上进行。为了比较不同的光流模型在移动设备上的性能，进一步在嵌入式的Jetson TX2 GPU上测试了推理时间。</p>
+<p>首先在 FlyingChairs 数据集上训练，使用 $S_{short}$ 学习计划。初始学习率为 $1e^{-4}$，并在30w, 40w, 50w次迭代的时候衰减一半。在数据增强阶段随机裁剪出 $320 \times 448$ 的 patch，并采用 $batch-size = 8$ 。模型在 FlyingThings3D 数据集上进行微调，并采用 $S_{fine}$ 学习计划。学习率初始化为 $1e^{-5}$, 并且在 20w, 30w, 40w迭代的时候衰减一半。随机切割尺寸为 $384 \times 768$，并且 $batch-size = 4$。 使用 $Adam$ 优化器和多尺度的 $L2$ 损失函数。在 Sintel 和 KIITI 的训练集结果如下所示。</p>
+<p><img src="/p/a2c4/FastFlowNet4.png" style="zoom:60%;"></p>
+<h3 id="Ablation-study"><a href="#Ablation-study" class="headerlink" title="Ablation study"></a>Ablation study</h3><p>暂时略，需要时再补充</p>
+<h3 id="MPI-Sintel"><a href="#MPI-Sintel" class="headerlink" title="MPI Sintel"></a>MPI Sintel</h3>]]></content>
+      <categories>
+        <category>光流</category>
+      </categories>
+      <tags>
+        <tag>双帧光流</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SCV</title>
     <url>/p/1f41.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https: //github.com/zacjiang/scv">代码已开源</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://github.com/zacjiang/scv">代码已开源</a></p>
 <p>RAFT outperforms other approaches by first calculating all-pairs similarity and then performing iterations at a high resolution.The price is that it inurs significantly larger computation burden.(FastFlowNet)</p>
 <h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>SOTA的光流估计网络需要高分辨率下的稠密的Correlation Volume来衡量逐像素的位移，虽然稠密的Correlation Volume有助于准确的光流估计，但是繁重的计算和内存使用也不利于模型的训练和部署。这篇论文说明了稠密的Correlation Volume表示是冗余的，只需要其中的一小部分元素就可以实现精确的光流估计。在此基础上，论文提出了一个可以替代的位移表示方法—Sparse Correlation Volume，通过直接计算fmap1在fmap2上最接近的k个匹配来构建，并存储在一个稀疏的数据结构中。实验说明了该方法可以显著降低计算成本和内存占用，并且依然保持较高的精度。</p>
 <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>基于直觉：img1的某一个特征向量只会与img2的某一部分特征向量高度相关，因此在稠密的Correlation Volume表示中，会有大量的冗余，对于相关度较小的特征并不会优化预测结果。如下图所示。</p>
@@ -439,28 +511,6 @@ L = \sum_{i = 1}^N\gamma^{N - i}||f_i-f_{gt}||_1</script><p>权重因子: $\gamm
       </categories>
       <tags>
         <tag>双帧光流</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Typora+Gitee 图床</title>
-    <url>/p/377e.html</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="c2f6eb897c6897d6f5a2777268a36b524acb76fb396ee010884624c2f72b57cf">6313153f3df6eb6824c31dfc042073d9ccfefb92f71156eeed8cf0d6e89f9af1cd917535561d8f7748a723ec5e29befbd4bd7c9480eb6ba12c94adfe891e68aa2376551a2485a887db394b3da1830e8ca8bca6ee66097e06472db890ea93692948fad949a522269b58509224655e29d8c3fd5e5ef12dffc08e694dcacaeb304bbfdc9a3f2d300af5e4c2d73670a83f2eb307d462f4941db179b3dd8dfdff505f4f9d01f855be7e4d3df50ed64a3d579245c2cfae34d3468458fb55b29180c5e1ba43ae523b8d5ddfec1c34f226a4eb60c3764edd53b6709484fedcc923468f2eada4bf783f87289abf833b2ddb558ca5ae584df78052f9b4d1b41492b99a9d7e9b90ebe2b1613bff16c3d6b9bc2167cea0890b1375b4d2ae3070a54a60cd9c17ca98bcbf10416090e789a9384fde250d125dcf89146c61db5834ae6302880b2d5a0c90bb3c58d3833dac246e4f983274db975a398c350d869b4d33173261ad3138e7b0ac7c190e25e139f7f3b108b1a3db0f5d3495d5a53e616c3f168e3ca87fc5ae2443bd22cacaa8760cbe878f8a0a80304d87e800c9e75a41cdd5eb423eee9787cb3dce3ccc99675fc897d40a658c8f29d29121da1b157b2df098f58bdc94e9f8c74e7537cf77e8539bb7d4451105d245dd3fe5113f638cfcfc1abdbe477c86a5ebc51beb76c6d8e72839a19d9783532201a439d5214d414484f973a816e58988467fff68714db982f967457377be0d444d6a0de22e7cfa55be62ca4ee3dc5e6edc75b8cc84217a28e49d209e27343a39e76cb8ac360f0c285cdb096a5514fe4e18a3c79423a1515cf7e6bb1c9d66971a7a2a94fbe6e9d5e477147ea7c958c1d9e3ea403c95f35a868765fce7495b506ff269e1dc79f23e8637024572d7cb5aac36aeb792d92064c97e8e87793dfb65662410442cf6cbf231c3a697ab923a8da8124c80e21488f417db05008e3316f01cccfec1404f0d5176ded4d8db0af79f0b0547e2421ddf3b0e61b22795d8d33919c08807f90534a9746df32aa06c640a0a25852ba5e78d0a07540c04aa4d2ddf486a5076a93feb58029c22a8f7d52fc6eb54973f7879b848d03db98374f01fbbe55416ecf5b58dcc6d0e296a09acdc7e2beb0bc48114fb69577e6fb1269b5e2b5e43bbc17ec43b3b59dc6107cc3982a6450685be9bf7060f822fefa0fffa6977ca32cc032cc710fe5142fb840854e356082090d9e6b588eb7f4b510400ae17e59a34cce3ee2e3c6511f9f0cfca7b093ddbbdbe1ad9df861b7935537f2a19663e8f029c37e8dc6df06ce1f569bf3a27ebbe44b1b9545dce92bacdfe7c31b53af23ad119260ed0584b944f42aa32f54559495c9051274001dcb59debbfdd63f4b44f95ff2e6cd72117eb31cd3d57c2e6ee3c0581986013f61a660543f70f6f045e42446ef8a28a8f9ee960e36ee227a5fa15675808b78d5a04777a2677e68b7698d965cde6c2ef70d0a69e7fe99b00d0ab8cc1c6309555b8eea7970dea27d46ed4bb40163eec232ec63e1bb33ace76416de008df4f7758549d9a3983a31f9adc3c4484b26e368e536ed4f78c812f871c8fbb6f04d6676e885e916f55d4ef0ed04440fb3adb75d1bea7ac39c34740f7dd8820f20fa8d3ca8ce5ab13988d747e6ac4e72963e9cbba0aa9bd25d5c466b6dbb5b2476536e9984b9e13113a3842c23e57f75faf645722783140e16253f98a9e23875c0d5d59f33a3af3d5b664bbee23740e6c6b2cdc8a8be015b674146ae82582e25b539f1857bf52374b84e4c98f5caa99c3096090859848fb58d30a5290f1f5b21b268e8c0ba9cdcbff14d5f9b4d3d6e198e72776ecb6bdcc47b6126a5f4a878fad11c0699811d9bdda501d428ef4130ea46c034f22299f68b8388cc62a0fab58f726e2ff8052abd7976701043f56e258675036ae13663c88ad2caaece150b83e86c1b69b326179726c85532ba215925afb6fab972e3e9486cb52929dbfe2da9706373a7ba81164785872fd0ff847d5ba956a37db82585993d08c227ef1cfdc720cae86932714926d9a687db8ced69ff23edfa6382d8f698b0e258871cc63d1982af48bd8a85b5cdd9fd74d1ed9557390051dd4e5e87ada1f7a6fb13998461f81ce9dadeab6b9345adc6f0ce6022c2009e97fdd892832e3397c6b0e2351533a938554f91800f38533d8b3ff409a6adc540eec14755e713cb99a93ad7af2308b381a56d129c8d7686aef93d39dd9e2e546ecbbea1dc1769deb3720f1a2fe2da03bc08ac0ae545cb2799ab0a7ca73bc9cfed7e5fdbfe77180d868a79c09e58f6c2ad86c3dba4b6fbe5490f6048fc4861880b24df28d9908ac1c1a74de6cf85313cf3383f824b4f70224b05e4301984e2dadfa775d35ba5b73ec318c164aaaeb98049f1670c47f4e838d22848483da9ba5cc6353b794172f86cff91b085282be1787945294ec2439349ef891af93ae1d96bcc644c86b4e994192e38322936d36c7159cd85d7a4b167429f6e0186fd9ef3a3415ff1b2d60c88ced0398d320a102958b8668f25ade756992fdb7dc4457b9d121611280e5ad858253f9c837a0feb2594fe4e0f45dc004f465ff70aa987d6b</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-      <categories>
-        <category>配置</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
       </tags>
   </entry>
 </search>
