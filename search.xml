@@ -509,7 +509,7 @@ L = \sum_{i = 1}^N\gamma^{N - i}||f_i-f_{gt}||_1</script><p>权重因子: $\gamm
 <p>此外一些觉得不错的讲解，视频等等:</p>
 <ul>
 <li><a href="https://www.youtube.com/watch?v=kSGhpsme2mo">https://www.youtube.com/watch?v=kSGhpsme2mo</a></li>
-<li></li>
+<li><a href="https://yinguobing.com/separable-convolution/">https://yinguobing.com/separable-convolution/</a></li>
 </ul>
 <h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>提出了一类可以i用于移动和嵌入式视觉应用的高校模型，称为 <strong>MobileNets</strong>。MobileNets基于流线型架构，使用<strong>深度可分离卷积</strong>构建轻量级深度神经网络。引入了两个简单的全局超参数，可以有效的权衡延迟(<strong>latency</strong>)和准确性(<strong>accuracy</strong>)。这些超参数允许模型构建者根据问题的约束条件为他们的应用选择合适的模型尺寸。在 ImageNet 分类上，进行了大量的资源和精度权衡实验，并与其他流行的模型进行对比，模型都表现出了很强的性能。最后，在广泛的应用和示例中演示了 MobileNets 的有效性，包括目标检测，细粒度分类，人脸属性和大规模地理定位。</p>
 <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>自从AlexNet 在 ImageNet 挑战赛(ILSVRC 2012) 上获胜，推广了深度卷积网络以来，卷积神经网络就在计算机视觉中变得无处不在，为了达到更高的精度，整体的趋势就是构建更深的，更复杂的网络。然而，这些提高准确性的改进方法并不一定会在模型规模和运行速度等方面变得高效。在许多现实世界的应用中，例如机器人，自动驾驶汽车，增强现实等，则需要子啊有限计算能力的平台上及时完成识别任务。</p>
@@ -581,7 +581,16 @@ D_K \cdot D_K \cdot \alpha M \cdot \rho D_F \cdot \rho D_F + \alpha M \cdot \alp
     <title>MobileNets v2</title>
     <url>/p/cd8f.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>MobileNetV2-反向残差和线性瓶颈</p>
-<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p><img src="/p/cd8f/MobileNetsv2-1.jpg" alt></p>
+<p>MobileNetV1 中解读了深度可分离卷积，这里不做赘述。在 MobileNetV2 中增加了两个概念(idea) : Linear Bottleneck 和 Inverted Residuals。</p>
+<p>不错的解读:</p>
+<ul>
+<li><a href="https://blog.csdn.net/flyfish1986/article/details/97017017">https://blog.csdn.net/flyfish1986/article/details/97017017</a></li>
+<li><a href="https://www.cnblogs.com/hejunlin1992/p/9395345.html">https://www.cnblogs.com/hejunlin1992/p/9395345.html</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/33075914">https://zhuanlan.zhihu.com/p/33075914</a></li>
+<li><a href="https://www.zhihu.com/question/265709710">https://www.zhihu.com/question/265709710</a></li>
+<li><a href="https://yinguobing.com/bottlenecks-block-in-mobilenetv2/">https://yinguobing.com/bottlenecks-block-in-mobilenetv2/</a></li>
+</ul>
+<h2 id="Linear-Bottlenecks"><a href="#Linear-Bottlenecks" class="headerlink" title="Linear Bottlenecks"></a>Linear Bottlenecks</h2><p><img src="/p/cd8f/MobileNetsv2-1.jpg" alt></p>
 ]]></content>
       <categories>
         <category>轻量化模型</category>
