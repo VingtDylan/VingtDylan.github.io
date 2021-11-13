@@ -16,6 +16,21 @@
       </tags>
   </entry>
   <entry>
+    <title>AcWing1146-新的开始</title>
+    <url>/p/d1bf.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1146-新的开始"><a href="#1146-新的开始" class="headerlink" title="1146. 新的开始"></a><a href="https://www.acwing.com/problem/content/1148/">1146. 新的开始</a></h2><p><img src="/p/d1bf/AcWing-1146-2.png" alt></p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>建立超级源点，添加所有点与源点的边，边权为该点的挖井费用，然后基本的最小生成树。</p>
+<h2 id="AC-code"><a href="#AC-code" class="headerlink" title="AC code"></a>AC code</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">310</span>;</span><br><span class="line"><span class="keyword">int</span> g[N][N];</span><br><span class="line"><span class="keyword">int</span> dist[N];</span><br><span class="line"><span class="keyword">bool</span> st[N];</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">prim</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(dist, <span class="number">0x3f</span>, <span class="built_in"><span class="keyword">sizeof</span></span>(dist));</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> t = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= n; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!st[j] &amp;&amp; (t == <span class="number">-1</span> || dist[j] &lt; dist[t]))&#123;</span><br><span class="line">                t = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        st[t] = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(i) res += dist[t];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= n; j++)&#123;</span><br><span class="line">            dist[j] = <span class="built_in">min</span>(dist[j], g[t][j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> w;</span><br><span class="line">        cin &gt;&gt; w;</span><br><span class="line">        g[<span class="number">0</span>][i] = g[i][<span class="number">0</span>] = w;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)&#123;</span><br><span class="line">            cin &gt;&gt; g[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">prim</span>() &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>AcWing</category>
+      </categories>
+      <tags>
+        <tag>图论</tag>
+        <tag>最小生成树</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>AcWing341-最优贸易</title>
     <url>/p/8fc3.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="341-最优贸易"><a href="#341-最优贸易" class="headerlink" title="341. 最优贸易"></a><a href="https://www.acwing.com/problem/content/343/">341. 最优贸易</a></h2><p><img src="/p/8fc3/AcWing341-2.png" alt></p>
@@ -160,6 +175,20 @@
       </tags>
   </entry>
   <entry>
+    <title>LeetCode-787</title>
+    <url>/p/f5cf.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="743-网络延迟时间"><a href="#743-网络延迟时间" class="headerlink" title="743. 网络延迟时间"></a><a href="https://leetcode-cn.com/problems/network-delay-time/">743. 网络延迟时间</a></h2><p><img src="/p/f5cf/LeetCode-787-2.png" alt></p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>等价于长度最大为 $k + 1$ 的最短路，<strong>bellman-ford</strong>很明显。</p>
+<h2 id="AC-code"><a href="#AC-code" class="headerlink" title="AC code"></a>AC code</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; dist, backup;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findCheapestPrice</span><span class="params">(<span class="keyword">int</span> n, vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; flights, <span class="keyword">int</span> src, <span class="keyword">int</span> dst, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        dist.<span class="built_in">resize</span>(n, inf);</span><br><span class="line">        dist[src] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k + <span class="number">1</span>; i++)&#123;</span><br><span class="line">            backup = dist;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">auto</span> edge : flights)&#123;</span><br><span class="line">                <span class="keyword">int</span> a = edge[<span class="number">0</span>], b = edge[<span class="number">1</span>], c = edge[<span class="number">2</span>];</span><br><span class="line">                dist[b] = <span class="built_in">min</span>(dist[b], backup[a] + c);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dist[dst] == inf ? - <span class="number">1</span>: dist[dst];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>最短路</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LeetCode-882</title>
     <url>/p/f53f.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="882-细分图中的可到达结点"><a href="#882-细分图中的可到达结点" class="headerlink" title="882. 细分图中的可到达结点"></a><a href="https://leetcode-cn.com/problems/reachable-nodes-in-subdivided-graph/">882. 细分图中的可到达结点</a></h2><p><img src="/p/f53f/LeetCode-882-2.png" alt></p>
@@ -175,17 +204,104 @@
       </tags>
   </entry>
   <entry>
-    <title>LeetCode-787</title>
-    <url>/p/f5cf.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="743-网络延迟时间"><a href="#743-网络延迟时间" class="headerlink" title="743. 网络延迟时间"></a><a href="https://leetcode-cn.com/problems/network-delay-time/">743. 网络延迟时间</a></h2><p><img src="/p/f5cf/LeetCode-787-2.png" alt></p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>等价于长度最大为 $k + 1$ 的最短路，<strong>bellman-ford</strong>很明显。</p>
-<h2 id="AC-code"><a href="#AC-code" class="headerlink" title="AC code"></a>AC code</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; dist, backup;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findCheapestPrice</span><span class="params">(<span class="keyword">int</span> n, vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; flights, <span class="keyword">int</span> src, <span class="keyword">int</span> dst, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        dist.<span class="built_in">resize</span>(n, inf);</span><br><span class="line">        dist[src] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k + <span class="number">1</span>; i++)&#123;</span><br><span class="line">            backup = dist;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">auto</span> edge : flights)&#123;</span><br><span class="line">                <span class="keyword">int</span> a = edge[<span class="number">0</span>], b = edge[<span class="number">1</span>], c = edge[<span class="number">2</span>];</span><br><span class="line">                dist[b] = <span class="built_in">min</span>(dist[b], backup[a] + c);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dist[dst] == inf ? - <span class="number">1</span>: dist[dst];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+    <title>C++ &amp; STL</title>
+    <url>/p/d937.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="C-amp-STL-等相关整理"><a href="#C-amp-STL-等相关整理" class="headerlink" title="C++ &amp; STL 等相关整理"></a>C++ &amp; STL 等相关整理</h1><h2 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h2><h3 id="using"><a href="#using" class="headerlink" title="using"></a>using</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> ... = ...;</span><br><span class="line"><span class="comment">// example</span></span><br><span class="line"><span class="keyword">using</span> ll = <span class="keyword">long</span> <span class="keyword">long</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br></pre></td></tr></table></figure>
+<p>在语法的别名声明，using的使用类似于typedef，但用法更为精妙。</p>
+<h3 id="string"><a href="#string" class="headerlink" title="string"></a>string</h3><h4 id="stoi"><a href="#stoi" class="headerlink" title="stoi"></a>stoi</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">stoi</span> <span class="params">(<span class="keyword">const</span> string&amp;  str, <span class="keyword">size_t</span>* idx = <span class="number">0</span>, <span class="keyword">int</span> base = <span class="number">10</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">stoi</span> <span class="params">(<span class="keyword">const</span> wstring&amp; str, <span class="keyword">size_t</span>* idx = <span class="number">0</span>, <span class="keyword">int</span> base = <span class="number">10</span>)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>stoi()的输入要不为空，否则可以使用atoi(().c.str())</p>
+<h4 id="sstream"><a href="#sstream" class="headerlink" title="sstream"></a><a href="https://www.cplusplus.com/reference/sstream/">sstream</a></h4><p>istringstream类用于执行C++风格的字符串流的输入操作，支持&gt;&gt;;</p>
+<p>ostringstream类用于执行C++风格的字符串流的输出操作，支持&lt;&lt;；</p>
+<p>stringstream类同时可以支持C++风格的串流的输入输出操作，同时支持&gt;&gt;和&lt;&lt;；</p>
+<p>即 stringstream = istringstream + ostringstream。</p>
+<h2 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h2><p><a href="https://www.cnblogs.com/biyeymyhjob/archive/2012/07/22/2603525.html">不错的博客链接</a></p>
 ]]></content>
       <categories>
-        <category>LeetCode</category>
+        <category>C++</category>
       </categories>
       <tags>
-        <tag>最短路</tag>
+        <tag>C++</tag>
+        <tag>syntax</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Internal Covariate Shift &amp; Normalization</title>
+    <url>/p/6d2e.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://zhuanlan.zhihu.com/p/33173246">参考链接1</a></p>
+<p><a href="https://blog.csdn.net/sinat_33741547/article/details/87158830">参考链接2</a></p>
+<h2 id="Interal-Covariate-Shift"><a href="#Interal-Covariate-Shift" class="headerlink" title="Interal Covariate Shift"></a>Interal Covariate Shift</h2><blockquote>
+<p>The term <strong>interal covariate shift</strong> comes from the paper <a href="https://arxiv.org/abs/1502.03167">Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift</a>.</p>
+<p>The authors’ precise definition is:</p>
+<blockquote>
+<p>We define Internal Covariate Shift as the change in the distribution of network activations due to the change in network parameters during training.</p>
+</blockquote>
+<p>In neural networks, the output of the first layer feeds into the second layer, the output of the second layer feeds into the third, and so on. When the parameters of a layer change, so does the distribution of inputs to subsequent layers.</p>
+<p>These shifts in input distributions can be problematic for neural networks, especially deep neural networks that could have a large number of layers.</p>
+<p><a href="https://machinelearning.wtf/terms/batch-normalization/">Batch normalization</a> is a method intended to mitigate internal covariate shift for neural networks</p>
+</blockquote>
+<p>简单的说，Interal Covariate Shift(后面简称ICS)是在网络训练过程中，由于前面层中的网络参数不断更新而导致的网络输入的分布不均匀的现象。网络层的序列化意味着后续网络的输入为前面网络的输入，而由于网络参数的更新，对于原始相同的输入，其经过每一层后的输出都会变化。</p>
+<p>机器学习的一个重要假设就是数据的<strong>独立同分布(Independent and identically distributed，后面简称为iid)</strong>，<del>虽然这并不可能</del>。即使做不到idd，实际上很多机器学习的算法，例如<strong>逻辑回归</strong>，<strong>神经网络</strong>以然可以在非iid的数据上训练得到不错的数据，但很明显，iid可以简化模型训练，加快训练和提升预测能力。对这个概念的理解可以参考统计机器学习中的<strong>Covariate Shift</strong>，从概率的角度上就是，条件概率相同，但边缘概率不同，<del>甚至更难理解了。</del>再赘述一句理解的话，网络加深，网络参数不断更新，经过多次线性或者非线性变化，对于其中的某一层(不要抬杠的选第一层)，它得到的输入都不一样的，即便在第一层输入相同的数据，但是最终的分类标签却还是一致的，那么这些数据就不再是iid了。</p>
+<p>这会导致一些问题：</p>
+<ul>
+<li>前面的网络需要不断的适应新的输入数据，降低学习率</li>
+<li>后面的网络的输入的变化可能导致前面的网络陷入饱和区，训练过早停止</li>
+<li>既然每层的更新是会直接或间接影响到其他层的，那么每一层的学习策略就不能那么“随意”，应该非常的”谨慎“，实际上，这种”谨慎“也不是那么可控的。</li>
+</ul>
+<h2 id="Whitening"><a href="#Whitening" class="headerlink" title="Whitening"></a>Whitening</h2><p>为了得到iid的数据，因此在数据送入模型之前，会经过数据预处理阶段，因此白化的目的就在于得到iid的数据。</p>
+<ul>
+<li>去除特征之间的相关性—&gt; 独立；</li>
+<li>使得所有特征具有相同的均值和方差 —&gt; 同分布</li>
+</ul>
+<p>PCA就是一种典型的方法。<a href="http://ufldl.stanford.edu/tutorial/unsupervised/PCAWhitening/">PCA Whitening</a></p>
+<h2 id="Normalization"><a href="#Normalization" class="headerlink" title="Normalization"></a>Normalization</h2><p>但是，白化的计算成本太高，于是有了normalization方法，可以简化计算过程，又可以使数据尽可能保留原始的数据表达能力。normalization这种方式，实际上并不是直接去解决ICS问题，更多的是面向梯度消失等问题，去加速网络收敛的。而且，均值方差相等与同分布不是一个概念。</p>
+<h3 id="Normalization-Framework"><a href="#Normalization-Framework" class="headerlink" title="Normalization Framework"></a>Normalization Framework</h3><script type="math/tex; mode=display">
+\hat{x} = f(g*\frac{x-\mu}{\sigma} + b) \notag</script><p>通常的变换框架如上所示，实际上就是做了个shift和缩放转换到(0,1)正态分布，随后再进行reshift和rescale，最终转换成了 ($b$, $g^2$) 的分布。这里的reshift和rescale参数是可以学习的，而不是固定的(0,1)，很显然，因为输入范围本身就不可能确定为(0,1)，可学习的re参数也更符合底层的学习能力。</p>
+<p>与白化相比，实际差距还是很大的。</p>
+<h3 id="Batch-Normalization"><a href="#Batch-Normalization" class="headerlink" title="Batch Normalization"></a>Batch Normalization</h3><p><img src="https://pic1.zhimg.com/80/v2-13bb64b6122e98421ea3528539c1bffc_720w.jpg" alt></p>
+<p>其规范化针对单个神经元进行，利用网络训练时一个 mini-batch 的数据来计算该神经元 <img src="https://www.zhihu.com/equation?tex=x_i" alt="[公式]"> 的均值和方差,因而称为 Batch Normalization。</p>
+<p><img src="/p/6d2e/ICSN1.png" style="zoom:50%;"></p>
+<p>BN 可以看做一种纵向的规范化。由于 BN 是针对单个维度定义的，因此标准公式中的计算均为 element-wise 的。</p>
+<p>BN 独立地规范化每一个输入维度 <img src="https://www.zhihu.com/equation?tex=x_i" alt="[公式]"> ，但规范化的参数是一个 mini-batch 的一阶统计量和二阶统计量。这就要求 每一个 mini-batch 的统计量是整体统计量的近似估计，或者说每一个 mini-batch 彼此之间，以及和整体数据，都应该是近似同分布的。分布差距较小的 mini-batch 可以看做是为规范化操作和模型训练引入了噪声，可以增加模型的鲁棒性；但如果每个 mini-batch的原始分布差别很大，那么不同 mini-batch 的数据将会进行不一样的数据变换，这就增加了模型训练的难度。</p>
+<p>因此，BN 比较适用的场景是：每个 mini-batch 比较大，数据分布比较接近。在进行训练之前，要做好充分的 shuffle. 否则效果会差很多。</p>
+<p>另外，由于 BN 需要在运行过程中统计每个 mini-batch 的一阶统计量和二阶统计量，因此不适用于动态的网络结构 和 RNN 网络。</p>
+<h3 id="Layer-Normalization"><a href="#Layer-Normalization" class="headerlink" title="Layer Normalization"></a>Layer Normalization</h3><p><img src="https://pic1.zhimg.com/80/v2-2f1ad5749e4432d11e777cf24b655da8_720w.jpg" alt></p>
+<p>LN 针对单个训练样本进行，不依赖于其他数据，因此可以避免 BN 中受 mini-batch 数据分布影响的问题，可以用于小mini-batch场景、动态网络场景和 RNN，特别是自然语言处理领域。此外，LN 不需要保存 mini-batch 的均值和方差，节省了额外的存储空间。</p>
+<p>但是，BN 的转换是针对单个神经元可训练的——不同神经元的输入经过再平移和再缩放后分布在不同的区间，而 LN 对于一整层的神经元训练得到同一个转换——所有的输入都在同一个区间范围内。如果不同输入特征不属于相似的类别（比如颜色和大小），那么 LN 的处理可能会降低模型的表达能力。</p>
+<h3 id="Instance-Normalization"><a href="#Instance-Normalization" class="headerlink" title="Instance Normalization"></a>Instance Normalization</h3><p><img src="/p/6d2e/ICSN2.png" style="zoom:50%;"></p>
+<p>IN适用于生成模型中，比如图片风格迁移。因为图片生成的结果主要依赖于某个图像实例，更适合对单个像素有更高要求的场景。</p>
+<h3 id="Group-Normalization"><a href="#Group-Normalization" class="headerlink" title="Group Normalization"></a>Group Normalization</h3><p><img src="/p/6d2e/ICSN3.png" style="zoom:50%;"></p>
+<p>Kaiming He的论文中以图片的形式说明了四个的区别，Group介于IN和LN之间。</p>
+<p>WN和CN跳过。</p>
+<p>Normalizaiton的有效性可以参考文前的参考链接。</p>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>Normalization</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Typora+Gitee 图床</title>
+    <url>/p/377e.html</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="c2f6eb897c6897d6f5a2777268a36b524acb76fb396ee010884624c2f72b57cf">6313153f3df6eb6824c31dfc042073d9ccfefb92f71156eeed8cf0d6e89f9af1cd917535561d8f7748a723ec5e29befbd4bd7c9480eb6ba12c94adfe891e68aa2376551a2485a887db394b3da1830e8ca8bca6ee66097e06472db890ea93692948fad949a522269b58509224655e29d8c3fd5e5ef12dffc08e694dcacaeb304bbfdc9a3f2d300af5e4c2d73670a83f2eb307d462f4941db179b3dd8dfdff505f4f9d01f855be7e4d3df50ed64a3d579245c2cfae34d3468458fb55b29180c5e1ba43ae523b8d5ddfec1c34f226a4eb60c3764edd53b6709484fedcc923468f2eada4bf783f87289abf833b2ddb558ca5ae584df78052f9b4d1b41492b99a9d7e9b90ebe2b1613bff16c3d6b9bc2167cea0890b1375b4d2ae3070a54a60cd9c17ca98bcbf10416090e789a9384fde250d125dcf89146c61db5834ae6302880b2d5a0c90bb3c58d3833dac246e4f983274db975a398c350d869b4d33173261ad3138e7b0ac7c190e25e139f7f3b108b1a3db0f5d3495d5a53e616c3f168e3ca87fc5ae2443bd22cacaa8760cbe878f8a0a80304d87e800c9e75a41cdd5eb423eee9787cb3dce3ccc99675fc897d40a658c8f29d29121da1b157b2df098f58bdc94e9f8c74e7537cf77e8539bb7d4451105d245dd3fe5113f638cfcfc1abdbe477c86a5ebc51beb76c6d8e72839a19d9783532201a439d5214d414484f973a816e58988467fff68714db982f967457377be0d444d6a0de22e7cfa55be62ca4ee3dc5e6edc75b8cc84217a28e49d209e27343a39e76cb8ac360f0c285cdb096a5514fe4e18a3c79423a1515cf7e6bb1c9d66971a7a2a94fbe6e9d5e477147ea7c958c1d9e3ea403c95f35a868765fce7495b506ff269e1dc79f23e8637024572d7cb5aac36aeb792d92064c97e8e87793dfb65662410442cf6cbf231c3a697ab923a8da8124c80e21488f417db05008e3316f01cccfec1404f0d5176ded4d8db0af79f0b0547e2421ddf3b0e61b22795d8d33919c08807f90534a9746df32aa06c640a0a25852ba5e78d0a07540c04aa4d2ddf486a5076a93feb58029c22a8f7d52fc6eb54973f7879b848d03db98374f01fbbe55416ecf5b58dcc6d0e296a09acdc7e2beb0bc48114fb69577e6fb1269b5e2b5e43bbc17ec43b3b59dc6107cc3982a6450685be9bf7060f822fefa0fffa6977ca32cc032cc710fe5142fb840854e356082090d9e6b588eb7f4b510400ae17e59a34cce3ee2e3c6511f9f0cfca7b093ddbbdbe1ad9df861b7935537f2a19663e8f029c37e8dc6df06ce1f569bf3a27ebbe44b1b9545dce92bacdfe7c31b53af23ad119260ed0584b944f42aa32f54559495c9051274001dcb59debbfdd63f4b44f95ff2e6cd72117eb31cd3d57c2e6ee3c0581986013f61a660543f70f6f045e42446ef8a28a8f9ee960e36ee227a5fa15675808b78d5a04777a2677e68b7698d965cde6c2ef70d0a69e7fe99b00d0ab8cc1c6309555b8eea7970dea27d46ed4bb40163eec232ec63e1bb33ace76416de008df4f7758549d9a3983a31f9adc3c4484b26e368e536ed4f78c812f871c8fbb6f04d6676e885e916f55d4ef0ed04440fb3adb75d1bea7ac39c34740f7dd8820f20fa8d3ca8ce5ab13988d747e6ac4e72963e9cbba0aa9bd25d5c466b6dbb5b2476536e9984b9e13113a3842c23e57f75faf645722783140e16253f98a9e23875c0d5d59f33a3af3d5b664bbee23740e6c6b2cdc8a8be015b674146ae82582e25b539f1857bf52374b84e4c98f5caa99c3096090859848fb58d30a5290f1f5b21b268e8c0ba9cdcbff14d5f9b4d3d6e198e72776ecb6bdcc47b6126a5f4a878fad11c0699811d9bdda501d428ef4130ea46c034f22299f68b8388cc62a0fab58f726e2ff8052abd7976701043f56e258675036ae13663c88ad2caaece150b83e86c1b69b326179726c85532ba215925afb6fab972e3e9486cb52929dbfe2da9706373a7ba81164785872fd0ff847d5ba956a37db82585993d08c227ef1cfdc720cae86932714926d9a687db8ced69ff23edfa6382d8f698b0e258871cc63d1982af48bd8a85b5cdd9fd74d1ed9557390051dd4e5e87ada1f7a6fb13998461f81ce9dadeab6b9345adc6f0ce6022c2009e97fdd892832e3397c6b0e2351533a938554f91800f38533d8b3ff409a6adc540eec14755e713cb99a93ad7af2308b381a56d129c8d7686aef93d39dd9e2e546ecbbea1dc1769deb3720f1a2fe2da03bc08ac0ae545cb2799ab0a7ca73bc9cfed7e5fdbfe77180d868a79c09e58f6c2ad86c3dba4b6fbe5490f6048fc4861880b24df28d9908ac1c1a74de6cf85313cf3383f824b4f70224b05e4301984e2dadfa775d35ba5b73ec318c164aaaeb98049f1670c47f4e838d22848483da9ba5cc6353b794172f86cff91b085282be1787945294ec2439349ef891af93ae1d96bcc644c86b4e994192e38322936d36c7159cd85d7a4b167429f6e0186fd9ef3a3415ff1b2d60c88ced0398d320a102958b8668f25ade756992fdb7dc4457b9d121611280e5ad858253f9c837a0feb2594fe4e0f45dc004f465ff70aa987d6b</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>配置</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -331,104 +447,15 @@ D_K \cdot D_K \cdot \alpha M \cdot \rho D_F \cdot \rho D_F + \alpha M \cdot \alp
       </tags>
   </entry>
   <entry>
-    <title>C++ &amp; STL</title>
-    <url>/p/d937.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="C-amp-STL-等相关整理"><a href="#C-amp-STL-等相关整理" class="headerlink" title="C++ &amp; STL 等相关整理"></a>C++ &amp; STL 等相关整理</h1><h2 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h2><h3 id="using"><a href="#using" class="headerlink" title="using"></a>using</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> ... = ...;</span><br><span class="line"><span class="comment">// example</span></span><br><span class="line"><span class="keyword">using</span> ll = <span class="keyword">long</span> <span class="keyword">long</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br></pre></td></tr></table></figure>
-<p>在语法的别名声明，using的使用类似于typedef，但用法更为精妙。</p>
-<h3 id="string"><a href="#string" class="headerlink" title="string"></a>string</h3><h4 id="stoi"><a href="#stoi" class="headerlink" title="stoi"></a>stoi</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">stoi</span> <span class="params">(<span class="keyword">const</span> string&amp;  str, <span class="keyword">size_t</span>* idx = <span class="number">0</span>, <span class="keyword">int</span> base = <span class="number">10</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">stoi</span> <span class="params">(<span class="keyword">const</span> wstring&amp; str, <span class="keyword">size_t</span>* idx = <span class="number">0</span>, <span class="keyword">int</span> base = <span class="number">10</span>)</span></span>;</span><br></pre></td></tr></table></figure>
-<p>stoi()的输入要不为空，否则可以使用atoi(().c.str())</p>
-<h4 id="sstream"><a href="#sstream" class="headerlink" title="sstream"></a><a href="https://www.cplusplus.com/reference/sstream/">sstream</a></h4><p>istringstream类用于执行C++风格的字符串流的输入操作，支持&gt;&gt;;</p>
-<p>ostringstream类用于执行C++风格的字符串流的输出操作，支持&lt;&lt;；</p>
-<p>stringstream类同时可以支持C++风格的串流的输入输出操作，同时支持&gt;&gt;和&lt;&lt;；</p>
-<p>即 stringstream = istringstream + ostringstream。</p>
-<h2 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h2><p><a href="https://www.cnblogs.com/biyeymyhjob/archive/2012/07/22/2603525.html">不错的博客链接</a></p>
-]]></content>
+    <title>Devon</title>
+    <url>/p/5a3.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>用于学习光流的可形变体网络</p>
+<h2 id><a href="#" class="headerlink" title=" "></a> </h2>]]></content>
       <categories>
-        <category>C++</category>
+        <category>光流</category>
       </categories>
       <tags>
-        <tag>C++</tag>
-        <tag>syntax</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Internal Covariate Shift &amp; Normalization</title>
-    <url>/p/6d2e.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://zhuanlan.zhihu.com/p/33173246">参考链接1</a></p>
-<p><a href="https://blog.csdn.net/sinat_33741547/article/details/87158830">参考链接2</a></p>
-<h2 id="Interal-Covariate-Shift"><a href="#Interal-Covariate-Shift" class="headerlink" title="Interal Covariate Shift"></a>Interal Covariate Shift</h2><blockquote>
-<p>The term <strong>interal covariate shift</strong> comes from the paper <a href="https://arxiv.org/abs/1502.03167">Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift</a>.</p>
-<p>The authors’ precise definition is:</p>
-<blockquote>
-<p>We define Internal Covariate Shift as the change in the distribution of network activations due to the change in network parameters during training.</p>
-</blockquote>
-<p>In neural networks, the output of the first layer feeds into the second layer, the output of the second layer feeds into the third, and so on. When the parameters of a layer change, so does the distribution of inputs to subsequent layers.</p>
-<p>These shifts in input distributions can be problematic for neural networks, especially deep neural networks that could have a large number of layers.</p>
-<p><a href="https://machinelearning.wtf/terms/batch-normalization/">Batch normalization</a> is a method intended to mitigate internal covariate shift for neural networks</p>
-</blockquote>
-<p>简单的说，Interal Covariate Shift(后面简称ICS)是在网络训练过程中，由于前面层中的网络参数不断更新而导致的网络输入的分布不均匀的现象。网络层的序列化意味着后续网络的输入为前面网络的输入，而由于网络参数的更新，对于原始相同的输入，其经过每一层后的输出都会变化。</p>
-<p>机器学习的一个重要假设就是数据的<strong>独立同分布(Independent and identically distributed，后面简称为iid)</strong>，<del>虽然这并不可能</del>。即使做不到idd，实际上很多机器学习的算法，例如<strong>逻辑回归</strong>，<strong>神经网络</strong>以然可以在非iid的数据上训练得到不错的数据，但很明显，iid可以简化模型训练，加快训练和提升预测能力。对这个概念的理解可以参考统计机器学习中的<strong>Covariate Shift</strong>，从概率的角度上就是，条件概率相同，但边缘概率不同，<del>甚至更难理解了。</del>再赘述一句理解的话，网络加深，网络参数不断更新，经过多次线性或者非线性变化，对于其中的某一层(不要抬杠的选第一层)，它得到的输入都不一样的，即便在第一层输入相同的数据，但是最终的分类标签却还是一致的，那么这些数据就不再是iid了。</p>
-<p>这会导致一些问题：</p>
-<ul>
-<li>前面的网络需要不断的适应新的输入数据，降低学习率</li>
-<li>后面的网络的输入的变化可能导致前面的网络陷入饱和区，训练过早停止</li>
-<li>既然每层的更新是会直接或间接影响到其他层的，那么每一层的学习策略就不能那么“随意”，应该非常的”谨慎“，实际上，这种”谨慎“也不是那么可控的。</li>
-</ul>
-<h2 id="Whitening"><a href="#Whitening" class="headerlink" title="Whitening"></a>Whitening</h2><p>为了得到iid的数据，因此在数据送入模型之前，会经过数据预处理阶段，因此白化的目的就在于得到iid的数据。</p>
-<ul>
-<li>去除特征之间的相关性—&gt; 独立；</li>
-<li>使得所有特征具有相同的均值和方差 —&gt; 同分布</li>
-</ul>
-<p>PCA就是一种典型的方法。<a href="http://ufldl.stanford.edu/tutorial/unsupervised/PCAWhitening/">PCA Whitening</a></p>
-<h2 id="Normalization"><a href="#Normalization" class="headerlink" title="Normalization"></a>Normalization</h2><p>但是，白化的计算成本太高，于是有了normalization方法，可以简化计算过程，又可以使数据尽可能保留原始的数据表达能力。normalization这种方式，实际上并不是直接去解决ICS问题，更多的是面向梯度消失等问题，去加速网络收敛的。而且，均值方差相等与同分布不是一个概念。</p>
-<h3 id="Normalization-Framework"><a href="#Normalization-Framework" class="headerlink" title="Normalization Framework"></a>Normalization Framework</h3><script type="math/tex; mode=display">
-\hat{x} = f(g*\frac{x-\mu}{\sigma} + b) \notag</script><p>通常的变换框架如上所示，实际上就是做了个shift和缩放转换到(0,1)正态分布，随后再进行reshift和rescale，最终转换成了 ($b$, $g^2$) 的分布。这里的reshift和rescale参数是可以学习的，而不是固定的(0,1)，很显然，因为输入范围本身就不可能确定为(0,1)，可学习的re参数也更符合底层的学习能力。</p>
-<p>与白化相比，实际差距还是很大的。</p>
-<h3 id="Batch-Normalization"><a href="#Batch-Normalization" class="headerlink" title="Batch Normalization"></a>Batch Normalization</h3><p><img src="https://pic1.zhimg.com/80/v2-13bb64b6122e98421ea3528539c1bffc_720w.jpg" alt></p>
-<p>其规范化针对单个神经元进行，利用网络训练时一个 mini-batch 的数据来计算该神经元 <img src="https://www.zhihu.com/equation?tex=x_i" alt="[公式]"> 的均值和方差,因而称为 Batch Normalization。</p>
-<p><img src="/p/6d2e/ICSN1.png" style="zoom:50%;"></p>
-<p>BN 可以看做一种纵向的规范化。由于 BN 是针对单个维度定义的，因此标准公式中的计算均为 element-wise 的。</p>
-<p>BN 独立地规范化每一个输入维度 <img src="https://www.zhihu.com/equation?tex=x_i" alt="[公式]"> ，但规范化的参数是一个 mini-batch 的一阶统计量和二阶统计量。这就要求 每一个 mini-batch 的统计量是整体统计量的近似估计，或者说每一个 mini-batch 彼此之间，以及和整体数据，都应该是近似同分布的。分布差距较小的 mini-batch 可以看做是为规范化操作和模型训练引入了噪声，可以增加模型的鲁棒性；但如果每个 mini-batch的原始分布差别很大，那么不同 mini-batch 的数据将会进行不一样的数据变换，这就增加了模型训练的难度。</p>
-<p>因此，BN 比较适用的场景是：每个 mini-batch 比较大，数据分布比较接近。在进行训练之前，要做好充分的 shuffle. 否则效果会差很多。</p>
-<p>另外，由于 BN 需要在运行过程中统计每个 mini-batch 的一阶统计量和二阶统计量，因此不适用于动态的网络结构 和 RNN 网络。</p>
-<h3 id="Layer-Normalization"><a href="#Layer-Normalization" class="headerlink" title="Layer Normalization"></a>Layer Normalization</h3><p><img src="https://pic1.zhimg.com/80/v2-2f1ad5749e4432d11e777cf24b655da8_720w.jpg" alt></p>
-<p>LN 针对单个训练样本进行，不依赖于其他数据，因此可以避免 BN 中受 mini-batch 数据分布影响的问题，可以用于小mini-batch场景、动态网络场景和 RNN，特别是自然语言处理领域。此外，LN 不需要保存 mini-batch 的均值和方差，节省了额外的存储空间。</p>
-<p>但是，BN 的转换是针对单个神经元可训练的——不同神经元的输入经过再平移和再缩放后分布在不同的区间，而 LN 对于一整层的神经元训练得到同一个转换——所有的输入都在同一个区间范围内。如果不同输入特征不属于相似的类别（比如颜色和大小），那么 LN 的处理可能会降低模型的表达能力。</p>
-<h3 id="Instance-Normalization"><a href="#Instance-Normalization" class="headerlink" title="Instance Normalization"></a>Instance Normalization</h3><p><img src="/p/6d2e/ICSN2.png" style="zoom:50%;"></p>
-<p>IN适用于生成模型中，比如图片风格迁移。因为图片生成的结果主要依赖于某个图像实例，更适合对单个像素有更高要求的场景。</p>
-<h3 id="Group-Normalization"><a href="#Group-Normalization" class="headerlink" title="Group Normalization"></a>Group Normalization</h3><p><img src="/p/6d2e/ICSN3.png" style="zoom:50%;"></p>
-<p>Kaiming He的论文中以图片的形式说明了四个的区别，Group介于IN和LN之间。</p>
-<p>WN和CN跳过。</p>
-<p>Normalizaiton的有效性可以参考文前的参考链接。</p>
-]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
-      <tags>
-        <tag>机器学习</tag>
-        <tag>Normalization</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Typora+Gitee 图床</title>
-    <url>/p/377e.html</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="c2f6eb897c6897d6f5a2777268a36b524acb76fb396ee010884624c2f72b57cf">6313153f3df6eb6824c31dfc042073d9ccfefb92f71156eeed8cf0d6e89f9af1cd917535561d8f7748a723ec5e29befbd4bd7c9480eb6ba12c94adfe891e68aa2376551a2485a887db394b3da1830e8ca8bca6ee66097e06472db890ea93692948fad949a522269b58509224655e29d8c3fd5e5ef12dffc08e694dcacaeb304bbfdc9a3f2d300af5e4c2d73670a83f2eb307d462f4941db179b3dd8dfdff505f4f9d01f855be7e4d3df50ed64a3d579245c2cfae34d3468458fb55b29180c5e1ba43ae523b8d5ddfec1c34f226a4eb60c3764edd53b6709484fedcc923468f2eada4bf783f87289abf833b2ddb558ca5ae584df78052f9b4d1b41492b99a9d7e9b90ebe2b1613bff16c3d6b9bc2167cea0890b1375b4d2ae3070a54a60cd9c17ca98bcbf10416090e789a9384fde250d125dcf89146c61db5834ae6302880b2d5a0c90bb3c58d3833dac246e4f983274db975a398c350d869b4d33173261ad3138e7b0ac7c190e25e139f7f3b108b1a3db0f5d3495d5a53e616c3f168e3ca87fc5ae2443bd22cacaa8760cbe878f8a0a80304d87e800c9e75a41cdd5eb423eee9787cb3dce3ccc99675fc897d40a658c8f29d29121da1b157b2df098f58bdc94e9f8c74e7537cf77e8539bb7d4451105d245dd3fe5113f638cfcfc1abdbe477c86a5ebc51beb76c6d8e72839a19d9783532201a439d5214d414484f973a816e58988467fff68714db982f967457377be0d444d6a0de22e7cfa55be62ca4ee3dc5e6edc75b8cc84217a28e49d209e27343a39e76cb8ac360f0c285cdb096a5514fe4e18a3c79423a1515cf7e6bb1c9d66971a7a2a94fbe6e9d5e477147ea7c958c1d9e3ea403c95f35a868765fce7495b506ff269e1dc79f23e8637024572d7cb5aac36aeb792d92064c97e8e87793dfb65662410442cf6cbf231c3a697ab923a8da8124c80e21488f417db05008e3316f01cccfec1404f0d5176ded4d8db0af79f0b0547e2421ddf3b0e61b22795d8d33919c08807f90534a9746df32aa06c640a0a25852ba5e78d0a07540c04aa4d2ddf486a5076a93feb58029c22a8f7d52fc6eb54973f7879b848d03db98374f01fbbe55416ecf5b58dcc6d0e296a09acdc7e2beb0bc48114fb69577e6fb1269b5e2b5e43bbc17ec43b3b59dc6107cc3982a6450685be9bf7060f822fefa0fffa6977ca32cc032cc710fe5142fb840854e356082090d9e6b588eb7f4b510400ae17e59a34cce3ee2e3c6511f9f0cfca7b093ddbbdbe1ad9df861b7935537f2a19663e8f029c37e8dc6df06ce1f569bf3a27ebbe44b1b9545dce92bacdfe7c31b53af23ad119260ed0584b944f42aa32f54559495c9051274001dcb59debbfdd63f4b44f95ff2e6cd72117eb31cd3d57c2e6ee3c0581986013f61a660543f70f6f045e42446ef8a28a8f9ee960e36ee227a5fa15675808b78d5a04777a2677e68b7698d965cde6c2ef70d0a69e7fe99b00d0ab8cc1c6309555b8eea7970dea27d46ed4bb40163eec232ec63e1bb33ace76416de008df4f7758549d9a3983a31f9adc3c4484b26e368e536ed4f78c812f871c8fbb6f04d6676e885e916f55d4ef0ed04440fb3adb75d1bea7ac39c34740f7dd8820f20fa8d3ca8ce5ab13988d747e6ac4e72963e9cbba0aa9bd25d5c466b6dbb5b2476536e9984b9e13113a3842c23e57f75faf645722783140e16253f98a9e23875c0d5d59f33a3af3d5b664bbee23740e6c6b2cdc8a8be015b674146ae82582e25b539f1857bf52374b84e4c98f5caa99c3096090859848fb58d30a5290f1f5b21b268e8c0ba9cdcbff14d5f9b4d3d6e198e72776ecb6bdcc47b6126a5f4a878fad11c0699811d9bdda501d428ef4130ea46c034f22299f68b8388cc62a0fab58f726e2ff8052abd7976701043f56e258675036ae13663c88ad2caaece150b83e86c1b69b326179726c85532ba215925afb6fab972e3e9486cb52929dbfe2da9706373a7ba81164785872fd0ff847d5ba956a37db82585993d08c227ef1cfdc720cae86932714926d9a687db8ced69ff23edfa6382d8f698b0e258871cc63d1982af48bd8a85b5cdd9fd74d1ed9557390051dd4e5e87ada1f7a6fb13998461f81ce9dadeab6b9345adc6f0ce6022c2009e97fdd892832e3397c6b0e2351533a938554f91800f38533d8b3ff409a6adc540eec14755e713cb99a93ad7af2308b381a56d129c8d7686aef93d39dd9e2e546ecbbea1dc1769deb3720f1a2fe2da03bc08ac0ae545cb2799ab0a7ca73bc9cfed7e5fdbfe77180d868a79c09e58f6c2ad86c3dba4b6fbe5490f6048fc4861880b24df28d9908ac1c1a74de6cf85313cf3383f824b4f70224b05e4301984e2dadfa775d35ba5b73ec318c164aaaeb98049f1670c47f4e838d22848483da9ba5cc6353b794172f86cff91b085282be1787945294ec2439349ef891af93ae1d96bcc644c86b4e994192e38322936d36c7159cd85d7a4b167429f6e0186fd9ef3a3415ff1b2d60c88ced0398d320a102958b8668f25ade756992fdb7dc4457b9d121611280e5ad858253f9c837a0feb2594fe4e0f45dc004f465ff70aa987d6b</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-      <categories>
-        <category>配置</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
+        <tag>双帧光流</tag>
       </tags>
   </entry>
   <entry>
@@ -598,18 +625,6 @@ L = \sum_{i = 1}^N\gamma^{N - i}||f_i-f_{gt}||_1</script><p>权重因子: $\gamm
 <p><img src="/p/1f41/SCV10.png" style="zoom:60%;"></p>
 <h2 id="Related-Work-amp-amp-Conclusion"><a href="#Related-Work-amp-amp-Conclusion" class="headerlink" title="Related Work &amp;&amp; Conclusion"></a>Related Work &amp;&amp; Conclusion</h2><p>不做赘述.</p>
 ]]></content>
-      <categories>
-        <category>光流</category>
-      </categories>
-      <tags>
-        <tag>双帧光流</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Devon</title>
-    <url>/p/5a3.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>用于学习光流的可形变体网络</p>
-<h2 id><a href="#" class="headerlink" title=" "></a> </h2>]]></content>
       <categories>
         <category>光流</category>
       </categories>
