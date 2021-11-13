@@ -160,6 +160,21 @@
       </tags>
   </entry>
   <entry>
+    <title>LeetCode-882</title>
+    <url>/p/f53f.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="882-细分图中的可到达结点"><a href="#882-细分图中的可到达结点" class="headerlink" title="882. 细分图中的可到达结点"></a><a href="https://leetcode-cn.com/problems/reachable-nodes-in-subdivided-graph/">882. 细分图中的可到达结点</a></h2><p><img src="/p/f53f/LeetCode-882-2.png" alt></p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p><strong>dijkstra</strong> 求最短路, 可以分出 c 个点，等价于两点之间的路径长为 c + 1</p>
+<p>求出最短路后，对每一条边进行遍历，则 $a \rightarrow b$中除了端点 $a$ 还可以遍历到 $min(c, maxMoves - dist[a])$ 个点(如果 $dist[a] &lt; maxMoves$)，记为 $x$ , 而 $b\rightarrow a$除了端点 $b$ 还可以遍历到 $min(c, maxMoves - dist[b])$ 个点(如果 $dist[b] &lt; maxMoves$), 记为 $y$，则 无向边 $a \leftrightarrow b$，除了端点外还可以访问到 $min(x + y, c)$ 个点，对于原始的 $n$ 个顶点，若 $dist[j] \leq maxMove$，则 $j$ 可以访问到。累加所有即可。</p>
+<h2 id="AC-code"><a href="#AC-code" class="headerlink" title="AC code"></a>AC code</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; w;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; dist;</span><br><span class="line">    vector&lt;<span class="keyword">bool</span>&gt; st;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">reachableNodes</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; edges, <span class="keyword">int</span> maxMoves, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        w.<span class="built_in">resize</span>(n, vector&lt;<span class="keyword">int</span>&gt;(n, inf));</span><br><span class="line">        dist.<span class="built_in">resize</span>(n, inf);</span><br><span class="line">        st.<span class="built_in">resize</span>(n, <span class="literal">false</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> e : edges)&#123;</span><br><span class="line">            <span class="keyword">int</span> a = e[<span class="number">0</span>], b = e[<span class="number">1</span>], c = e[<span class="number">2</span>];</span><br><span class="line">            w[a][b] = w[b][a] = c + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        dist[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> t = <span class="number">-1</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(!st[j] &amp;&amp; (t == <span class="number">-1</span> || dist[t] &gt; dist[j]))</span><br><span class="line">                    t =j;</span><br><span class="line">            &#125;</span><br><span class="line">            st[t] = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)&#123;</span><br><span class="line">                dist[j] = <span class="built_in">min</span>(dist[j], dist[t] + w[t][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) res += (dist[i] &lt;= maxMoves);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> e : edges)&#123;</span><br><span class="line">            <span class="keyword">int</span> a = e[<span class="number">0</span>], b = e[<span class="number">1</span>], c = e[<span class="number">2</span>];</span><br><span class="line">            <span class="keyword">int</span> t = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span>(dist[a] &lt; maxMoves) t += <span class="built_in">min</span>(c, maxMoves - dist[a]);</span><br><span class="line">            <span class="keyword">if</span>(dist[b] &lt; maxMoves) t += <span class="built_in">min</span>(c, maxMoves - dist[b]);</span><br><span class="line">            res += <span class="built_in">min</span>(t, c);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>最短路</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LeetCode-787</title>
     <url>/p/f5cf.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="743-网络延迟时间"><a href="#743-网络延迟时间" class="headerlink" title="743. 网络延迟时间"></a><a href="https://leetcode-cn.com/problems/network-delay-time/">743. 网络延迟时间</a></h2><p><img src="/p/f5cf/LeetCode-787-2.png" alt></p>
@@ -174,18 +189,119 @@
       </tags>
   </entry>
   <entry>
-    <title>LeetCode-882</title>
-    <url>/p/f53f.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="882-细分图中的可到达结点"><a href="#882-细分图中的可到达结点" class="headerlink" title="882. 细分图中的可到达结点"></a><a href="https://leetcode-cn.com/problems/reachable-nodes-in-subdivided-graph/">882. 细分图中的可到达结点</a></h2><p><img src="/p/f53f/LeetCode-882-2.png" alt></p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p><strong>dijkstra</strong> 求最短路, 可以分出 c 个点，等价于两点之间的路径长为 c + 1</p>
-<p>求出最短路后，对每一条边进行遍历，则 $a \rightarrow b$中除了端点 $a$ 还可以遍历到 $min(c, maxMoves - dist[a])$ 个点(如果 $dist[a] &lt; maxMoves$)，记为 $x$ , 而 $b\rightarrow a$除了端点 $b$ 还可以遍历到 $min(c, maxMoves - dist[b])$ 个点(如果 $dist[b] &lt; maxMoves$), 记为 $y$，则 无向边 $a \leftrightarrow b$，除了端点外还可以访问到 $min(x + y, c)$ 个点，对于原始的 $n$ 个顶点，若 $dist[j] \leq maxMove$，则 $j$ 可以访问到。累加所有即可。</p>
-<h2 id="AC-code"><a href="#AC-code" class="headerlink" title="AC code"></a>AC code</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; w;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; dist;</span><br><span class="line">    vector&lt;<span class="keyword">bool</span>&gt; st;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">reachableNodes</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; edges, <span class="keyword">int</span> maxMoves, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        w.<span class="built_in">resize</span>(n, vector&lt;<span class="keyword">int</span>&gt;(n, inf));</span><br><span class="line">        dist.<span class="built_in">resize</span>(n, inf);</span><br><span class="line">        st.<span class="built_in">resize</span>(n, <span class="literal">false</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> e : edges)&#123;</span><br><span class="line">            <span class="keyword">int</span> a = e[<span class="number">0</span>], b = e[<span class="number">1</span>], c = e[<span class="number">2</span>];</span><br><span class="line">            w[a][b] = w[b][a] = c + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        dist[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> t = <span class="number">-1</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(!st[j] &amp;&amp; (t == <span class="number">-1</span> || dist[t] &gt; dist[j]))</span><br><span class="line">                    t =j;</span><br><span class="line">            &#125;</span><br><span class="line">            st[t] = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)&#123;</span><br><span class="line">                dist[j] = <span class="built_in">min</span>(dist[j], dist[t] + w[t][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) res += (dist[i] &lt;= maxMoves);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> e : edges)&#123;</span><br><span class="line">            <span class="keyword">int</span> a = e[<span class="number">0</span>], b = e[<span class="number">1</span>], c = e[<span class="number">2</span>];</span><br><span class="line">            <span class="keyword">int</span> t = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span>(dist[a] &lt; maxMoves) t += <span class="built_in">min</span>(c, maxMoves - dist[a]);</span><br><span class="line">            <span class="keyword">if</span>(dist[b] &lt; maxMoves) t += <span class="built_in">min</span>(c, maxMoves - dist[b]);</span><br><span class="line">            res += <span class="built_in">min</span>(t, c);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+    <title>MobileNets v1</title>
+    <url>/p/9d20.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>用于移动视觉应用的高效卷积网络</p>
+<p>文献中引用的一些压缩方法，例如 production quantizationm, hashing, pruning, vector quantization 和 huffman coding 感觉值得了解一下(乘积量化，哈希，剪枝，矢量量化，哈夫曼编码)。至于SqueezeNets 等可以单独学习一下。Distillation(蒸馏)啥的也需要学学，还有Low Bit Networks(低比特网络)。啥也不会。。。orz</p>
+<p>此外一些觉得不错的讲解，视频等等:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=kSGhpsme2mo">https://www.youtube.com/watch?v=kSGhpsme2mo</a></li>
+<li><a href="https://yinguobing.com/separable-convolution/">https://yinguobing.com/separable-convolution/</a></li>
+</ul>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>提出了一类可以i用于移动和嵌入式视觉应用的高校模型，称为 <strong>MobileNets</strong>。MobileNets基于流线型架构，使用<strong>深度可分离卷积</strong>构建轻量级深度神经网络。引入了两个简单的全局超参数，可以有效的权衡延迟(<strong>latency</strong>)和准确性(<strong>accuracy</strong>)。这些超参数允许模型构建者根据问题的约束条件为他们的应用选择合适的模型尺寸。在 ImageNet 分类上，进行了大量的资源和精度权衡实验，并与其他流行的模型进行对比，模型都表现出了很强的性能。最后，在广泛的应用和示例中演示了 MobileNets 的有效性，包括目标检测，细粒度分类，人脸属性和大规模地理定位。</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>自从AlexNet 在 ImageNet 挑战赛(ILSVRC 2012) 上获胜，推广了深度卷积网络以来，卷积神经网络就在计算机视觉中变得无处不在，为了达到更高的精度，整体的趋势就是构建更深的，更复杂的网络。然而，这些提高准确性的改进方法并不一定会在模型规模和运行速度等方面变得高效。在许多现实世界的应用中，例如机器人，自动驾驶汽车，增强现实等，则需要子啊有限计算能力的平台上及时完成识别任务。</p>
+<p>本文描述了一种高效的网络架构和一组两个超参数，以建立规模较小，低延迟的模型，可以很容易的匹配移动和嵌入式视觉应用程序的设计需求。第二节回顾了构建小型模型的前期工作。第三节描述了 MobileNets 架构和两个定义更小和更高效 MobileNets 的超参数：宽度乘法因子( width multiplier )和分辨率乘法因子( resolution multiplier )。第四节描述了在ImageNet 上的实验以及各种不同应用和使用案例。第五节以总结和结论结尾。 </p>
+<h2 id="Prior-Work"><a href="#Prior-Work" class="headerlink" title="Prior Work"></a>Prior Work</h2><p>在最近的工作中，人们开始对构建小型高效神经网络感兴趣。这些不同的方法可以分为 <strong>压缩预训练模型</strong> 和 <strong>直接训练小网络</strong> 两种。本文提出了一类网络架构，它允许模型开发人员为他们的应用程序专门选择符合资源限制(延迟，网络规模)的小型网络。 MobileNets 主要专注于优化延迟，但也产生小型网络。许多关于小型网络的的论文只关于规模但是没有考虑到运行速度。</p>
+<p>MobileNets 主要由深度可分离网络构建，最初在一个博士论文中，后来在 Inception 模型中使用用于减少前几层的计算。Flattened Networks 构建了一个完全分解的卷积网络，展示了极端分解网路的潜力。与本文无关的是，Factorized Networks 引入了一个类似的分解网络以及使用了拓扑连接。随后，在Xception Networks 演示了如何拓展深度可分离过滤器以超越 Inception V3网络。另一个小型网络是 SqueezeNet，它使用了瓶颈方法(bottleneck approach)去设计小型网络。其他简化计算的网络包括 Structured Transform Networks 和 Deep Fried ConvNets。（吓得我都不敢翻译了）</p>
+<p>另一种获取小型网络的方法就是缩小，分解，或者压缩预训练模型。基于 production quantization, hashing, pruning, vector quantization 和 huffman coding 的压缩方法都有文献提及(乘积量化，哈希，剪枝，矢量量化，哈夫曼编码)。此外，还有一些分解方法来加速预训练网络的速度。另一种训练预训练网络的方法是 distillation (蒸馏)，它使用较大的网络来训练较小的网络，是本文方法的补充，在第四节的一些用例中也会涉及。另一种新型的方法是 low bit networks(低比特网络)。</p>
+<h2 id="MobileNet-Architecture"><a href="#MobileNet-Architecture" class="headerlink" title="MobileNet Architecture"></a>MobileNet Architecture</h2><p>首先描述构建 MobileNets 的核心层，这些核心层由深度可分离过滤器组成。然后描述了 MobileNets 的网络结构，并对两种模型进行描述，即使用宽度乘法因子和分辨率乘法因子的缩小超参数的模型。</p>
+<h3 id="Depthwise-Separable-Convolution"><a href="#Depthwise-Separable-Convolution" class="headerlink" title="Depthwise Separable Convolution"></a>Depthwise Separable Convolution</h3><p>模型基于深度可分离卷积，是一种分解卷积的形式，它将标准的卷积分解为深度卷积和一个 $1\times1$ 的称为点态卷积的卷积。对于 MobileNets， 深度卷积对每个输入通道应用一个滤波器。然后点态卷积会进行一个 $1 \times 1$ 卷积将深度卷积的结果结合起来。一个标准的卷积在一步之内过滤和将输入结合生成一组输出。而深度可分离卷积则将其分为两层，一层用于过滤和一层用于合并。这种分解可以显著减少运算量和模型大小。下图为标准卷积分解为深度卷积和 $1\times1$ 点态卷积的过程。</p>
+<p><img src="/p/9d20/MobileNets2.png" style="zoom:60%;"></p>
+<p>标准的卷积层将一个 $D_F \times D_F \times M$ 的特征图 $F$ 作为输入，并输出一个 $D_F\times D_F \times N$ 的特征图 $G$， 这里的 $D_F$代表特征图的空间宽度和高度，$M, N$ 为通道数，需要注意的是，很显然，这里的$D_F$只是代指，输入和输出的高度和宽度并不可能完全一样，这里只是为了方便分析。</p>
+<p>标准的卷积层用卷积核 $K$ 参数化，大小为 $D_K\times D_K\times M\times N$，这里的$D_K$ 为卷积核的空间维度，假设为方形的卷积核，$M，N$ 分别为输入输出的通道数。</p>
+<p>对于标准的卷积（假定步长为一并含有填充）的输出特征图则可以计算为:</p>
+<script type="math/tex; mode=display">
+G_{k,l,n}=\sum_{i,j,m}K_{i,j,m,n}\cdot F_{k+i-1,l+j-1,m}</script><p>因此标准的计算代价为：</p>
+<script type="math/tex; mode=display">
+D_K \cdot D_K \cdot M \cdot N \cdot D_F \cdot D_F</script><p>即依赖于输入的卷积核大小，输入输出通道数，输出的特征图大小。</p>
+<p>MobileNets 处理这里的每一项和之间的联系。首先使用深度可分离卷积来打断输出通道数和卷积核大小之间的关系。</p>
+<p>标准的卷积操作在卷积核的基础上对特征进行过滤，并结合特征产生新的表示。滤波和组合步骤可以通过分解卷积分为两个步骤，这种分解叫做深度可分离卷积并且可以后续减少计算代价。</p>
+<p>深度可分离卷积由于两层构成：深度卷积和点态卷积。使用深度卷积对每个输入通道(输入深度)应用一个简单的滤波器。点态卷积，一个简单的$1\times 1$ 卷积，用来创建深度卷积层输出的线性组合。MobileNets 对这两层都使用了batchnorm 和 ReLU非线性激活函数。</p>
+<p>对每一个输入通道（输出通道）使用一个滤波器进行深度卷积可以表达为：</p>
+<script type="math/tex; mode=display">
+\hat{G}_{k,l,m}=\sum_{i,j}\hat{K}_{i,j,m}\cdot F_{k+i-1,l+j-1,m}</script><p>这里 $\hat{K}$ 为深度卷积核，大小为 $D_K \times D_K \times M$ , $\hat{K}$ 第 $m_{th}$ 个滤波器应用在 $F$ 的 $m_{th}$通道，并产生输出特征图 $\hat{G}$ 的第 $m_{th}$ 个通道。</p>
+<p>深度卷积的计算代价为:</p>
+<script type="math/tex; mode=display">
+D_K \cdot D_K \cdot M \cdot D_F \cdot D_F</script><p>深度卷积相比标准卷积则非常有效。但是只是对输入的通道进行了滤波，并没有将滤波后的结果结合以产生新的特征。因此需要一个额外的层来计算深度卷积的输出的线性组合，这通过一个 $1 \times 1$ 的卷积来实现以生成新的特征。</p>
+<p>深度可分离卷积的代价为：</p>
+<script type="math/tex; mode=display">
+D_K \cdot D_K \cdot M \cdot D_F \cdot D_F + M \cdot N \cdot D_F \cdot D_F</script><p>即深度卷积$1\times1$点态卷积的代价总和。</p>
+<p>通过将卷积表达为两个步骤（滤波和组合）可以得到计算代价的减少：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+ &\frac{D_K \cdot D_K \cdot M \cdot D_F \cdot D_F + M \cdot N \cdot D_F \cdot D_F}{D_K \cdot D_K \cdot M \cdot N \cdot D_F \cdot D_F} \notag \\ 
+=&\frac{1}{N} + \frac{1}{D_K^2} \notag
+\end{align}</script><p>MobileNets 使用了$3 \times 3$ 深度可分离卷积比标准卷积减少 8 到 9倍的计算量，并且精确度只有一点点的下降。</p>
+<p>空间维度上的额外分解并没有减少太多的额外计算，因为深度卷积减少了很多的计算量。</p>
+<h3 id="Network-Structure-and-Training"><a href="#Network-Structure-and-Training" class="headerlink" title="Network Structure and Training"></a>Network Structure and Training</h3><p>MobileNets 架构是构建在深度可分离卷积的基础上，除了第一层使用仍是全卷积。通过这样定义网络，可以更容易的探索网络拓扑结构来找到一个好的网络。MobileNets体系结构如下所示。所有层后面都有一个 batchnorm 和 ReLU 非线性激活函数，除了最终的全连接层没有非线性函数以外，全连接需要送入 softmax 层来进行分类。</p>
+<p><img src="/p/9d20/MobileNets3.png" style="zoom:60%;"></p>
+<p>下图对比了标准卷积配有 batchnorm 和 ReLU 非线性激活函数和深度可分离卷积。</p>
+<p><img src="/p/9d20/MobileNets4.png" style="zoom:60%;"></p>
+<p>下采样通过跨步卷积来处理。在全连接层之前，使用均值池化层将空间分辨率降低到1。将深度卷积和点态卷积看成独立的层，MobileNets 则有28层。</p>
+<p>使用少量的 Multi-Adds 定义网络是不够的，还需要保证这些操作可以有效的实现。例如非结构化的稀疏矩阵操作通常并不会比稠密矩阵快，除非达到非常高的稀疏级别。模型结构几乎将所有的计算都放在了稠密的 $1\times 1$ 卷积中，这可以通过GEMM实现。通常卷积是由GEMM实现的，但是需要在内存中进行一个称为 im2col 的操作来将其映射到 GEMM。例如，在Caffe库中，$1\times 1$卷积并不需要预先安排内存而可以直接使用 GEMM实现，这是最优化的数学线性代数算法之一。MobileNets 使用了将近 95% 的时间用于 $1\times1$卷积计算，也有 75% 的参数如下所示。几乎所有的额外参数都在全连接层。</p>
+<p><img src="/p/9d20/MobileNets5.png" style="zoom:60%;"></p>
+<p>MobileNets 模型在 TensorFlow中使用 RMSprop训练，并采用了类似于 Inception V3的异步梯度下降。然而，与训练大型模型相反，模型使用较少的正则化和数据增强技术，因为小模型有较少的过拟合问题。在训练 MobileNets 时，不使用 side head和label smoothing并且限制在 large Inception training 中使用的切割尺寸，来减少图像失真。此外，还发现，在深度滤波器层中需要使用小的甚至没有权重衰减(L2 正则化)，因为他们的参数太少。对于后面的ImageNet基准测试，不管模型的大小，都是用相同的训练参数进行训练。</p>
+<h3 id="WidthMultiplier-Thinner-Models"><a href="#WidthMultiplier-Thinner-Models" class="headerlink" title="WidthMultiplier : Thinner Models"></a>WidthMultiplier : Thinner Models</h3><p>尽管基本的MobileNets 体系结构已经很小，并且延迟很低，但是很多时候一个特定的用例可能会要求模型更小更快。为了构建更小的，计算成本更小的模型，引入了一个简单的参数 $\alpha$，称为宽度乘法因子。宽度乘法因子 $\alpha$ 的作用是让网络的每一层均匀的变小。对于一个给定的层和一个宽度乘法因子 $\alpha$，那么输入的通道数将会变成 $\alpha M$，输出的通道数将会变为 $\alpha N$。</p>
+<p>那么深度可分离卷积的计算代价将会变成：</p>
+<script type="math/tex; mode=display">
+D_K \cdot D_K \cdot \alpha M \cdot D_F \cdot D_F + \alpha M \cdot \alpha N \cdot D_F \cdot D_F</script><p>这里的 $\alpha \in (0,1]$,通常设置为 1, 0.75, 0.5, 0.25。$\alpha = 1$ 为基线的 MobileNet，$\alpha &lt; 1$ 则为削减的 MobileNet。宽度乘法因子可以近似 $\alpha^2$二次降低计算成本和参数量。宽度乘法因子可以应用于任何模型结构以定义一个新的更小的模型。具有合理的精度，延迟和大小权衡。它可以用于定义新的需要从头训练的简化结构。</p>
+<h3 id="Resolution-Multiplier-Reduced-Representation"><a href="#Resolution-Multiplier-Reduced-Representation" class="headerlink" title="Resolution Multiplier: Reduced Representation"></a>Resolution Multiplier: Reduced Representation</h3><p>第二个用于减少神经网络计算代价的超参数为分辨率乘法因子 $\rho$。将其应用于输入图像上，则每一层的内部表示都会随后以相同的乘法因子缩小。因此，只需要隐式的设置输入分辨率为 $\rho$  即可。</p>
+<p>现在可以将网络的核心层的代价表达为具有宽度乘法因子 $\alpha$ 和分辨率乘法因子 $\rho$ 的深度可分离网络：</p>
+<script type="math/tex; mode=display">
+D_K \cdot D_K \cdot \alpha M \cdot \rho D_F \cdot \rho D_F + \alpha M \cdot \alpha N \cdot \rho D_F \cdot \rho D_F</script><p>这里 $\rho\in (0,1]$。通常隐式设置以使得网络的输入分辨率为 224, 192, 160, 128。$\rho = 1$ 为基线的 MobileNet。$\rho &lt; 1$ 为削减的 MobileNet。分辨率乘法因子将可以使计算代价以 $\rho^2$ 减少。</p>
+<p><img src="/p/9d20/MobileNets6.png" style="zoom:60%;"></p>
+<p>上表显示了结构收缩方法依次应用各个层后的计算量和参数量。输入特征图大小为 $14\times 14 \times 512$, 核大小为 $3 \times 3 \times 512 \times 512$。</p>
+<h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><p>首先说明深度卷积的效果，以及通过减少网络宽度而不是层的数量来进行网路压缩。然后展示了基于两个超参数：宽度乘法因子和分辨率乘法因子削减网络的权衡，然后研究了应用于不同应用程序的从MobileNets。</p>
+<h3 id="Model-Choices"><a href="#Model-Choices" class="headerlink" title="Model Choices"></a>Model Choices</h3><p>首先展示了带有深度卷积网络的模型和使用完全卷积的模型的对比结果。如下表，可以看出，使用深度可分离卷积相比使用完全卷积只会在 ImageNet 上减少 1%的精确度，但是会极大的减少 Multi-adds 和参数。 </p>
+<p><img src="/p/9d20/MobileNets7.png" style="zoom:60%;"></p>
+<p>然后展示带有 宽度乘法因子的 thinner 模型与层数较少的浅模型的对比。为了使 MobileNets 模型更浅，Table1.中的五层独立滤波器(大小为$14 \times 14 \times 512$)被移除。下表展示了在相似的计算量和参数数量下，使MobileNets 更thinner比使其更浅的性能好 3%。</p>
+<p>后面的具体实验结果建议直接看论文的图表。</p>
 ]]></content>
       <categories>
-        <category>LeetCode</category>
+        <category>轻量化模型</category>
       </categories>
       <tags>
-        <tag>最短路</tag>
+        <tag>MobileNets</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MobileNets v2</title>
+    <url>/p/cd8f.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>MobileNetV2-反向残差和线性瓶颈</p>
+<p>MobileNetV1 中解读了深度可分离卷积，这里不做赘述。在 MobileNetV2 中增加了两个概念(idea) : Linear Bottleneck 和 Inverted Residuals。</p>
+<p>不错的解读:</p>
+<ul>
+<li><a href="https://blog.csdn.net/flyfish1986/article/details/97017017">https://blog.csdn.net/flyfish1986/article/details/97017017</a></li>
+<li><a href="https://www.cnblogs.com/hejunlin1992/p/9395345.html">https://www.cnblogs.com/hejunlin1992/p/9395345.html</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/33075914">https://zhuanlan.zhihu.com/p/33075914</a></li>
+<li><a href="https://www.zhihu.com/question/265709710">https://www.zhihu.com/question/265709710</a></li>
+<li><a href="https://yinguobing.com/bottlenecks-block-in-mobilenetv2/">https://yinguobing.com/bottlenecks-block-in-mobilenetv2/</a></li>
+</ul>
+<h2 id="Preliminaries-discussion-and-intuition"><a href="#Preliminaries-discussion-and-intuition" class="headerlink" title="Preliminaries, discussion and intuition"></a>Preliminaries, discussion and intuition</h2><h3 id="Depthwise-Separable-Convolutions"><a href="#Depthwise-Separable-Convolutions" class="headerlink" title="Depthwise Separable Convolutions"></a>Depthwise Separable Convolutions</h3><p>深度可分离卷积是许多高校神经网络架构的关键构建模块，本文也使用了这个。深度可分离卷积的基本思想就是用分解后的卷积算子替换原先的完整卷积，将卷积分成了两个独立的层。第一层为深度卷积，就是对每个输入通道进行了一个轻量化的滤波。第二个是$1\times 1$卷积，即点态卷积，用来将输入通道进行线性组合。</p>
+<p>标准的卷积输入张量 $L_i(h_i\times w_i\times d_i)$, 通过应用卷积核 $K \in R^{k\times k \times d_i \times d_j}$ 产生一个 $h_i \times w_i\times d_j$ 的输出张量$L_j$，标准的卷积层的计算代价为 $h_i\times w_i \times d_i \times d_j \times k \times k$，</p>
+<p>深度可分离卷积是标准卷积的直接替换，他和常规卷积性能相近，但代价只有 $h_i \times w_i \times d_i (k^2 + d_j)$，即两部分的代价和。与传统卷积层相比它有效的减少将近 $k^2$ 的代价。MobileNetV2 使用了 $k=3$ 的深度可分离卷积使得卷积代价是标准卷积的 $1/8\sim1/9$，精度只会有一点的降低。</p>
+<p>这一方面可以在 MobileNets1中查阅。</p>
+<h3 id="Linear-Bottlenecks"><a href="#Linear-Bottlenecks" class="headerlink" title="Linear Bottlenecks"></a>Linear Bottlenecks</h3><p>对于一个 $n$ 层的深度神经网络，每一层 $L_i$ 都有一个维度为 $h_i \times w_i \times d_i$的激活张量，(这部分主要说明这个激活张量的一些基本性质)，这可以看成一个含有 $h_i\times w_i$ 个 $d_i$ 维“像素”的容器。非正式地说，对于来自真是图像的输入集，可以说层激活体(对于任意层 $L_i$ )形成了一个<strong>“兴趣流形”</strong>。长期以来，一直假设神经网络中感兴趣的流形可以嵌入到低纬度的子空间中。换句话说，对于深度卷积层钟的所有独立的 $d$通道像素，编码在这些值中的信息实际上位于某些流形中，而这些流形则又可以嵌入到一个低维子空间中。</p>
+<p>这种事实，可以通过简单地减少层的维数来获知和利用，并从而减少操作空间的维数。 MobileNetV1 利用了这一点，并通过一个宽度乘法因子有效的在计算量和精度之间进行权衡，并将其纳入其他网络中以及 ShuffleNet 中。根据这种直觉，宽度乘法因子允许人们减少激活体空间的维度，直到兴趣流体跨越整个空间。(意思就是说，假设激活体维度为 $M$, 实际上主要信息只需要 $m$ 维就可以，因此可以不断降低 $M$ 直到 $m$？)但是这种直觉似乎有点问题，因为深度神经网络中实际上都是使用的非线性的坐标变换。例如 <strong>ReLU</strong>。例如在 $1D$ 空间中对线使用 ReLU，则会产生一条射线。在 $n$ 维空间内使用，则会产生一个具有 $n$ 节点的分段线性曲线。</p>
+<p>很容易的看出，如果有一层的变换 $ReLU(Bx)$ 的输出中含有一个非零体 $S$，那么 映射到 $S$ 内部中的点是通过一个线性变换获得的，也就是说，对于整个维度的输出空间，对应的输入空间的部分，是与线性变换控制的。(不好表达文章的意思，意思是说，对于输出 $M$ 维的中的非零体 $M^{\prime}$, 输入中的 $m$维，只有其中经过线性变换的 $m^{\prime}$ 部分有关，也就是说，线性变换 $B$ 决定了相关的输入，不然的话，非线性例如 <strong>ReLU</strong>，就会把一部分信息丢掉，比如 <strong>Relu</strong> 中 x &lt; 0)。换句话说，深度网络仅对非零体部分具有线性分类器的能力。</p>
+<p>另一方面，当使用 <strong>ReLU</strong> 塌缩通道时，它不可避免地会导致这个通道的信息丢失。然而，如果有很多通道的时候，激活流形中可能有一个结构，其他通道的信息存储在其中。如果输入流形可以嵌入到激活空间的显著低维子空间中，那么 <strong>ReLU</strong> 变换将会在将所需的复杂性引入可表达函数集的同时保留信息。</p>
+<p>总结来说，兴趣流形位于高维的激活空间中的低维子空间中：</p>
+<ul>
+<li>如果兴趣流形在 <strong>ReLU</strong> 后保持非零，那么它对应线性变换。</li>
+<li>只有输入流形位于输入空间的低维子空间中时，<strong>ReLU</strong> 才能保留输入流形的完整信息。</li>
+</ul>
+<p>这对优化现有的神经网络架构进行了提示：假设兴趣流形是低维的，那么就可以通过在卷积块中添加 Linear bottleneck 层来获取它。实验表明使用线性层是重要的，这可以防止非线性破坏太多的信息(后续的实验证明了缺失会降低性能，还有一些工作，例如论文中提到的CIFAR数据集)。后面会使用 bottleneck convolutions，把输入瓶颈的大小和内部尺寸的大小的比例称为膨胀比。</p>
+<h3 id="Inverted-residuals"><a href="#Inverted-residuals" class="headerlink" title="Inverted residuals"></a>Inverted residuals</h3><p>bottleneck 块类似 residual 块，每个块包含一个输入，后面是一些 bottleneck，然后是深度残差网络中的扩展块。因为 bottleneck 中包含了所有必要的信息，而扩展层仅仅作为一个实现细节伴随非线性的张量变换，因此在 bottleneck 中使用了 shortcurts。</p>
+<h4 id="Running-time-and-parameter-count-for-bottleneck-convolution"><a href="#Running-time-and-parameter-count-for-bottleneck-convolution" class="headerlink" title="Running time and parameter count for bottleneck convolution"></a>Running time and parameter count for bottleneck convolution</h4><p>基本实现结构如下所示：</p>
+<p><img src="/p/cd8f/MobileNetsv2-2.png" style="zoom:60%;"></p>
+<p>对于一个大小为 $h\times w$ 的块，扩展因子为 $t$，核大小为 $k$， 输入通道数为 $d^{\prime}$, 输出通道数为 $d^{\prime\prime}$。总共的乘加计算为 $h \cdot w \cdot d^{\prime} \cdot t(d^{\prime} + k^2 + d^{\prime\prime})$。表达式中有一个额外的项，因为有一个额外的 $1\times 1$卷积，但是网络的性质允许使用更小的输入和输出维度。不同分辨率下的 MobileNetV1， MobileNetV2, ShuffleNet 对比如下。</p>
+<p><img src="/p/cd8f/MobileNetsv2-3.png" style="zoom:80%;"></p>
+<h3 id="Information-flow-interpretation"><a href="#Information-flow-interpretation" class="headerlink" title="Information flow interpretation"></a>Information flow interpretation</h3><h2 id="Model-Architecture"><a href="#Model-Architecture" class="headerlink" title="Model Architecture"></a>Model Architecture</h2>]]></content>
+      <categories>
+        <category>轻量化模型</category>
+      </categories>
+      <tags>
+        <tag>MobileNets</tag>
       </tags>
   </entry>
   <entry>
@@ -313,18 +429,6 @@
       </categories>
       <tags>
         <tag>工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Devon</title>
-    <url>/p/5a3.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>用于学习光流的可形变体网络</p>
-<h2 id><a href="#" class="headerlink" title=" "></a> </h2>]]></content>
-      <categories>
-        <category>光流</category>
-      </categories>
-      <tags>
-        <tag>双帧光流</tag>
       </tags>
   </entry>
   <entry>
@@ -502,101 +606,15 @@ L = \sum_{i = 1}^N\gamma^{N - i}||f_i-f_{gt}||_1</script><p>权重因子: $\gamm
       </tags>
   </entry>
   <entry>
-    <title>MobileNets v1</title>
-    <url>/p/9d20.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>用于移动视觉应用的高效卷积网络</p>
-<p>文献中引用的一些压缩方法，例如 production quantizationm, hashing, pruning, vector quantization 和 huffman coding 感觉值得了解一下(乘积量化，哈希，剪枝，矢量量化，哈夫曼编码)。至于SqueezeNets 等可以单独学习一下。Distillation(蒸馏)啥的也需要学学，还有Low Bit Networks(低比特网络)。啥也不会。。。orz</p>
-<p>此外一些觉得不错的讲解，视频等等:</p>
-<ul>
-<li><a href="https://www.youtube.com/watch?v=kSGhpsme2mo">https://www.youtube.com/watch?v=kSGhpsme2mo</a></li>
-<li><a href="https://yinguobing.com/separable-convolution/">https://yinguobing.com/separable-convolution/</a></li>
-</ul>
-<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>提出了一类可以i用于移动和嵌入式视觉应用的高校模型，称为 <strong>MobileNets</strong>。MobileNets基于流线型架构，使用<strong>深度可分离卷积</strong>构建轻量级深度神经网络。引入了两个简单的全局超参数，可以有效的权衡延迟(<strong>latency</strong>)和准确性(<strong>accuracy</strong>)。这些超参数允许模型构建者根据问题的约束条件为他们的应用选择合适的模型尺寸。在 ImageNet 分类上，进行了大量的资源和精度权衡实验，并与其他流行的模型进行对比，模型都表现出了很强的性能。最后，在广泛的应用和示例中演示了 MobileNets 的有效性，包括目标检测，细粒度分类，人脸属性和大规模地理定位。</p>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>自从AlexNet 在 ImageNet 挑战赛(ILSVRC 2012) 上获胜，推广了深度卷积网络以来，卷积神经网络就在计算机视觉中变得无处不在，为了达到更高的精度，整体的趋势就是构建更深的，更复杂的网络。然而，这些提高准确性的改进方法并不一定会在模型规模和运行速度等方面变得高效。在许多现实世界的应用中，例如机器人，自动驾驶汽车，增强现实等，则需要子啊有限计算能力的平台上及时完成识别任务。</p>
-<p>本文描述了一种高效的网络架构和一组两个超参数，以建立规模较小，低延迟的模型，可以很容易的匹配移动和嵌入式视觉应用程序的设计需求。第二节回顾了构建小型模型的前期工作。第三节描述了 MobileNets 架构和两个定义更小和更高效 MobileNets 的超参数：宽度乘法因子( width multiplier )和分辨率乘法因子( resolution multiplier )。第四节描述了在ImageNet 上的实验以及各种不同应用和使用案例。第五节以总结和结论结尾。 </p>
-<h2 id="Prior-Work"><a href="#Prior-Work" class="headerlink" title="Prior Work"></a>Prior Work</h2><p>在最近的工作中，人们开始对构建小型高效神经网络感兴趣。这些不同的方法可以分为 <strong>压缩预训练模型</strong> 和 <strong>直接训练小网络</strong> 两种。本文提出了一类网络架构，它允许模型开发人员为他们的应用程序专门选择符合资源限制(延迟，网络规模)的小型网络。 MobileNets 主要专注于优化延迟，但也产生小型网络。许多关于小型网络的的论文只关于规模但是没有考虑到运行速度。</p>
-<p>MobileNets 主要由深度可分离网络构建，最初在一个博士论文中，后来在 Inception 模型中使用用于减少前几层的计算。Flattened Networks 构建了一个完全分解的卷积网络，展示了极端分解网路的潜力。与本文无关的是，Factorized Networks 引入了一个类似的分解网络以及使用了拓扑连接。随后，在Xception Networks 演示了如何拓展深度可分离过滤器以超越 Inception V3网络。另一个小型网络是 SqueezeNet，它使用了瓶颈方法(bottleneck approach)去设计小型网络。其他简化计算的网络包括 Structured Transform Networks 和 Deep Fried ConvNets。（吓得我都不敢翻译了）</p>
-<p>另一种获取小型网络的方法就是缩小，分解，或者压缩预训练模型。基于 production quantization, hashing, pruning, vector quantization 和 huffman coding 的压缩方法都有文献提及(乘积量化，哈希，剪枝，矢量量化，哈夫曼编码)。此外，还有一些分解方法来加速预训练网络的速度。另一种训练预训练网络的方法是 distillation (蒸馏)，它使用较大的网络来训练较小的网络，是本文方法的补充，在第四节的一些用例中也会涉及。另一种新型的方法是 low bit networks(低比特网络)。</p>
-<h2 id="MobileNet-Architecture"><a href="#MobileNet-Architecture" class="headerlink" title="MobileNet Architecture"></a>MobileNet Architecture</h2><p>首先描述构建 MobileNets 的核心层，这些核心层由深度可分离过滤器组成。然后描述了 MobileNets 的网络结构，并对两种模型进行描述，即使用宽度乘法因子和分辨率乘法因子的缩小超参数的模型。</p>
-<h3 id="Depthwise-Separable-Convolution"><a href="#Depthwise-Separable-Convolution" class="headerlink" title="Depthwise Separable Convolution"></a>Depthwise Separable Convolution</h3><p>模型基于深度可分离卷积，是一种分解卷积的形式，它将标准的卷积分解为深度卷积和一个 $1\times1$ 的称为点态卷积的卷积。对于 MobileNets， 深度卷积对每个输入通道应用一个滤波器。然后点态卷积会进行一个 $1 \times 1$ 卷积将深度卷积的结果结合起来。一个标准的卷积在一步之内过滤和将输入结合生成一组输出。而深度可分离卷积则将其分为两层，一层用于过滤和一层用于合并。这种分解可以显著减少运算量和模型大小。下图为标准卷积分解为深度卷积和 $1\times1$ 点态卷积的过程。</p>
-<p><img src="/p/9d20/MobileNets2.png" style="zoom:60%;"></p>
-<p>标准的卷积层将一个 $D_F \times D_F \times M$ 的特征图 $F$ 作为输入，并输出一个 $D_F\times D_F \times N$ 的特征图 $G$， 这里的 $D_F$代表特征图的空间宽度和高度，$M, N$ 为通道数，需要注意的是，很显然，这里的$D_F$只是代指，输入和输出的高度和宽度并不可能完全一样，这里只是为了方便分析。</p>
-<p>标准的卷积层用卷积核 $K$ 参数化，大小为 $D_K\times D_K\times M\times N$，这里的$D_K$ 为卷积核的空间维度，假设为方形的卷积核，$M，N$ 分别为输入输出的通道数。</p>
-<p>对于标准的卷积（假定步长为一并含有填充）的输出特征图则可以计算为:</p>
-<script type="math/tex; mode=display">
-G_{k,l,n}=\sum_{i,j,m}K_{i,j,m,n}\cdot F_{k+i-1,l+j-1,m}</script><p>因此标准的计算代价为：</p>
-<script type="math/tex; mode=display">
-D_K \cdot D_K \cdot M \cdot N \cdot D_F \cdot D_F</script><p>即依赖于输入的卷积核大小，输入输出通道数，输出的特征图大小。</p>
-<p>MobileNets 处理这里的每一项和之间的联系。首先使用深度可分离卷积来打断输出通道数和卷积核大小之间的关系。</p>
-<p>标准的卷积操作在卷积核的基础上对特征进行过滤，并结合特征产生新的表示。滤波和组合步骤可以通过分解卷积分为两个步骤，这种分解叫做深度可分离卷积并且可以后续减少计算代价。</p>
-<p>深度可分离卷积由于两层构成：深度卷积和点态卷积。使用深度卷积对每个输入通道(输入深度)应用一个简单的滤波器。点态卷积，一个简单的$1\times 1$ 卷积，用来创建深度卷积层输出的线性组合。MobileNets 对这两层都使用了batchnorm 和 ReLU非线性激活函数。</p>
-<p>对每一个输入通道（输出通道）使用一个滤波器进行深度卷积可以表达为：</p>
-<script type="math/tex; mode=display">
-\hat{G}_{k,l,m}=\sum_{i,j}\hat{K}_{i,j,m}\cdot F_{k+i-1,l+j-1,m}</script><p>这里 $\hat{K}$ 为深度卷积核，大小为 $D_K \times D_K \times M$ , $\hat{K}$ 第 $m_{th}$ 个滤波器应用在 $F$ 的 $m_{th}$通道，并产生输出特征图 $\hat{G}$ 的第 $m_{th}$ 个通道。</p>
-<p>深度卷积的计算代价为:</p>
-<script type="math/tex; mode=display">
-D_K \cdot D_K \cdot M \cdot D_F \cdot D_F</script><p>深度卷积相比标准卷积则非常有效。但是只是对输入的通道进行了滤波，并没有将滤波后的结果结合以产生新的特征。因此需要一个额外的层来计算深度卷积的输出的线性组合，这通过一个 $1 \times 1$ 的卷积来实现以生成新的特征。</p>
-<p>深度可分离卷积的代价为：</p>
-<script type="math/tex; mode=display">
-D_K \cdot D_K \cdot M \cdot D_F \cdot D_F + M \cdot N \cdot D_F \cdot D_F</script><p>即深度卷积$1\times1$点态卷积的代价总和。</p>
-<p>通过将卷积表达为两个步骤（滤波和组合）可以得到计算代价的减少：</p>
-<script type="math/tex; mode=display">
-\begin{align}
- &\frac{D_K \cdot D_K \cdot M \cdot D_F \cdot D_F + M \cdot N \cdot D_F \cdot D_F}{D_K \cdot D_K \cdot M \cdot N \cdot D_F \cdot D_F} \notag \\ 
-=&\frac{1}{N} + \frac{1}{D_K^2} \notag
-\end{align}</script><p>MobileNets 使用了$3 \times 3$ 深度可分离卷积比标准卷积减少 8 到 9倍的计算量，并且精确度只有一点点的下降。</p>
-<p>空间维度上的额外分解并没有减少太多的额外计算，因为深度卷积减少了很多的计算量。</p>
-<h3 id="Network-Structure-and-Training"><a href="#Network-Structure-and-Training" class="headerlink" title="Network Structure and Training"></a>Network Structure and Training</h3><p>MobileNets 架构是构建在深度可分离卷积的基础上，除了第一层使用仍是全卷积。通过这样定义网络，可以更容易的探索网络拓扑结构来找到一个好的网络。MobileNets体系结构如下所示。所有层后面都有一个 batchnorm 和 ReLU 非线性激活函数，除了最终的全连接层没有非线性函数以外，全连接需要送入 softmax 层来进行分类。</p>
-<p><img src="/p/9d20/MobileNets3.png" style="zoom:60%;"></p>
-<p>下图对比了标准卷积配有 batchnorm 和 ReLU 非线性激活函数和深度可分离卷积。</p>
-<p><img src="/p/9d20/MobileNets4.png" style="zoom:60%;"></p>
-<p>下采样通过跨步卷积来处理。在全连接层之前，使用均值池化层将空间分辨率降低到1。将深度卷积和点态卷积看成独立的层，MobileNets 则有28层。</p>
-<p>使用少量的 Multi-Adds 定义网络是不够的，还需要保证这些操作可以有效的实现。例如非结构化的稀疏矩阵操作通常并不会比稠密矩阵快，除非达到非常高的稀疏级别。模型结构几乎将所有的计算都放在了稠密的 $1\times 1$ 卷积中，这可以通过GEMM实现。通常卷积是由GEMM实现的，但是需要在内存中进行一个称为 im2col 的操作来将其映射到 GEMM。例如，在Caffe库中，$1\times 1$卷积并不需要预先安排内存而可以直接使用 GEMM实现，这是最优化的数学线性代数算法之一。MobileNets 使用了将近 95% 的时间用于 $1\times1$卷积计算，也有 75% 的参数如下所示。几乎所有的额外参数都在全连接层。</p>
-<p><img src="/p/9d20/MobileNets5.png" style="zoom:60%;"></p>
-<p>MobileNets 模型在 TensorFlow中使用 RMSprop训练，并采用了类似于 Inception V3的异步梯度下降。然而，与训练大型模型相反，模型使用较少的正则化和数据增强技术，因为小模型有较少的过拟合问题。在训练 MobileNets 时，不使用 side head和label smoothing并且限制在 large Inception training 中使用的切割尺寸，来减少图像失真。此外，还发现，在深度滤波器层中需要使用小的甚至没有权重衰减(L2 正则化)，因为他们的参数太少。对于后面的ImageNet基准测试，不管模型的大小，都是用相同的训练参数进行训练。</p>
-<h3 id="WidthMultiplier-Thinner-Models"><a href="#WidthMultiplier-Thinner-Models" class="headerlink" title="WidthMultiplier : Thinner Models"></a>WidthMultiplier : Thinner Models</h3><p>尽管基本的MobileNets 体系结构已经很小，并且延迟很低，但是很多时候一个特定的用例可能会要求模型更小更快。为了构建更小的，计算成本更小的模型，引入了一个简单的参数 $\alpha$，称为宽度乘法因子。宽度乘法因子 $\alpha$ 的作用是让网络的每一层均匀的变小。对于一个给定的层和一个宽度乘法因子 $\alpha$，那么输入的通道数将会变成 $\alpha M$，输出的通道数将会变为 $\alpha N$。</p>
-<p>那么深度可分离卷积的计算代价将会变成：</p>
-<script type="math/tex; mode=display">
-D_K \cdot D_K \cdot \alpha M \cdot D_F \cdot D_F + \alpha M \cdot \alpha N \cdot D_F \cdot D_F</script><p>这里的 $\alpha \in (0,1]$,通常设置为 1, 0.75, 0.5, 0.25。$\alpha = 1$ 为基线的 MobileNet，$\alpha &lt; 1$ 则为削减的 MobileNet。宽度乘法因子可以近似 $\alpha^2$二次降低计算成本和参数量。宽度乘法因子可以应用于任何模型结构以定义一个新的更小的模型。具有合理的精度，延迟和大小权衡。它可以用于定义新的需要从头训练的简化结构。</p>
-<h3 id="Resolution-Multiplier-Reduced-Representation"><a href="#Resolution-Multiplier-Reduced-Representation" class="headerlink" title="Resolution Multiplier: Reduced Representation"></a>Resolution Multiplier: Reduced Representation</h3><p>第二个用于减少神经网络计算代价的超参数为分辨率乘法因子 $\rho$。将其应用于输入图像上，则每一层的内部表示都会随后以相同的乘法因子缩小。因此，只需要隐式的设置输入分辨率为 $\rho$  即可。</p>
-<p>现在可以将网络的核心层的代价表达为具有宽度乘法因子 $\alpha$ 和分辨率乘法因子 $\rho$ 的深度可分离网络：</p>
-<script type="math/tex; mode=display">
-D_K \cdot D_K \cdot \alpha M \cdot \rho D_F \cdot \rho D_F + \alpha M \cdot \alpha N \cdot \rho D_F \cdot \rho D_F</script><p>这里 $\rho\in (0,1]$。通常隐式设置以使得网络的输入分辨率为 224, 192, 160, 128。$\rho = 1$ 为基线的 MobileNet。$\rho &lt; 1$ 为削减的 MobileNet。分辨率乘法因子将可以使计算代价以 $\rho^2$ 减少。</p>
-<p><img src="/p/9d20/MobileNets6.png" style="zoom:60%;"></p>
-<p>上表显示了结构收缩方法依次应用各个层后的计算量和参数量。输入特征图大小为 $14\times 14 \times 512$, 核大小为 $3 \times 3 \times 512 \times 512$。</p>
-<h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><p>首先说明深度卷积的效果，以及通过减少网络宽度而不是层的数量来进行网路压缩。然后展示了基于两个超参数：宽度乘法因子和分辨率乘法因子削减网络的权衡，然后研究了应用于不同应用程序的从MobileNets。</p>
-<h3 id="Model-Choices"><a href="#Model-Choices" class="headerlink" title="Model Choices"></a>Model Choices</h3><p>首先展示了带有深度卷积网络的模型和使用完全卷积的模型的对比结果。如下表，可以看出，使用深度可分离卷积相比使用完全卷积只会在 ImageNet 上减少 1%的精确度，但是会极大的减少 Multi-adds 和参数。 </p>
-<p><img src="/p/9d20/MobileNets7.png" style="zoom:60%;"></p>
-<p>然后展示带有 宽度乘法因子的 thinner 模型与层数较少的浅模型的对比。为了使 MobileNets 模型更浅，Table1.中的五层独立滤波器(大小为$14 \times 14 \times 512$)被移除。下表展示了在相似的计算量和参数数量下，使MobileNets 更thinner比使其更浅的性能好 3%。</p>
-<p>后面的具体实验结果建议直接看论文的图表。</p>
-]]></content>
+    <title>Devon</title>
+    <url>/p/5a3.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>用于学习光流的可形变体网络</p>
+<h2 id><a href="#" class="headerlink" title=" "></a> </h2>]]></content>
       <categories>
-        <category>轻量化模型</category>
+        <category>光流</category>
       </categories>
       <tags>
-        <tag>MobileNets</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MobileNets v2</title>
-    <url>/p/cd8f.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>MobileNetV2-反向残差和线性瓶颈</p>
-<p>MobileNetV1 中解读了深度可分离卷积，这里不做赘述。在 MobileNetV2 中增加了两个概念(idea) : Linear Bottleneck 和 Inverted Residuals。</p>
-<p>不错的解读:</p>
-<ul>
-<li><a href="https://blog.csdn.net/flyfish1986/article/details/97017017">https://blog.csdn.net/flyfish1986/article/details/97017017</a></li>
-<li><a href="https://www.cnblogs.com/hejunlin1992/p/9395345.html">https://www.cnblogs.com/hejunlin1992/p/9395345.html</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/33075914">https://zhuanlan.zhihu.com/p/33075914</a></li>
-<li><a href="https://www.zhihu.com/question/265709710">https://www.zhihu.com/question/265709710</a></li>
-<li><a href="https://yinguobing.com/bottlenecks-block-in-mobilenetv2/">https://yinguobing.com/bottlenecks-block-in-mobilenetv2/</a></li>
-</ul>
-<h2 id="Linear-Bottlenecks"><a href="#Linear-Bottlenecks" class="headerlink" title="Linear Bottlenecks"></a>Linear Bottlenecks</h2><p><img src="/p/cd8f/MobileNetsv2-1.jpg" alt></p>
-]]></content>
-      <categories>
-        <category>轻量化模型</category>
-      </categories>
-      <tags>
-        <tag>MobileNets</tag>
+        <tag>双帧光流</tag>
       </tags>
   </entry>
 </search>
