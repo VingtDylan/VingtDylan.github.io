@@ -155,6 +155,9 @@
 </li>
 <li>定义在 numeric 头文件中的 iota() 函数模板会用连续的 T 类型值填充序列。前两个参数是定义序列的正向迭代器，第三个参数是初始的 T 值。第三个指定的值会被保存到序列的第一个元素中。保存在第一个元素后的值是通过对前面的值运用自增运算符得到的。当然，这意味着 T 类型必须支持 operator++()。</li>
 </ul>
+<h3 id="builtin-popcount"><a href="#builtin-popcount" class="headerlink" title="__builtin_popcount"></a>__builtin_popcount</h3><ul>
+<li>统计二进制中1的个数</li>
+</ul>
 <h2 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h2><p><a href="http://c.biancheng.net/stl/stl_basic/">C++ STL</a></p>
 <p><a href="https://www.cnblogs.com/biyeymyhjob/archive/2012/07/22/2603525.html">不错的博客链接</a></p>
 <h3 id="distance"><a href="#distance" class="headerlink" title="distance"></a>distance</h3><ul>
@@ -181,11 +184,65 @@
 </li>
 <li><p>find() 为在输入迭代器所定义的范围内查找单个对象的算法，它可以在前两个参数指定的范围内查找和第三个参数相等的第一个对象。</p>
 <p>find 算法会返回一个指向被找到对象的迭代器，如果没有找到对象，会返回这个序列的结束迭代器。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">InputIterator <span class="title">find</span> <span class="params">(InputIterator first, InputIterator last, <span class="keyword">const</span> T&amp; val)</span></span>;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="binary-search"><a href="#binary-search" class="headerlink" title="binary_search"></a>binary_search</h2><ul>
+<h3 id="lower-bound"><a href="#lower-bound" class="headerlink" title="lower_bound"></a>lower_bound</h3><ul>
+<li><p><a href="http://c.biancheng.net/view/7521.html">详细的说明</a></p>
+</li>
+<li><p>find()、find_if()、search() 等这些函数的底层实现都采用的是顺序查找（逐个遍历）的方式，在某些场景中的执行效率并不高。</p>
+</li>
+<li><p>C++ STL标准库中还提供有 lower_bound()、upper_bound()、equal_range() 以及 binary_search() 这 4 个查找函数，它们的底层实现采用的都是二分查找的方式。</p>
+</li>
+<li><p>lower_bound() 函数用于在指定区域内查找不小于目标值的第一个元素。也就是说，使用该函数在指定范围内查找某个目标值时，最终查找到的不一定是和目标值相等的元素，还可能是比目标值大的元素。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//在 [first, last) 区域内查找不小于 val 的元素</span></span><br><span class="line"><span class="function">ForwardIterator <span class="title">lower_bound</span> <span class="params">(ForwardIterator first, ForwardIterator last,</span></span></span><br><span class="line"><span class="params"><span class="function">                             <span class="keyword">const</span> T&amp; val)</span></span>;</span><br><span class="line"><span class="comment">//在 [first, last) 区域内查找第一个不符合 comp 规则的元素</span></span><br><span class="line"><span class="function">ForwardIterator <span class="title">lower_bound</span> <span class="params">(ForwardIterator first, ForwardIterator last,</span></span></span><br><span class="line"><span class="params"><span class="function">                             <span class="keyword">const</span> T&amp; val, Compare comp)</span></span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="upper-bound"><a href="#upper-bound" class="headerlink" title="upper_bound"></a>upper_bound</h3><ul>
+<li><p><a href="http://c.biancheng.net/view/7527.html">详细的说明</a></p>
+</li>
+<li><p>用于在指定范围内查找大于目标值的第一个元素</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//查找[first, last)区域中第一个大于 val 的元素。</span></span><br><span class="line"><span class="function">ForwardIterator <span class="title">upper_bound</span> <span class="params">(ForwardIterator first, ForwardIterator last,</span></span></span><br><span class="line"><span class="params"><span class="function">                             <span class="keyword">const</span> T&amp; val)</span></span>;</span><br><span class="line"><span class="comment">//查找[first, last)区域中第一个不符合 comp 规则的元素</span></span><br><span class="line"><span class="function">ForwardIterator <span class="title">upper_bound</span> <span class="params">(ForwardIterator first, ForwardIterator last,</span></span></span><br><span class="line"><span class="params"><span class="function">                             <span class="keyword">const</span> T&amp; val, Compare comp)</span></span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="gcd"><a href="#gcd" class="headerlink" title="__gcd()"></a>__gcd()</h3><ul>
+<li>algorithm</li>
+<li>__gcd(a, b)求解最大公因数</li>
+</ul>
+<h3 id="next-permutation"><a href="#next-permutation" class="headerlink" title="next_permutation"></a>next_permutation</h3><ul>
+<li><p><a href="http://c.biancheng.net/view/597.html">详细的说明</a></p>
+</li>
+<li><p>next_permutation() 会生成一个序列的重排列，它是所有可能的字典序中的下一个排列，默认使用 &lt; 运算符来做这些事情。它的参数为定义序列的迭代器和一个返回布尔值的函数，这个函数在下一个排列大于上一个排列时返回 true，如果上一个排列是序列中最大的，它返回 false，所以会生成字典序最小的排列。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::vector&lt;<span class="keyword">int</span>&gt; range &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    std::<span class="built_in">copy</span> (std::<span class="built_in">begin</span>(range), std::<span class="built_in">end</span>(range), std::ostream_iterator&lt;<span class="keyword">int</span>&gt;&#123;std::cout, <span class="string">&quot; &quot;</span>&#125;);</span><br><span class="line">    std::cout &lt;&lt; std::endl;</span><br><span class="line">&#125;<span class="keyword">while</span>(std::<span class="built_in">next_permutation</span>(std::<span class="built_in">begin</span>(range), std::<span class="built_in">end</span>(range)));</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="prev-permutation"><a href="#prev-permutation" class="headerlink" title="prev_permutation"></a>prev_permutation</h3><ul>
+<li><p><a href="http://c.biancheng.net/view/598.html">详细的说明</a></p>
+</li>
+<li><p>next_permutation() 是按照字典升序的方式生成的排列。当我们想以降序的方式生成排列时，可以使用 prev_permutation()。</p>
+</li>
+<li><p>prev_permutation 和 next_permutation() 一样有两个版本，默认使用 &lt; 来比较元素。因为排列是以降序的方式生成的，所以算法大多数时候会返回 true。当生成最大排列时，返回 false。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::vector&lt;<span class="keyword">double</span>&gt; data &#123;<span class="number">44.5</span>, <span class="number">22.0</span>, <span class="number">15.6</span>, <span class="number">1.5</span>&#125;;</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    std::<span class="built_in">copy</span>(std::<span class="built_in">begin</span>(data), std::<span class="built_in">end</span>(data), std::ostream_iterator&lt;<span class="keyword">double</span>&gt; &#123;std::cout, <span class="string">&quot; &quot;</span>&#125;);</span><br><span class="line">    std::cout &lt;&lt; std::endl;</span><br><span class="line">&#125; <span class="keyword">while</span>(std::<span class="built_in">prev_permutation</span>(std::<span class="built_in">begin</span>(data), std::<span class="built_in">end</span>(data)));</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="binary-search"><a href="#binary-search" class="headerlink" title="binary_search"></a>binary_search</h3><ul>
 <li><a href="http://c.biancheng.net/view/7537.html">详细的说明</a></li>
 <li>二分查找值</li>
+</ul>
+<h3 id="set"><a href="#set" class="headerlink" title="set"></a>set</h3><ul>
+<li><p><a href="[C++ STL set容器完全攻略（超级详细） (biancheng.net">详细的说明</a>](<a href="http://c.biancheng.net/view/7192.html">http://c.biancheng.net/view/7192.html</a>))</p>
+</li>
+<li><p>后续程序中在使用 set 容器时，需手动注明 std 命名空间（强烈建议初学者使用,但不是必须的）</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt; <span class="class"><span class="keyword">class</span> <span class="title">T</span>,                        // 键 <span class="title">key</span> 和值 <span class="title">value</span> 的类型</span></span><br><span class="line"><span class="class">           <span class="keyword">class</span> <span class="title">Compare</span> =</span> less&lt;T&gt;,        <span class="comment">// 指定 set 容器内部的排序规则</span></span><br><span class="line">           <span class="class"><span class="keyword">class</span> <span class="title">Alloc</span> =</span> allocator&lt;T&gt;      <span class="comment">// 指定分配器对象的类型</span></span><br><span class="line">           &gt; <span class="class"><span class="keyword">class</span> <span class="title">set</span>;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>C++ 11 标准还为 set 类模板新增了移动构造函数，其功能是实现创建新 set 容器的同时，利用临时的 set 容器为其初始化。</p>
+</li>
+<li><p>set 类模板还支持取已有 set 容器中的部分元素，来初始化新 set 容器。</p>
+</li>
+<li><p>借助 set 类模板定义中第 2 个参数，我们完全可以手动修改 set 容器中的排序规则。</p>
+</li>
+<li><p>若干成员方法。。。</p>
+</li>
 </ul>
 ]]></content>
       <categories>
@@ -1232,7 +1289,205 @@ b = \frac{a ^ 2 - (a - n)^2}{2(n - a}</script><p>于是，所以，易得。</p>
   <entry>
     <title>Python 基础函数</title>
     <url>/p/50a7.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h1><p>copy</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>菜鸟教程上的<a href="https://www.runoob.com/python/python-tutorial.html">Python基础教程</a></p>
+<p><a href="https://docs.python.org/3/tutorial/index.html">Python官方</a></p>
+<p><a href="https://www.liaoxuefeng.com/wiki/1016959663602400">廖雪峰</a></p>
+<p>这里仅整理部分使用到的函数。</p>
+<h1 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h1><h2 id="builtin"><a href="#builtin" class="headerlink" title="builtin"></a>builtin</h2><h3 id="sorted"><a href="#sorted" class="headerlink" title="sorted"></a>sorted</h3><blockquote>
+<p><strong>sort 与 sorted 区别：</strong></p>
+<p>sort 是应用在 list 上的方法，sorted 可以对所有可迭代的对象进行排序操作。</p>
+<p>list 的 sort 方法返回的是对已经存在的列表进行操作，无返回值，而内建函数 sorted 方法返回的是一个新的 list，而不是在原来的基础上进行的操作。</p>
+</blockquote>
+<p><strong>sorted(iterable, cmp=None, key=None, reverse=False)</strong></p>
+<blockquote>
+<p>参数说明：</p>
+<ul>
+<li>iterable — 可迭代对象。</li>
+<li>cmp — 比较的函数，这个具有两个参数，参数的值都是从可迭代对象中取出，此函数必须遵守的规则为，大于则返回1，小于则返回-1，等于则返回0。</li>
+<li>key — 主要是用来进行比较的元素，只有一个参数，具体的函数的参数就是取自于可迭代对象中，指定可迭代对象中的一个元素来进行排序。</li>
+<li>reverse — 排序规则，reverse = True 降序 ， reverse = False 升序（默认）。</li>
+<li>out — 返回重新排列后的列表</li>
+</ul>
+</blockquote>
+<h3 id="copy-deepcopy"><a href="#copy-deepcopy" class="headerlink" title="copy, deepcopy"></a>copy, deepcopy</h3><p><a href="https://www.runoob.com/w3cnote/python-understanding-dict-copy-shallow-or-deep.html">解析</a></p>
+<ul>
+<li><strong>直接赋值：</strong>其实就是对象的引用（别名）。</li>
+<li><strong>浅拷贝(copy)：</strong>拷贝父对象，不会拷贝对象的内部的子对象。</li>
+<li><strong>深拷贝(deepcopy)：</strong> copy 模块的 deepcopy 方法，完全拷贝了父对象及其子对象。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = &#123;<span class="number">1</span>: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]&#125;</span><br><span class="line">b = a.copy()</span><br><span class="line">a, b</span><br><span class="line">(&#123;<span class="number">1</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]&#125;, &#123;<span class="number">1</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]&#125;)</span><br><span class="line">a[<span class="number">1</span>].append(<span class="number">4</span>)</span><br><span class="line">a, b</span><br><span class="line">(&#123;<span class="number">1</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]&#125;, &#123;<span class="number">1</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]&#125;</span><br><span class="line"> ---</span><br><span class="line"><span class="keyword">import</span> copy</span><br><span class="line">c = copy.deepcopy(a)</span><br><span class="line">a, c</span><br><span class="line">(&#123;<span class="number">1</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]&#125;, &#123;<span class="number">1</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]&#125;)</span><br><span class="line">a[<span class="number">1</span>].append(<span class="number">5</span>)</span><br><span class="line">a, c</span><br><span class="line">(&#123;<span class="number">1</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]&#125;, &#123;<span class="number">1</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]&#125;)</span><br><span class="line"> ---</span><br><span class="line"><span class="keyword">import</span> copy</span><br><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>]] <span class="comment">#原始对象</span></span><br><span class="line"> </span><br><span class="line">b = a                       <span class="comment">#赋值，传对象的引用</span></span><br><span class="line">c = copy.copy(a)            <span class="comment">#对象拷贝，浅拷贝</span></span><br><span class="line">d = copy.deepcopy(a)        <span class="comment">#对象拷贝，深拷贝</span></span><br><span class="line"> </span><br><span class="line">a.append(<span class="number">5</span>)                 <span class="comment">#修改对象a</span></span><br><span class="line">a[<span class="number">4</span>].append(<span class="string">&#x27;c&#x27;</span>)            <span class="comment">#修改对象a中的[&#x27;a&#x27;, &#x27;b&#x27;]数组对象</span></span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span>( <span class="string">&#x27;a = &#x27;</span>, a )</span><br><span class="line"><span class="built_in">print</span>( <span class="string">&#x27;b = &#x27;</span>, b )</span><br><span class="line"><span class="built_in">print</span>( <span class="string">&#x27;c = &#x27;</span>, c )</span><br><span class="line"><span class="built_in">print</span>( <span class="string">&#x27;d = &#x27;</span>, d )</span><br></pre></td></tr></table></figure>
+<h3 id="yield"><a href="#yield" class="headerlink" title="yield"></a>yield</h3><p><a href="https://www.runoob.com/w3cnote/python-yield-used-analysis.html">解析</a></p>
+<p>yield 的作用就是把一个函数变成一个 generator，带有 yield 的函数不再是一个普通函数，Python 解释器会将其视为一个 generator</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read_file</span>(<span class="params">fpath</span>):</span> </span><br><span class="line">    BLOCK_SIZE = <span class="number">1024</span> </span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(fpath, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f: </span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>: </span><br><span class="line">            block = f.read(BLOCK_SIZE) </span><br><span class="line">            <span class="keyword">if</span> block: </span><br><span class="line">                <span class="keyword">yield</span> block </span><br><span class="line">            <span class="keyword">else</span>: </span><br><span class="line">                <span class="keyword">return</span></span><br></pre></td></tr></table></figure>
+<h3 id="contextlib"><a href="#contextlib" class="headerlink" title="contextlib"></a>contextlib</h3><p>任何对象，只要正确实现了上下文管理，就可以用于<code>with</code>语句。</p>
+<p>实现上下文管理是通过<code>__enter__</code>和<code>__exit__</code>这两个方法实现的。</p>
+<p>编写<code>__enter__</code>和<code>__exit__</code>仍然很繁琐，因此Python的标准库<code>contextlib</code>提供了更简单的写法。</p>
+<p><code>@contextmanager</code>这个decorator接受一个generator，用<code>yield</code>语句把<code>with ... as var</code>把变量输出出去，然后，<code>with</code>语句就可以正常地工作了。</p>
+<p>希望在某段代码执行前后自动执行特定代码，也可以用<code>@contextmanager</code>实现。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@contextmanager</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">timer</span>(<span class="params">name</span>):</span></span><br><span class="line">    start = time.time()</span><br><span class="line">    <span class="keyword">yield</span></span><br><span class="line">    end = time.time()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;&#123;&#125; COST: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(name, end - start))</span><br><span class="line">    </span><br><span class="line"><span class="keyword">with</span> timer(<span class="string">&#x27;Timer PolicyIter&#x27;</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<h2 id="Python-标准库"><a href="#Python-标准库" class="headerlink" title="Python 标准库"></a>Python 标准库</h2><h3 id="glob"><a href="#glob" class="headerlink" title="glob"></a>glob</h3><p>glob模块提供了一个函数用于从目录通配符搜索中生成文件列表:</p>
+<blockquote>
+<p>images = sorted(glob.glob(os.path.join(root, ‘image_2/*_10.png’)))</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>常用函数</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Pytorch 常用函数</title>
+    <url>/p/312d.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="PyTorch"><a href="#PyTorch" class="headerlink" title="PyTorch"></a>PyTorch</h1><h2 id="torch"><a href="#torch" class="headerlink" title="torch"></a>torch</h2><h3 id="Creation-Ops"><a href="#Creation-Ops" class="headerlink" title="Creation Ops"></a>Creation Ops</h3><ul>
+<li><p><strong>torch.arange</strong></p>
+<p><strong>torch.arange(start, end, step=1, out=None) → Tensor</strong></p>
+<p>返回一个1维张量，长度为 ( floor((end−start)/step) )。包含从 <strong>start</strong>到 <strong>end</strong>，以 <strong>step</strong> 为步长的一组序列值(默认步长为1)。</p>
+<blockquote>
+<p>参数:</p>
+<ul>
+<li>start (float) – 序列的起始点</li>
+<li>end (float) – 序列的终止点</li>
+<li>step (float) – 相邻点的间隔大小</li>
+<li>out (Tensor, optional) – 结果张量</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h3 id="Indexing-Slicing-Joining-Mutating-Ops"><a href="#Indexing-Slicing-Joining-Mutating-Ops" class="headerlink" title="Indexing, Slicing, Joining, Mutating Ops"></a>Indexing, Slicing, Joining, Mutating Ops</h3><ul>
+<li><p><strong>torch.cat</strong></p>
+<p>torch.cat(inputs, dimension=0)</p>
+<p>在给定维度上对输入的张量序列<code>seq</code> 进行连接操作。</p>
+<p><code>torch.cat()</code>可以看做 <code>torch.split()</code> 和 <code>torch.chunk()</code>的反操作。 <code>cat()</code> 函数可以通过下面例子更好的理解。</p>
+<blockquote>
+<p>参数:</p>
+<ul>
+<li>inputs (<em>sequence of Tensors</em>) – 可以是任意相同Tensor 类型的python 序列</li>
+<li>dimension (<em>int</em>, <em>optional</em>) – 沿着此维连接张量序列。</li>
+</ul>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; x = torch.randn(2, 3)</span><br><span class="line">&gt;&gt;&gt; x</span><br><span class="line"> 0.5983 -0.0341  2.4918</span><br><span class="line"> 1.5981 -0.5265 -0.8735</span><br><span class="line">[torch.FloatTensor of size 2x3]</span><br><span class="line">&gt;&gt;&gt; torch.cat((x, x, x), 0)</span><br><span class="line"> 0.5983 -0.0341  2.4918</span><br><span class="line"> 1.5981 -0.5265 -0.8735</span><br><span class="line"> 0.5983 -0.0341  2.4918</span><br><span class="line"> 1.5981 -0.5265 -0.8735</span><br><span class="line"> 0.5983 -0.0341  2.4918</span><br><span class="line"> 1.5981 -0.5265 -0.8735</span><br><span class="line">[torch.FloatTensor of size 6x3]</span><br><span class="line">&gt;&gt;&gt; torch.cat((x, x, x), 1)</span><br><span class="line"> 0.5983 -0.0341  2.4918  0.5983 -0.0341  2.4918  0.5983 -0.0341  2.4918</span><br><span class="line"> 1.5981 -0.5265 -0.8735  1.5981 -0.5265 -0.8735  1.5981 -0.5265 -0.8735</span><br><span class="line">[torch.FloatTensor of size 2x9]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>torch.split</strong></p>
+<p><strong>torch.split(tensor, split_size, dim=0)</strong></p>
+<p>将输入张量分割成相等形状的chunks（如果可分）。 如果沿指定维的张量形状大小不能被 <strong>split_size</strong> 整分， 则最后一个分块会小于其它分块。</p>
+<blockquote>
+<p>参数:</p>
+<ul>
+<li>tensor (Tensor) – 待分割张量</li>
+<li>split_size (int) – 单个分块的形状大小</li>
+<li>dim (int) – 沿着此维进行分割</li>
+</ul>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; x = torch.zeros(2,1,2,1,2)</span><br><span class="line">&gt;&gt;&gt; x.size()</span><br><span class="line">(2L, 1L, 2L, 1L, 2L)</span><br><span class="line">&gt;&gt;&gt; y = torch.squeeze(x)</span><br><span class="line">&gt;&gt;&gt; y.size()</span><br><span class="line">(2L, 2L, 2L)</span><br><span class="line">&gt;&gt;&gt; y = torch.squeeze(x, 0)</span><br><span class="line">&gt;&gt;&gt; y.size()</span><br><span class="line">(2L, 1L, 2L, 1L, 2L)</span><br><span class="line">&gt;&gt;&gt; y = torch.squeeze(x, 1)</span><br><span class="line">&gt;&gt;&gt; y.size()</span><br><span class="line">(2L, 2L, 1L, 2L)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>torch.stack</strong></p>
+<p><strong>torch.stack(sequence, dim=0)</strong></p>
+<p>沿着一个新维度对输入张量序列进行连接。 序列中所有的张量都应该为相同形状。</p>
+<blockquote>
+<p>  参数:</p>
+<ul>
+<li>sequence (Sequence) – 待连接的张量序列</li>
+<li>dim (int) – 插入的维度。必须介于 0 与 待连接的张量序列数之间。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h3 id="Math-operations"><a href="#Math-operations" class="headerlink" title="Math operations"></a>Math operations</h3><p><strong>PointWise Ops</strong></p>
+<ul>
+<li><p><strong>torch.tanh</strong></p>
+<p><strong>torch.tanh(input, out=None) → Tensor</strong></p>
+<p>返回一个新张量，包含输入 <strong>input</strong> 张量每个元素的双曲正切。</p>
+<blockquote>
+<p>参数：</p>
+<ul>
+<li>input (Tensor) – 输入张量</li>
+<li>out (Tensor, optional) – 输出张量</li>
+</ul>
+</blockquote>
+</li>
+<li></li>
+</ul>
+<p><strong>Reduction Ops</strong></p>
+<ul>
+<li></li>
+</ul>
+<hr>
+<h2 id="torch-Tensor"><a href="#torch-Tensor" class="headerlink" title="torch.Tensor"></a>torch.Tensor</h2><ul>
+<li><p><strong>expand(*sizes)</strong></p>
+<p>返回tensor的一个新视图，单个维度扩大为更大的尺寸。 tensor也可以扩大为更高维，新增加的维度将附在前面。 扩大tensor不需要分配新内存，只是仅仅新建一个tensor的视图，其中通过将<code>stride</code>设为0，一维将会扩展位更高维。任何一个一维的在不分配新内存情况下可扩展为任意的数值。</p>
+<blockquote>
+<p><strong>参数：</strong> </p>
+<ul>
+<li><strong>sizes(torch.Size or int…)</strong>-需要扩展的大小</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h2 id="torch-nn"><a href="#torch-nn" class="headerlink" title="torch.nn"></a>torch.nn</h2><h3 id="torch-nn-Conv2d"><a href="#torch-nn-Conv2d" class="headerlink" title="torch.nn.Conv2d"></a>torch.nn.Conv2d</h3><p><strong>torch.nn.Conv2d(in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True)</strong>]</p>
+<p><strong>Parameters：</strong></p>
+<ul>
+<li>in_channels(<code>int</code>) – 输入信号的通道</li>
+<li>out_channels(<code>int</code>) – 卷积产生的通道</li>
+<li>kerner_size(<code>int</code> or <code>tuple</code>) - 卷积核的尺寸</li>
+<li>stride(<code>int</code> or <code>tuple</code>, <code>optional</code>) - 卷积步长</li>
+<li>padding(<code>int</code> or <code>tuple</code>, <code>optional</code>) - 输入的每一条边补充0的层数</li>
+<li>dilation(<code>int</code> or <code>tuple</code>, <code>optional</code>) – 卷积核元素之间的间距</li>
+<li>groups(<code>int</code>, <code>optional</code>) – 从输入通道到输出通道的阻塞连接数</li>
+<li>bias(<code>bool</code>, <code>optional</code>) - 如果<code>bias=True</code>，添加偏置</li>
+</ul>
+<h3 id="torch-nn-normalization"><a href="#torch-nn-normalization" class="headerlink" title="torch.nn.normalization"></a>torch.nn.normalization</h3><p>Norm 归一化层 <a href="https://blog.csdn.net/shanglianlm/article/details/85075706">链接</a></p>
+<blockquote>
+<p>BN，LN，IN，GN从学术化上解释差异：<br>BatchNorm：batch方向做归一化，算NHW的均值，对小batchsize效果不好；BN主要缺点是对batchsize的大小比较敏感，由于每次计算均值和方差是在一个batch上，所以如果batchsize太小，则计算的均值、方差不足以代表整个数据分布<br>LayerNorm：channel方向做归一化，算CHW的均值，主要对RNN作用明显；<br>InstanceNorm：一个channel内做归一化，算H*W的均值，用在风格化迁移；因为在图像风格化中，生成结果主要依赖于某个图像实例，所以对整个batch归一化不适合图像风格化中，因而对HW做归一化。可以加速模型收敛，并且保持每个图像实例之间的独立。<br>GroupNorm：将channel方向分group，然后每个group内做归一化，算(C//G)HW的均值；这样与batchsize无关，不受其约束。<br>SwitchableNorm是将BN、LN、IN结合，赋予权重，让网络自己去学习归一化层应该使用什么方法。</p>
+</blockquote>
+<p><strong>nn.GroupNorm</strong></p>
+<ul>
+<li><strong>torch.nn.GroupNorm(<em>num_groups</em>, <em>num_channels</em>, <em>eps=1e-05</em>, <em>affine=True</em>, <em>device=None</em>, <em>dtype=None</em>)</strong> <a href="https://pytorch.org/docs/stable/generated/torch.nn.GroupNorm.html">链接</a></li>
+</ul>
+<blockquote>
+<ul>
+<li><strong>num_groups</strong> (<a href="https://docs.python.org/3/library/functions.html#int"><em>int</em></a>) – number of groups to separate the channels into</li>
+<li><strong>num_channels</strong> (<a href="https://docs.python.org/3/library/functions.html#int"><em>int</em></a>) – number of channels expected in input</li>
+<li><strong>eps</strong> – a value added to the denominator for numerical stability. Default: 1e-5</li>
+<li><strong>affine</strong> – a boolean value that when set to <code>True</code>, this module has learnable per-channel affine parameters initialized to ones (for weights) and zeros (for biases). Default: <code>True</code>.</li>
+</ul>
+</blockquote>
+<p><strong>nn.BatchNorm</strong></p>
+<ul>
+<li><p><strong>torch.nn.BatchNorm1d(num_features, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)</strong></p>
+</li>
+<li><p><strong>torch.nn.BatchNorm2d(num_features, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)</strong></p>
+<p>对小批量(mini-batch)3d数据组成的4d输入进行批标准化(Batch Normalization)操作</p>
+<script type="math/tex; mode=display">
+y = \frac{x - mean[x]}{ \sqrt{Var[x]} + \epsilon} * gamma + beta</script><p>在每一个小批量（mini-batch）数据中，计算输入各个维度的均值和标准差。gamma与beta是可学习的大小为C的参数向量（C为输入大小）</p>
+<p>在训练时，该层计算每次输入的均值与方差，并进行移动平均。移动平均默认的动量值为0.1。</p>
+<p>在验证时，训练求得的均值/方差将用于标准化验证数据</p>
+</li>
+<li><p><strong>torch.nn.BatchNorm3d(num_features, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)</strong></p>
+</li>
+</ul>
+<blockquote>
+<p>num_features： 来自期望输入的特征数，该期望输入的大小为’batch_size x num_features [x width]’<br>eps： 为保证数值稳定性（分母不能趋近或取0）,给分母加上的值。默认为1e-5。<br>momentum： 动态均值和动态方差所使用的动量。默认为0.1。<br>affine： 布尔值，当设为true，给该层添加可学习的仿射变换参数。<br>track_running_stats：布尔值，当设为true，记录训练过程中的均值和方差；</p>
+</blockquote>
+<p><strong>nn.InstanceNorm2d</strong> <a href="https://pytorch.org/docs/stable/generated/torch.nn.InstanceNorm2d.html">链接</a></p>
+<p><strong>torch.nn.InstanceNorm2d(<em>num_features</em>, <em>eps=1e-05</em>, <em>momentum=0.1</em>, <em>affine=False</em>, <em>track_running_stats=False</em>, <em>device=None</em>, <em>dtype=None</em>)</strong></p>
+<blockquote>
+<ul>
+<li><strong>num_features</strong> – C from an expected input of size (N,C,H,W)</li>
+<li><strong>eps</strong> – a value added to the denominator for numerical stability. Default: 1e-5</li>
+<li><strong>momentum</strong> – the value used for the running_mean and running_var computation. Default: 0.1</li>
+<li><strong>affine</strong> – a boolean value that when set to <code>True</code>, this module has learnable affine parameters, initialized the same way as done for batch normalization. Default: <code>False</code>.</li>
+<li><strong>track_running_stats</strong> – a boolean value that when set to <code>True</code>, this module tracks the running mean and variance, and when set to <code>False</code>, this module does not track such statistics and always uses batch statistics in both training and eval modes. Default: <code>False</code></li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="torch-cuda-amp"><a href="#torch-cuda-amp" class="headerlink" title="torch.cuda.amp"></a>torch.cuda.amp</h2><h3 id="torch-cuda-amp-autocast"><a href="#torch-cuda-amp-autocast" class="headerlink" title="torch.cuda.amp.autocast"></a>torch.cuda.amp.autocast</h3><p>开启自动混合精度，<a href="https://zhuanlan.zhihu.com/p/165152789">链接</a></p>
+<p><strong>torch.cuda.amp.autocast(enabled=True)</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 前向过程(model + loss)开启 autocast</span></span><br><span class="line"><span class="keyword">with</span> autocast(~):</span><br><span class="line">    output = model(<span class="built_in">input</span>)</span><br><span class="line">    loss = loss_fn(output, target)</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Python</category>

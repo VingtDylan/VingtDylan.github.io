@@ -1,0 +1,343 @@
+<!DOCTYPE html><html lang="zh-Hans" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pytorch 常用函数 | QaQ</title><meta name="keywords" content="常用函数"><meta name="author" content="VingtDylan"><meta name="copyright" content="VingtDylan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Pytorch 常用函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pytorch 常用函数">
+<meta property="og:url" content="https://vingtdylan.github.io/p/312d.html">
+<meta property="og:site_name" content="QaQ">
+<meta property="og:description" content="Pytorch 常用函数">
+<meta property="og:locale">
+<meta property="og:image" content="https://gitee.com/breey/blog-img/raw/master/img/pytorch-1.jpg">
+<meta property="article:published_time" content="2021-12-31T04:03:43.000Z">
+<meta property="article:modified_time" content="2021-12-31T04:08:46.236Z">
+<meta property="article:author" content="VingtDylan">
+<meta property="article:tag" content="常用函数">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/breey/blog-img/raw/master/img/pytorch-1.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://vingtdylan.github.io/p/312d"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Pytorch 常用函数',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-12-31 12:08:46'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/index_img.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">35</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">21</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://gitee.com/breey/blog-img/raw/master/img/pytorch-1.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">QaQ</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Pytorch 常用函数</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-12-31T04:03:43.000Z" title="Created 2021-12-31 12:03:43">2021-12-31</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-12-31T04:08:46.236Z" title="Updated 2021-12-31 12:08:46">2021-12-31</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Python/">Python</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">1.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>7min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Pytorch 常用函数"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="PyTorch"><a href="#PyTorch" class="headerlink" title="PyTorch"></a>PyTorch</h1><h2 id="torch"><a href="#torch" class="headerlink" title="torch"></a>torch</h2><h3 id="Creation-Ops"><a href="#Creation-Ops" class="headerlink" title="Creation Ops"></a>Creation Ops</h3><ul>
+<li><p><strong>torch.arange</strong></p>
+<p><strong>torch.arange(start, end, step=1, out=None) → Tensor</strong></p>
+<p>返回一个1维张量，长度为 ( floor((end−start)/step) )。包含从 <strong>start</strong>到 <strong>end</strong>，以 <strong>step</strong> 为步长的一组序列值(默认步长为1)。</p>
+<blockquote>
+<p>参数:</p>
+<ul>
+<li>start (float) – 序列的起始点</li>
+<li>end (float) – 序列的终止点</li>
+<li>step (float) – 相邻点的间隔大小</li>
+<li>out (Tensor, optional) – 结果张量</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h3 id="Indexing-Slicing-Joining-Mutating-Ops"><a href="#Indexing-Slicing-Joining-Mutating-Ops" class="headerlink" title="Indexing, Slicing, Joining, Mutating Ops"></a>Indexing, Slicing, Joining, Mutating Ops</h3><ul>
+<li><p><strong>torch.cat</strong></p>
+<p>torch.cat(inputs, dimension=0)</p>
+<p>在给定维度上对输入的张量序列<code>seq</code> 进行连接操作。</p>
+<p><code>torch.cat()</code>可以看做 <code>torch.split()</code> 和 <code>torch.chunk()</code>的反操作。 <code>cat()</code> 函数可以通过下面例子更好的理解。</p>
+<blockquote>
+<p>参数:</p>
+<ul>
+<li>inputs (<em>sequence of Tensors</em>) – 可以是任意相同Tensor 类型的python 序列</li>
+<li>dimension (<em>int</em>, <em>optional</em>) – 沿着此维连接张量序列。</li>
+</ul>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; x = torch.randn(2, 3)</span><br><span class="line">&gt;&gt;&gt; x</span><br><span class="line"> 0.5983 -0.0341  2.4918</span><br><span class="line"> 1.5981 -0.5265 -0.8735</span><br><span class="line">[torch.FloatTensor of size 2x3]</span><br><span class="line">&gt;&gt;&gt; torch.cat((x, x, x), 0)</span><br><span class="line"> 0.5983 -0.0341  2.4918</span><br><span class="line"> 1.5981 -0.5265 -0.8735</span><br><span class="line"> 0.5983 -0.0341  2.4918</span><br><span class="line"> 1.5981 -0.5265 -0.8735</span><br><span class="line"> 0.5983 -0.0341  2.4918</span><br><span class="line"> 1.5981 -0.5265 -0.8735</span><br><span class="line">[torch.FloatTensor of size 6x3]</span><br><span class="line">&gt;&gt;&gt; torch.cat((x, x, x), 1)</span><br><span class="line"> 0.5983 -0.0341  2.4918  0.5983 -0.0341  2.4918  0.5983 -0.0341  2.4918</span><br><span class="line"> 1.5981 -0.5265 -0.8735  1.5981 -0.5265 -0.8735  1.5981 -0.5265 -0.8735</span><br><span class="line">[torch.FloatTensor of size 2x9]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>torch.split</strong></p>
+<p><strong>torch.split(tensor, split_size, dim=0)</strong></p>
+<p>将输入张量分割成相等形状的chunks（如果可分）。 如果沿指定维的张量形状大小不能被 <strong>split_size</strong> 整分， 则最后一个分块会小于其它分块。</p>
+<blockquote>
+<p>参数:</p>
+<ul>
+<li>tensor (Tensor) – 待分割张量</li>
+<li>split_size (int) – 单个分块的形状大小</li>
+<li>dim (int) – 沿着此维进行分割</li>
+</ul>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; x = torch.zeros(2,1,2,1,2)</span><br><span class="line">&gt;&gt;&gt; x.size()</span><br><span class="line">(2L, 1L, 2L, 1L, 2L)</span><br><span class="line">&gt;&gt;&gt; y = torch.squeeze(x)</span><br><span class="line">&gt;&gt;&gt; y.size()</span><br><span class="line">(2L, 2L, 2L)</span><br><span class="line">&gt;&gt;&gt; y = torch.squeeze(x, 0)</span><br><span class="line">&gt;&gt;&gt; y.size()</span><br><span class="line">(2L, 1L, 2L, 1L, 2L)</span><br><span class="line">&gt;&gt;&gt; y = torch.squeeze(x, 1)</span><br><span class="line">&gt;&gt;&gt; y.size()</span><br><span class="line">(2L, 2L, 1L, 2L)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>torch.stack</strong></p>
+<p><strong>torch.stack(sequence, dim=0)</strong></p>
+<p>沿着一个新维度对输入张量序列进行连接。 序列中所有的张量都应该为相同形状。</p>
+<blockquote>
+<p>  参数:</p>
+<ul>
+<li>sequence (Sequence) – 待连接的张量序列</li>
+<li>dim (int) – 插入的维度。必须介于 0 与 待连接的张量序列数之间。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h3 id="Math-operations"><a href="#Math-operations" class="headerlink" title="Math operations"></a>Math operations</h3><p><strong>PointWise Ops</strong></p>
+<ul>
+<li><p><strong>torch.tanh</strong></p>
+<p><strong>torch.tanh(input, out=None) → Tensor</strong></p>
+<p>返回一个新张量，包含输入 <strong>input</strong> 张量每个元素的双曲正切。</p>
+<blockquote>
+<p>参数：</p>
+<ul>
+<li>input (Tensor) – 输入张量</li>
+<li>out (Tensor, optional) – 输出张量</li>
+</ul>
+</blockquote>
+</li>
+<li></li>
+</ul>
+<p><strong>Reduction Ops</strong></p>
+<ul>
+<li></li>
+</ul>
+<hr>
+<h2 id="torch-Tensor"><a href="#torch-Tensor" class="headerlink" title="torch.Tensor"></a>torch.Tensor</h2><ul>
+<li><p><strong>expand(*sizes)</strong></p>
+<p>返回tensor的一个新视图，单个维度扩大为更大的尺寸。 tensor也可以扩大为更高维，新增加的维度将附在前面。 扩大tensor不需要分配新内存，只是仅仅新建一个tensor的视图，其中通过将<code>stride</code>设为0，一维将会扩展位更高维。任何一个一维的在不分配新内存情况下可扩展为任意的数值。</p>
+<blockquote>
+<p><strong>参数：</strong> </p>
+<ul>
+<li><strong>sizes(torch.Size or int…)</strong>-需要扩展的大小</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h2 id="torch-nn"><a href="#torch-nn" class="headerlink" title="torch.nn"></a>torch.nn</h2><h3 id="torch-nn-Conv2d"><a href="#torch-nn-Conv2d" class="headerlink" title="torch.nn.Conv2d"></a>torch.nn.Conv2d</h3><p><strong>torch.nn.Conv2d(in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True)</strong>]</p>
+<p><strong>Parameters：</strong></p>
+<ul>
+<li>in_channels(<code>int</code>) – 输入信号的通道</li>
+<li>out_channels(<code>int</code>) – 卷积产生的通道</li>
+<li>kerner_size(<code>int</code> or <code>tuple</code>) - 卷积核的尺寸</li>
+<li>stride(<code>int</code> or <code>tuple</code>, <code>optional</code>) - 卷积步长</li>
+<li>padding(<code>int</code> or <code>tuple</code>, <code>optional</code>) - 输入的每一条边补充0的层数</li>
+<li>dilation(<code>int</code> or <code>tuple</code>, <code>optional</code>) – 卷积核元素之间的间距</li>
+<li>groups(<code>int</code>, <code>optional</code>) – 从输入通道到输出通道的阻塞连接数</li>
+<li>bias(<code>bool</code>, <code>optional</code>) - 如果<code>bias=True</code>，添加偏置</li>
+</ul>
+<h3 id="torch-nn-normalization"><a href="#torch-nn-normalization" class="headerlink" title="torch.nn.normalization"></a>torch.nn.normalization</h3><p>Norm 归一化层 <a target="_blank" rel="noopener" href="https://blog.csdn.net/shanglianlm/article/details/85075706">链接</a></p>
+<blockquote>
+<p>BN，LN，IN，GN从学术化上解释差异：<br>BatchNorm：batch方向做归一化，算NHW的均值，对小batchsize效果不好；BN主要缺点是对batchsize的大小比较敏感，由于每次计算均值和方差是在一个batch上，所以如果batchsize太小，则计算的均值、方差不足以代表整个数据分布<br>LayerNorm：channel方向做归一化，算CHW的均值，主要对RNN作用明显；<br>InstanceNorm：一个channel内做归一化，算H*W的均值，用在风格化迁移；因为在图像风格化中，生成结果主要依赖于某个图像实例，所以对整个batch归一化不适合图像风格化中，因而对HW做归一化。可以加速模型收敛，并且保持每个图像实例之间的独立。<br>GroupNorm：将channel方向分group，然后每个group内做归一化，算(C//G)HW的均值；这样与batchsize无关，不受其约束。<br>SwitchableNorm是将BN、LN、IN结合，赋予权重，让网络自己去学习归一化层应该使用什么方法。</p>
+</blockquote>
+<p><strong>nn.GroupNorm</strong></p>
+<ul>
+<li><strong>torch.nn.GroupNorm(<em>num_groups</em>, <em>num_channels</em>, <em>eps=1e-05</em>, <em>affine=True</em>, <em>device=None</em>, <em>dtype=None</em>)</strong> <a target="_blank" rel="noopener" href="https://pytorch.org/docs/stable/generated/torch.nn.GroupNorm.html">链接</a></li>
+</ul>
+<blockquote>
+<ul>
+<li><strong>num_groups</strong> (<a target="_blank" rel="noopener" href="https://docs.python.org/3/library/functions.html#int"><em>int</em></a>) – number of groups to separate the channels into</li>
+<li><strong>num_channels</strong> (<a target="_blank" rel="noopener" href="https://docs.python.org/3/library/functions.html#int"><em>int</em></a>) – number of channels expected in input</li>
+<li><strong>eps</strong> – a value added to the denominator for numerical stability. Default: 1e-5</li>
+<li><strong>affine</strong> – a boolean value that when set to <code>True</code>, this module has learnable per-channel affine parameters initialized to ones (for weights) and zeros (for biases). Default: <code>True</code>.</li>
+</ul>
+</blockquote>
+<p><strong>nn.BatchNorm</strong></p>
+<ul>
+<li><p><strong>torch.nn.BatchNorm1d(num_features, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)</strong></p>
+</li>
+<li><p><strong>torch.nn.BatchNorm2d(num_features, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)</strong></p>
+<p>对小批量(mini-batch)3d数据组成的4d输入进行批标准化(Batch Normalization)操作</p>
+<script type="math/tex; mode=display">
+y = \frac{x - mean[x]}{ \sqrt{Var[x]} + \epsilon} * gamma + beta</script><p>在每一个小批量（mini-batch）数据中，计算输入各个维度的均值和标准差。gamma与beta是可学习的大小为C的参数向量（C为输入大小）</p>
+<p>在训练时，该层计算每次输入的均值与方差，并进行移动平均。移动平均默认的动量值为0.1。</p>
+<p>在验证时，训练求得的均值/方差将用于标准化验证数据</p>
+</li>
+<li><p><strong>torch.nn.BatchNorm3d(num_features, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)</strong></p>
+</li>
+</ul>
+<blockquote>
+<p>num_features： 来自期望输入的特征数，该期望输入的大小为’batch_size x num_features [x width]’<br>eps： 为保证数值稳定性（分母不能趋近或取0）,给分母加上的值。默认为1e-5。<br>momentum： 动态均值和动态方差所使用的动量。默认为0.1。<br>affine： 布尔值，当设为true，给该层添加可学习的仿射变换参数。<br>track_running_stats：布尔值，当设为true，记录训练过程中的均值和方差；</p>
+</blockquote>
+<p><strong>nn.InstanceNorm2d</strong> <a target="_blank" rel="noopener" href="https://pytorch.org/docs/stable/generated/torch.nn.InstanceNorm2d.html">链接</a></p>
+<p><strong>torch.nn.InstanceNorm2d(<em>num_features</em>, <em>eps=1e-05</em>, <em>momentum=0.1</em>, <em>affine=False</em>, <em>track_running_stats=False</em>, <em>device=None</em>, <em>dtype=None</em>)</strong></p>
+<blockquote>
+<ul>
+<li><strong>num_features</strong> – C from an expected input of size (N,C,H,W)</li>
+<li><strong>eps</strong> – a value added to the denominator for numerical stability. Default: 1e-5</li>
+<li><strong>momentum</strong> – the value used for the running_mean and running_var computation. Default: 0.1</li>
+<li><strong>affine</strong> – a boolean value that when set to <code>True</code>, this module has learnable affine parameters, initialized the same way as done for batch normalization. Default: <code>False</code>.</li>
+<li><strong>track_running_stats</strong> – a boolean value that when set to <code>True</code>, this module tracks the running mean and variance, and when set to <code>False</code>, this module does not track such statistics and always uses batch statistics in both training and eval modes. Default: <code>False</code></li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="torch-cuda-amp"><a href="#torch-cuda-amp" class="headerlink" title="torch.cuda.amp"></a>torch.cuda.amp</h2><h3 id="torch-cuda-amp-autocast"><a href="#torch-cuda-amp-autocast" class="headerlink" title="torch.cuda.amp.autocast"></a>torch.cuda.amp.autocast</h3><p>开启自动混合精度，<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/165152789">链接</a></p>
+<p><strong>torch.cuda.amp.autocast(enabled=True)</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 前向过程(model + loss)开启 autocast</span></span><br><span class="line"><span class="keyword">with</span> autocast(~):</span><br><span class="line">    output = model(<span class="built_in">input</span>)</span><br><span class="line">    loss = loss_fn(output, target)</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">VingtDylan</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://vingtdylan.github.io/p/312d.html">https://vingtdylan.github.io/p/312d.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/">常用函数</a></div><div class="post_share"><div class="social-share" data-image="https://gitee.com/breey/blog-img/raw/master/img/pytorch-1.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/p/50a7.html"><img class="next-cover" src="https://gitee.com/breey/blog-img/raw/master/img/Python-1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Python 基础函数</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/p/f667.html" title="NumPy 常用函数"><img class="cover" src="https://gitee.com/breey/blog-img/raw/master/img/numpy-1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-29</div><div class="title">NumPy 常用函数</div></div></a></div><div><a href="/p/50a7.html" title="Python 基础函数"><img class="cover" src="https://gitee.com/breey/blog-img/raw/master/img/Python-1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-30</div><div class="title">Python 基础函数</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/index_img.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">VingtDylan</div><div class="author-info__description">好好学习，好好睡觉...</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">35</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">21</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/VingtDylan"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/VingtDylan" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:yhchen@mail.sim.ac.cn" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">alias cd  = 'rm - rf'</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PyTorch"><span class="toc-number">1.</span> <span class="toc-text">PyTorch</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#torch"><span class="toc-number">1.1.</span> <span class="toc-text">torch</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Creation-Ops"><span class="toc-number">1.1.1.</span> <span class="toc-text">Creation Ops</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Indexing-Slicing-Joining-Mutating-Ops"><span class="toc-number">1.1.2.</span> <span class="toc-text">Indexing, Slicing, Joining, Mutating Ops</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Math-operations"><span class="toc-number">1.1.3.</span> <span class="toc-text">Math operations</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#torch-Tensor"><span class="toc-number">1.2.</span> <span class="toc-text">torch.Tensor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#torch-nn"><span class="toc-number">1.3.</span> <span class="toc-text">torch.nn</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#torch-nn-Conv2d"><span class="toc-number">1.3.1.</span> <span class="toc-text">torch.nn.Conv2d</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#torch-nn-normalization"><span class="toc-number">1.3.2.</span> <span class="toc-text">torch.nn.normalization</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#torch-cuda-amp"><span class="toc-number">1.4.</span> <span class="toc-text">torch.cuda.amp</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#torch-cuda-amp-autocast"><span class="toc-number">1.4.1.</span> <span class="toc-text">torch.cuda.amp.autocast</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/p/312d.html" title="Pytorch 常用函数"><img src="https://gitee.com/breey/blog-img/raw/master/img/pytorch-1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Pytorch 常用函数"/></a><div class="content"><a class="title" href="/p/312d.html" title="Pytorch 常用函数">Pytorch 常用函数</a><time datetime="2021-12-31T04:03:43.000Z" title="Created 2021-12-31 12:03:43">2021-12-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/p/50a7.html" title="Python 基础函数"><img src="https://gitee.com/breey/blog-img/raw/master/img/Python-1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Python 基础函数"/></a><div class="content"><a class="title" href="/p/50a7.html" title="Python 基础函数">Python 基础函数</a><time datetime="2021-12-30T08:03:12.000Z" title="Created 2021-12-30 16:03:12">2021-12-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/p/f667.html" title="NumPy 常用函数"><img src="https://gitee.com/breey/blog-img/raw/master/img/numpy-1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="NumPy 常用函数"/></a><div class="content"><a class="title" href="/p/f667.html" title="NumPy 常用函数">NumPy 常用函数</a><time datetime="2021-12-29T13:54:13.000Z" title="Created 2021-12-29 21:54:13">2021-12-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/p/c9b2.html" title="机器学习知识"><img src="https://gitee.com/breey/blog-img/raw/master/img/ML-1-1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="机器学习知识"/></a><div class="content"><a class="title" href="/p/c9b2.html" title="机器学习知识">机器学习知识</a><time datetime="2021-12-28T05:59:57.000Z" title="Created 2021-12-28 13:59:57">2021-12-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/p/3baf.html" title="C++"><img src="https://gitee.com/breey/blog-img/raw/master/img/CPP-1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C++"/></a><div class="content"><a class="title" href="/p/3baf.html" title="C++">C++</a><time datetime="2021-12-14T14:51:02.000Z" title="Created 2021-12-14 22:51:02">2021-12-14</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022  <i id="heartbeat" class="fa fas fa-heartbeat"></i> VingtDylan</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":75,"height":150},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
